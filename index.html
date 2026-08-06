@@ -15,7 +15,7 @@
   </style>
 </head>
 <body>
-<div id="root"></div>
+<div id="root"><div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;color:#1B3A6B;font-size:18px;">Loading BCA Royals PE Planner…</div></div>
 <script>
 /**
  * @license React
@@ -321,21 +321,36 @@ function(a,b,c){if(!Vd(b))throw Error(n(200));return Wd(null,a,b,!1,c)};Q.unmoun
 
 </script>
 <script>
-"use strict";
 (function() {
+"use strict";
 var useState = React.useState;
 var useEffect = React.useEffect;
 var useCallback = React.useCallback;
 
-import { jsxDEV as _jsxDEV, Fragment as _Fragment } from "react/jsx-dev-runtime";
-const ROYAL_BLUE = "#1B3A6B";
-const GOLD = "#C9A84C";
-const LIGHT_GOLD = "#F5E9C9";
-const LIGHT_BLUE = "#E8EEF7";
-const WHITE = "#FFFFFF";
-const GRAY = "#6B7280";
-const LIGHT_GRAY = "#F3F4F6";
-const GC = {
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+var ROYAL_BLUE = "#1B3A6B";
+var GOLD = "#C9A84C";
+var LIGHT_GOLD = "#F5E9C9";
+var LIGHT_BLUE = "#E8EEF7";
+var WHITE = "#FFFFFF";
+var GRAY = "#6B7280";
+var LIGHT_GRAY = "#F3F4F6";
+var GC = {
   "K5": {
     bg: "#FEF3C7",
     text: "#92400E",
@@ -357,7 +372,7 @@ const GC = {
     border: "#EF4444"
   }
 };
-const EQUIP_ICONS = {
+var EQUIP_ICONS = {
   cones: "🔶",
   beanbags: "🫘",
   hoops: "⭕",
@@ -375,43 +390,44 @@ const EQUIP_ICONS = {
   rollmats: "🟩",
   balancebeam: "📏"
 };
-function Badge({
-  text,
-  bg = GOLD,
-  color = WHITE,
-  small = false
-}) {
-  return /*#__PURE__*/_jsxDEV("span", {
+function Badge(_ref) {
+  var text = _ref.text,
+    _ref$bg = _ref.bg,
+    bg = _ref$bg === void 0 ? GOLD : _ref$bg,
+    _ref$color = _ref.color,
+    color = _ref$color === void 0 ? WHITE : _ref$color,
+    _ref$small = _ref.small,
+    small = _ref$small === void 0 ? false : _ref$small;
+  return /*#__PURE__*/React.createElement("span", {
     style: {
       background: bg,
-      color,
+      color: color,
       borderRadius: 999,
       fontSize: small ? 10 : 11,
       fontWeight: 700,
       padding: small ? "1px 8px" : "2px 10px",
       display: "inline-block",
       whiteSpace: "nowrap"
-    },
-    children: text
-  }, void 0, false);
+    }
+  }, text);
 }
-function GradePill({
-  grade
-}) {
-  const c = GC[grade] || {};
-  return /*#__PURE__*/_jsxDEV(Badge, {
+function GradePill(_ref2) {
+  var grade = _ref2.grade;
+  var c = GC[grade] || {};
+  return /*#__PURE__*/React.createElement(Badge, {
     text: grade,
     bg: c.bg,
     color: c.text,
     small: true
-  }, void 0, false);
+  });
 }
-function ETag({
-  id
-}) {
-  const icon = EQUIP_ICONS[id] || "•";
-  const label = id.replace(/([A-Z])/g, " $1").replace(/^./, s => s.toUpperCase());
-  return /*#__PURE__*/_jsxDEV("span", {
+function ETag(_ref3) {
+  var id = _ref3.id;
+  var icon = EQUIP_ICONS[id] || "•";
+  var label = id.replace(/([A-Z])/g, " $1").replace(/^./, function (s) {
+    return s.toUpperCase();
+  });
+  return /*#__PURE__*/React.createElement("span", {
     style: {
       background: LIGHT_GOLD,
       color: ROYAL_BLUE,
@@ -422,13 +438,12 @@ function ETag({
       display: "inline-flex",
       alignItems: "center",
       gap: 3
-    },
-    children: [icon, " ", label]
-  }, void 0, true);
+    }
+  }, icon, " ", label);
 }
 
 // ─── ALL GAMES ────────────────────────────────────────────────────────────
-const GAMES_DEFAULT = [
+var GAMES_DEFAULT = [
 // TAG GAMES
 {
   id: "fireice",
@@ -868,7 +883,7 @@ const GAMES_DEFAULT = [
 }];
 
 // ─── EQUIPMENT STAGING ───────────────────────────────────────────────────
-const dailyEquip = {
+var dailyEquip = {
   Monday: {
     stageAtStart: ["cones", "noodles"],
     blocks: [{
@@ -995,7 +1010,7 @@ const dailyEquip = {
 };
 
 // ─── THE ROYAL WAY — Kingdom Kids Chapel Themes ──────────────────────────────
-const ROYAL_WAY = [{
+var ROYAL_WAY = [{
   month: "August",
   chapelTheme: "—",
   royalTheme: "—",
@@ -1088,733 +1103,686 @@ const ROYAL_WAY = [{
 }];
 
 // ─── COMPONENTS ───────────────────────────────────────────────────────────
-function GameCard({
-  game
-}) {
-  const isCustom = game.custom === true;
-  const [open, setOpen] = useState(false);
-  const catColor = {
+function GameCard(_ref4) {
+  var _game$variations;
+  var game = _ref4.game;
+  var isCustom = game.custom === true;
+  var _useState = useState(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    open = _useState2[0],
+    setOpen = _useState2[1];
+  var catColor = {
     "Tag": "#7C3AED",
     "Dodgeball": "#DC2626",
     "Fitness Station": "#059669",
     "Cooperative": "#0891B2"
   }[game.category] || ROYAL_BLUE;
-  return /*#__PURE__*/_jsxDEV("div", {
+  return /*#__PURE__*/React.createElement("div", {
     style: {
-      border: `1px solid #E5E7EB`,
+      border: "1px solid #E5E7EB",
       borderRadius: 12,
       marginBottom: 10,
       overflow: "hidden",
       boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setOpen(function (o) {
+        return !o;
+      });
     },
-    children: [/*#__PURE__*/_jsxDEV("button", {
-      onClick: () => setOpen(o => !o),
-      style: {
-        width: "100%",
-        textAlign: "left",
-        border: "none",
-        cursor: "pointer",
-        background: open ? LIGHT_BLUE : WHITE,
-        padding: "12px 16px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-start"
-      },
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          flex: 1
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            flexWrap: "wrap"
-          },
-          children: [/*#__PURE__*/_jsxDEV("span", {
-            style: {
-              fontWeight: 800,
-              color: ROYAL_BLUE,
-              fontSize: 14
-            },
-            children: game.name
-          }, void 0, false), game.existing && /*#__PURE__*/_jsxDEV(Badge, {
-            text: "✓ Already Using",
-            bg: "#DCFCE7",
-            color: "#166534",
-            small: true
-          }, void 0, false), /*#__PURE__*/_jsxDEV(Badge, {
-            text: game.category,
-            bg: catColor + "22",
-            color: catColor,
-            small: true
-          }, void 0, false)]
-        }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            gap: 6,
-            marginTop: 5,
-            flexWrap: "wrap"
-          },
-          children: [game.grades.map(g => /*#__PURE__*/_jsxDEV(GradePill, {
-            grade: g
-          }, g, false)), /*#__PURE__*/_jsxDEV("span", {
-            style: {
-              fontSize: 10,
-              color: GRAY
-            },
-            children: ["⏱ ", game.time, " · ", game.space, " court"]
-          }, void 0, true)]
-        }, void 0, true)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          color: GOLD,
-          fontSize: 18,
-          fontWeight: 700,
-          marginLeft: 8
-        },
-        children: open ? "▲" : "▼"
-      }, void 0, false)]
-    }, void 0, true), open && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        padding: "14px 16px",
-        background: WHITE,
-        borderTop: `1px solid ${LIGHT_BLUE}`
-      },
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginBottom: 12
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 10,
-            fontWeight: 700,
-            color: GRAY,
-            textTransform: "uppercase",
-            letterSpacing: 0.5,
-            marginBottom: 5
-          },
-          children: "Equipment"
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 5
-          },
-          children: game.equip.map(e => /*#__PURE__*/_jsxDEV(ETag, {
-            id: e
-          }, e, false))
-        }, void 0, false)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginBottom: 12
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 10,
-            fontWeight: 700,
-            color: GRAY,
-            textTransform: "uppercase",
-            letterSpacing: 0.5,
-            marginBottom: 4
-          },
-          children: "Setup"
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 13,
-            color: "#374151",
-            lineHeight: 1.6
-          },
-          children: game.setup
-        }, void 0, false)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginBottom: 12
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 10,
-            fontWeight: 700,
-            color: GRAY,
-            textTransform: "uppercase",
-            letterSpacing: 0.5,
-            marginBottom: 5
-          },
-          children: "How to Play"
-        }, void 0, false), game.how.map((step, i) => /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            gap: 8,
-            marginBottom: 6,
-            alignItems: "flex-start"
-          },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            style: {
-              minWidth: 20,
-              height: 20,
-              borderRadius: "50%",
-              background: ROYAL_BLUE,
-              color: WHITE,
-              fontSize: 10,
-              fontWeight: 700,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0
-            },
-            children: i + 1
-          }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              fontSize: 13,
-              color: "#374151",
-              lineHeight: 1.5
-            },
-            children: step
-          }, void 0, false)]
-        }, i, true))]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          background: LIGHT_GOLD,
-          borderRadius: 10,
-          padding: "12px 14px",
-          borderLeft: `4px solid ${GOLD}`,
-          marginBottom: 10
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 10,
-            fontWeight: 700,
-            color: "#92400E",
-            textTransform: "uppercase",
-            letterSpacing: 0.5,
-            marginBottom: 6
-          },
-          children: ["✝ Biblical Connection — ", game.biblical.theme]
-        }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 12,
-            color: "#374151",
-            lineHeight: 1.6,
-            marginBottom: 6,
-            fontStyle: "italic"
-          },
-          children: game.biblical.connection
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 11,
-            fontWeight: 600,
-            color: ROYAL_BLUE,
-            marginBottom: 4
-          },
-          children: ["📖 ", game.biblical.verse]
-        }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 11,
-            color: "#92400E",
-            fontWeight: 600
-          },
-          children: ["💬 Debrief: ", /*#__PURE__*/_jsxDEV("span", {
-            style: {
-              fontWeight: 400,
-              fontStyle: "italic"
-            },
-            children: game.biblical.debrief
-          }, void 0, false)]
-        }, void 0, true)]
-      }, void 0, true), game.variations?.length > 0 && /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          background: LIGHT_GRAY,
-          borderRadius: 8,
-          padding: "10px 12px",
-          marginBottom: 10
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 10,
-            fontWeight: 700,
-            color: GRAY,
-            textTransform: "uppercase",
-            letterSpacing: 0.5,
-            marginBottom: 5
-          },
-          children: "Variations"
-        }, void 0, false), game.variations.map((v, i) => /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 12,
-            color: "#374151",
-            marginBottom: 3
-          },
-          children: ["• ", v]
-        }, i, true))]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          background: LIGHT_BLUE,
-          borderRadius: 8,
-          padding: "10px 12px"
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 10,
-            fontWeight: 700,
-            color: ROYAL_BLUE,
-            textTransform: "uppercase",
-            letterSpacing: 0.5,
-            marginBottom: 3
-          },
-          children: "💡 Teacher Tips"
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 12,
-            color: "#374151",
-            lineHeight: 1.5
-          },
-          children: game.tips
-        }, void 0, false)]
-      }, void 0, true)]
-    }, void 0, true)]
-  }, void 0, true);
-}
-function DayEquipCard({
-  day,
-  data
-}) {
-  const [open, setOpen] = useState(false);
-  return /*#__PURE__*/_jsxDEV("div", {
     style: {
-      border: `1px solid #E5E7EB`,
+      width: "100%",
+      textAlign: "left",
+      border: "none",
+      cursor: "pointer",
+      background: open ? LIGHT_BLUE : WHITE,
+      padding: "12px 16px",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "flex-start"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontWeight: 800,
+      color: ROYAL_BLUE,
+      fontSize: 14
+    }
+  }, game.name), game.existing && /*#__PURE__*/React.createElement(Badge, {
+    text: "\u2713 Already Using",
+    bg: "#DCFCE7",
+    color: "#166534",
+    small: true
+  }), /*#__PURE__*/React.createElement(Badge, {
+    text: game.category,
+    bg: catColor + "22",
+    color: catColor,
+    small: true
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      marginTop: 5,
+      flexWrap: "wrap"
+    }
+  }, game.grades.map(function (g) {
+    return /*#__PURE__*/React.createElement(GradePill, {
+      key: g,
+      grade: g
+    });
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: GRAY
+    }
+  }, "\u23F1 ", game.time, " \xB7 ", game.space, " court"))), /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: GOLD,
+      fontSize: 18,
+      fontWeight: 700,
+      marginLeft: 8
+    }
+  }, open ? "▲" : "▼")), open && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "14px 16px",
+      background: WHITE,
+      borderTop: "1px solid ".concat(LIGHT_BLUE)
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: GRAY,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 5
+    }
+  }, "Equipment"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexWrap: "wrap",
+      gap: 5
+    }
+  }, game.equip.map(function (e) {
+    return /*#__PURE__*/React.createElement(ETag, {
+      key: e,
+      id: e
+    });
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: GRAY,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 4
+    }
+  }, "Setup"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 13,
+      color: "#374151",
+      lineHeight: 1.6
+    }
+  }, game.setup)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: GRAY,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 5
+    }
+  }, "How to Play"), game.how.map(function (step, i) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        display: "flex",
+        gap: 8,
+        marginBottom: 6,
+        alignItems: "flex-start"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        minWidth: 20,
+        height: 20,
+        borderRadius: "50%",
+        background: ROYAL_BLUE,
+        color: WHITE,
+        fontSize: 10,
+        fontWeight: 700,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0
+      }
+    }, i + 1), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 13,
+        color: "#374151",
+        lineHeight: 1.5
+      }
+    }, step));
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: LIGHT_GOLD,
+      borderRadius: 10,
+      padding: "12px 14px",
+      borderLeft: "4px solid ".concat(GOLD),
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: "#92400E",
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 6
+    }
+  }, "\u271D Biblical Connection \u2014 ", game.biblical.theme), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: "#374151",
+      lineHeight: 1.6,
+      marginBottom: 6,
+      fontStyle: "italic"
+    }
+  }, game.biblical.connection), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 600,
+      color: ROYAL_BLUE,
+      marginBottom: 4
+    }
+  }, "\uD83D\uDCD6 ", game.biblical.verse), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: "#92400E",
+      fontWeight: 600
+    }
+  }, "\uD83D\uDCAC Debrief: ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontWeight: 400,
+      fontStyle: "italic"
+    }
+  }, game.biblical.debrief))), ((_game$variations = game.variations) === null || _game$variations === void 0 ? void 0 : _game$variations.length) > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: LIGHT_GRAY,
+      borderRadius: 8,
+      padding: "10px 12px",
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: GRAY,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 5
+    }
+  }, "Variations"), game.variations.map(function (v, i) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        fontSize: 12,
+        color: "#374151",
+        marginBottom: 3
+      }
+    }, "\u2022 ", v);
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: LIGHT_BLUE,
+      borderRadius: 8,
+      padding: "10px 12px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: ROYAL_BLUE,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 3
+    }
+  }, "\uD83D\uDCA1 Teacher Tips"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: "#374151",
+      lineHeight: 1.5
+    }
+  }, game.tips))));
+}
+function DayEquipCard(_ref5) {
+  var day = _ref5.day,
+    data = _ref5.data;
+  var _useState3 = useState(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    open = _useState4[0],
+    setOpen = _useState4[1];
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      border: "1px solid #E5E7EB",
       borderRadius: 12,
       marginBottom: 10,
       overflow: "hidden"
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setOpen(function (o) {
+        return !o;
+      });
     },
-    children: [/*#__PURE__*/_jsxDEV("button", {
-      onClick: () => setOpen(o => !o),
+    style: {
+      width: "100%",
+      textAlign: "left",
+      border: "none",
+      cursor: "pointer",
+      background: open ? LIGHT_BLUE : WHITE,
+      padding: "12px 16px",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 800,
+      color: ROYAL_BLUE,
+      fontSize: 14
+    }
+  }, day), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: GRAY,
+      marginTop: 2
+    }
+  }, "Stage at start: ", data.stageAtStart.map(function (e) {
+    return EQUIP_ICONS[e] || "•";
+  }).join(" "), " ", data.stageAtStart.join(", "))), /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: GOLD,
+      fontSize: 18,
+      fontWeight: 700
+    }
+  }, open ? "▲" : "▼")), open && /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "0 16px 14px",
+      background: WHITE
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: LIGHT_BLUE,
+      borderRadius: 8,
+      padding: "10px 12px",
+      margin: "10px 0"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: ROYAL_BLUE,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 6
+    }
+  }, "\uD83D\uDCE6 Stage at Gym Start"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexWrap: "wrap",
+      gap: 5
+    }
+  }, data.stageAtStart.map(function (e) {
+    return /*#__PURE__*/React.createElement(ETag, {
+      key: e,
+      id: e
+    });
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: GRAY,
+      marginTop: 5
+    }
+  }, "These stay out all day \u2014 never put away between classes.")), data.blocks.map(function (block, i) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: i,
+      style: {
+        border: "1px solid ".concat(LIGHT_BLUE),
+        borderRadius: 10,
+        padding: "10px 12px",
+        marginBottom: 8
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontWeight: 700,
+        color: ROYAL_BLUE,
+        fontSize: 12,
+        marginBottom: 6
+      }
+    }, block.classes.join(" → ")), block.alert && /*#__PURE__*/React.createElement("div", {
+      style: {
+        background: "#FEF3C7",
+        borderRadius: 6,
+        padding: "5px 8px",
+        marginBottom: 6,
+        fontSize: 11,
+        color: "#92400E",
+        fontWeight: 600
+      }
+    }, block.alert), block.note && /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: GRAY,
+        marginBottom: 6,
+        fontStyle: "italic"
+      }
+    }, "\uD83D\uDCDD ", block.note), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 8,
+        flexWrap: "wrap"
+      }
+    }, block.add.length > 0 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        fontWeight: 700,
+        color: "#059669",
+        textTransform: "uppercase",
+        marginBottom: 4
+      }
+    }, "\u2705 Add"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 4
+      }
+    }, block.add.map(function (e) {
+      return /*#__PURE__*/React.createElement(ETag, {
+        key: e,
+        id: e
+      });
+    }))), block.remove.length > 0 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        flex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        fontWeight: 700,
+        color: "#DC2626",
+        textTransform: "uppercase",
+        marginBottom: 4
+      }
+    }, "\uD83D\uDDD1 Put Away"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 4
+      }
+    }, block.remove.map(function (e) {
+      return /*#__PURE__*/React.createElement(ETag, {
+        key: e,
+        id: e
+      });
+    }))), block.add.length === 0 && block.remove.length === 0 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#059669",
+        fontWeight: 600
+      }
+    }, "\u267B\uFE0F No reset needed \u2014 same setup continues")));
+  })));
+}
+function CKHTab() {
+  var _useState5 = useState(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    expanded = _useState6[0],
+    setExpanded = _useState6[1];
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "linear-gradient(135deg, ".concat(ROYAL_BLUE, ", #2A5298)"),
+      borderRadius: 12,
+      padding: "14px 16px",
+      marginBottom: 16
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: GOLD,
+      fontWeight: 800,
+      fontSize: 14,
+      marginBottom: 4
+    }
+  }, "\uD83D\uDC51 The Royal Way \u2014 Kingdom Kids Chapel Integration"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: WHITE,
+      fontSize: 12,
+      lineHeight: 1.6
+    }
+  }, "Monthly chapel themes from Kingdom Kids, pre-mapped to PE games that reinforce the virtue and biblical connection for that month. As you add new games, they'll be tagged here automatically by theme.")), ROYAL_WAY.map(function (row, i) {
+    var hasTheme = row.chapelTheme !== "—";
+    var isOpen = expanded === i;
+    return /*#__PURE__*/React.createElement("div", {
+      key: row.month,
+      style: {
+        background: WHITE,
+        borderRadius: 12,
+        marginBottom: 10,
+        boxShadow: "0 1px 4px rgba(0,0,0,0.07)",
+        border: "1px solid ".concat(hasTheme ? GOLD : "#E5E7EB"),
+        overflow: "hidden"
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: function onClick() {
+        return setExpanded(isOpen ? null : i);
+      },
       style: {
         width: "100%",
         textAlign: "left",
         border: "none",
         cursor: "pointer",
-        background: open ? LIGHT_BLUE : WHITE,
-        padding: "12px 16px",
+        background: isOpen ? LIGHT_BLUE : WHITE,
+        padding: "12px 14px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center"
-      },
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontWeight: 800,
-            color: ROYAL_BLUE,
-            fontSize: 14
-          },
-          children: day
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 11,
-            color: GRAY,
-            marginTop: 2
-          },
-          children: ["Stage at start: ", data.stageAtStart.map(e => EQUIP_ICONS[e] || "•").join(" "), " ", data.stageAtStart.join(", ")]
-        }, void 0, true)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          color: GOLD,
-          fontSize: 18,
-          fontWeight: 700
-        },
-        children: open ? "▲" : "▼"
-      }, void 0, false)]
-    }, void 0, true), open && /*#__PURE__*/_jsxDEV("div", {
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
       style: {
-        padding: "0 16px 14px",
-        background: WHITE
-      },
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          background: LIGHT_BLUE,
-          borderRadius: 8,
-          padding: "10px 12px",
-          margin: "10px 0"
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 10,
-            fontWeight: 700,
-            color: ROYAL_BLUE,
-            textTransform: "uppercase",
-            letterSpacing: 0.5,
-            marginBottom: 6
-          },
-          children: "📦 Stage at Gym Start"
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 5
-          },
-          children: data.stageAtStart.map(e => /*#__PURE__*/_jsxDEV(ETag, {
-            id: e
-          }, e, false))
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 11,
-            color: GRAY,
-            marginTop: 5
-          },
-          children: "These stay out all day — never put away between classes."
-        }, void 0, false)]
-      }, void 0, true), data.blocks.map((block, i) => /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          border: `1px solid ${LIGHT_BLUE}`,
-          borderRadius: 10,
-          padding: "10px 12px",
-          marginBottom: 8
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontWeight: 700,
-            color: ROYAL_BLUE,
-            fontSize: 12,
-            marginBottom: 6
-          },
-          children: block.classes.join(" → ")
-        }, void 0, false), block.alert && /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            background: "#FEF3C7",
-            borderRadius: 6,
-            padding: "5px 8px",
-            marginBottom: 6,
-            fontSize: 11,
-            color: "#92400E",
-            fontWeight: 600
-          },
-          children: block.alert
-        }, void 0, false), block.note && /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 11,
-            color: GRAY,
-            marginBottom: 6,
-            fontStyle: "italic"
-          },
-          children: ["📝 ", block.note]
-        }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            gap: 8,
-            flexWrap: "wrap"
-          },
-          children: [block.add.length > 0 && /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              flex: 1
-            },
-            children: [/*#__PURE__*/_jsxDEV("div", {
-              style: {
-                fontSize: 10,
-                fontWeight: 700,
-                color: "#059669",
-                textTransform: "uppercase",
-                marginBottom: 4
-              },
-              children: "✅ Add"
-            }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-              style: {
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 4
-              },
-              children: block.add.map(e => /*#__PURE__*/_jsxDEV(ETag, {
-                id: e
-              }, e, false))
-            }, void 0, false)]
-          }, void 0, true), block.remove.length > 0 && /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              flex: 1
-            },
-            children: [/*#__PURE__*/_jsxDEV("div", {
-              style: {
-                fontSize: 10,
-                fontWeight: 700,
-                color: "#DC2626",
-                textTransform: "uppercase",
-                marginBottom: 4
-              },
-              children: "🗑 Put Away"
-            }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-              style: {
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 4
-              },
-              children: block.remove.map(e => /*#__PURE__*/_jsxDEV(ETag, {
-                id: e
-              }, e, false))
-            }, void 0, false)]
-          }, void 0, true), block.add.length === 0 && block.remove.length === 0 && /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              fontSize: 12,
-              color: "#059669",
-              fontWeight: 600
-            },
-            children: "♻️ No reset needed — same setup continues"
-          }, void 0, false)]
-        }, void 0, true)]
-      }, i, true))]
-    }, void 0, true)]
-  }, void 0, true);
-}
-function CKHTab() {
-  const [expanded, setExpanded] = useState(null);
-  return /*#__PURE__*/_jsxDEV("div", {
-    children: [/*#__PURE__*/_jsxDEV("div", {
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        flexWrap: "wrap"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
       style: {
-        background: `linear-gradient(135deg, ${ROYAL_BLUE}, #2A5298)`,
-        borderRadius: 12,
+        fontWeight: 800,
+        color: ROYAL_BLUE,
+        fontSize: 15
+      }
+    }, row.month), hasTheme && /*#__PURE__*/React.createElement("span", {
+      style: {
+        background: LIGHT_GOLD,
+        color: "#92400E",
+        borderRadius: 6,
+        padding: "2px 8px",
+        fontSize: 11,
+        fontWeight: 700
+      }
+    }, row.chapelTheme)), hasTheme && /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 3,
+        fontSize: 12,
+        color: ROYAL_BLUE,
+        fontWeight: 700
+      }
+    }, row.virtue, " \u2014 ", /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontWeight: 400,
+        color: GRAY
+      }
+    }, row.virtueNote)), !hasTheme && row.note && /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 3,
+        fontSize: 12,
+        color: GRAY,
+        fontStyle: "italic"
+      }
+    }, row.note)), /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: GOLD,
+        fontSize: 18,
+        fontWeight: 700,
+        marginLeft: 8
+      }
+    }, isOpen ? "▲" : "▼")), isOpen && /*#__PURE__*/React.createElement("div", {
+      style: {
         padding: "14px 16px",
-        marginBottom: 16
-      },
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          color: GOLD,
-          fontWeight: 800,
-          fontSize: 14,
-          marginBottom: 4
-        },
-        children: "👑 The Royal Way — Kingdom Kids Chapel Integration"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          color: WHITE,
-          fontSize: 12,
-          lineHeight: 1.6
-        },
-        children: "Monthly chapel themes from Kingdom Kids, pre-mapped to PE games that reinforce the virtue and biblical connection for that month. As you add new games, they'll be tagged here automatically by theme."
-      }, void 0, false)]
-    }, void 0, true), ROYAL_WAY.map((row, i) => {
-      const hasTheme = row.chapelTheme !== "—";
-      const isOpen = expanded === i;
-      return /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          background: WHITE,
-          borderRadius: 12,
-          marginBottom: 10,
-          boxShadow: "0 1px 4px rgba(0,0,0,0.07)",
-          border: `1px solid ${hasTheme ? GOLD : "#E5E7EB"}`,
-          overflow: "hidden"
-        },
-        children: [/*#__PURE__*/_jsxDEV("button", {
-          onClick: () => setExpanded(isOpen ? null : i),
-          style: {
-            width: "100%",
-            textAlign: "left",
-            border: "none",
-            cursor: "pointer",
-            background: isOpen ? LIGHT_BLUE : WHITE,
-            padding: "12px 14px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center"
-          },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            children: [/*#__PURE__*/_jsxDEV("div", {
-              style: {
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                flexWrap: "wrap"
-              },
-              children: [/*#__PURE__*/_jsxDEV("span", {
-                style: {
-                  fontWeight: 800,
-                  color: ROYAL_BLUE,
-                  fontSize: 15
-                },
-                children: row.month
-              }, void 0, false), hasTheme && /*#__PURE__*/_jsxDEV("span", {
-                style: {
-                  background: LIGHT_GOLD,
-                  color: "#92400E",
-                  borderRadius: 6,
-                  padding: "2px 8px",
-                  fontSize: 11,
-                  fontWeight: 700
-                },
-                children: row.chapelTheme
-              }, void 0, false)]
-            }, void 0, true), hasTheme && /*#__PURE__*/_jsxDEV("div", {
-              style: {
-                marginTop: 3,
-                fontSize: 12,
-                color: ROYAL_BLUE,
-                fontWeight: 700
-              },
-              children: [row.virtue, " — ", /*#__PURE__*/_jsxDEV("span", {
-                style: {
-                  fontWeight: 400,
-                  color: GRAY
-                },
-                children: row.virtueNote
-              }, void 0, false)]
-            }, void 0, true), !hasTheme && row.note && /*#__PURE__*/_jsxDEV("div", {
-              style: {
-                marginTop: 3,
-                fontSize: 12,
-                color: GRAY,
-                fontStyle: "italic"
-              },
-              children: row.note
-            }, void 0, false)]
-          }, void 0, true), /*#__PURE__*/_jsxDEV("span", {
-            style: {
-              color: GOLD,
-              fontSize: 18,
-              fontWeight: 700,
-              marginLeft: 8
-            },
-            children: isOpen ? "▲" : "▼"
-          }, void 0, false)]
-        }, void 0, true), isOpen && /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            padding: "14px 16px",
-            borderTop: `1px solid ${LIGHT_BLUE}`
-          },
-          children: [hasTheme && /*#__PURE__*/_jsxDEV(_Fragment, {
-            children: [/*#__PURE__*/_jsxDEV("div", {
-              style: {
-                background: LIGHT_GOLD,
-                borderRadius: 10,
-                padding: "10px 14px",
-                marginBottom: 12,
-                borderLeft: `4px solid ${GOLD}`
-              },
-              children: [/*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  fontSize: 10,
-                  fontWeight: 700,
-                  color: "#92400E",
-                  textTransform: "uppercase",
-                  letterSpacing: 0.5,
-                  marginBottom: 4
-                },
-                children: "✝ This Month's Theme"
-              }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  fontWeight: 800,
-                  color: ROYAL_BLUE,
-                  fontSize: 14,
-                  marginBottom: 2
-                },
-                children: row.royalTheme
-              }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  fontSize: 12,
-                  color: "#374151",
-                  marginBottom: 6
-                },
-                children: [/*#__PURE__*/_jsxDEV("strong", {
-                  children: [row.virtue, ":"]
-                }, void 0, true), " ", row.virtueNote]
-              }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  fontSize: 11,
-                  color: ROYAL_BLUE,
-                  fontWeight: 600
-                },
-                children: ["📖 ", row.verse]
-              }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  fontSize: 11,
-                  color: GRAY,
-                  marginTop: 2
-                },
-                children: ["— ", row.verseRef]
-              }, void 0, true)]
-            }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-              children: [/*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  fontSize: 10,
-                  fontWeight: 700,
-                  color: GRAY,
-                  textTransform: "uppercase",
-                  letterSpacing: 0.5,
-                  marginBottom: 8
-                },
-                children: "🎯 PE Games for This Theme"
-              }, void 0, false), row.games.map(g => /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "7px 10px",
-                  borderRadius: 8,
-                  marginBottom: 6,
-                  background: LIGHT_BLUE,
-                  border: `1px solid #BFDBFE`
-                },
-                children: [/*#__PURE__*/_jsxDEV("span", {
-                  style: {
-                    color: GOLD,
-                    fontWeight: 700,
-                    fontSize: 14
-                  },
-                  children: "→"
-                }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-                  style: {
-                    fontSize: 13,
-                    color: ROYAL_BLUE,
-                    fontWeight: 600
-                  },
-                  children: g
-                }, void 0, false)]
-              }, g, true)), /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  marginTop: 8,
-                  fontSize: 11,
-                  color: GRAY,
-                  fontStyle: "italic"
-                },
-                children: "As you add new games with matching biblical connections, they'll be tagged to this month automatically."
-              }, void 0, false)]
-            }, void 0, true)]
-          }, void 0, true), !hasTheme && /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              fontSize: 12,
-              color: GRAY,
-              fontStyle: "italic",
-              lineHeight: 1.6
-            },
-            children: [row.note, /*#__PURE__*/_jsxDEV("br", {}, void 0, false), /*#__PURE__*/_jsxDEV("br", {}, void 0, false), /*#__PURE__*/_jsxDEV("strong", {
-              style: {
-                color: ROYAL_BLUE
-              },
-              children: "Suggested games:"
-            }, void 0, false), " ", row.games.join(", ")]
-          }, void 0, true)]
-        }, void 0, true)]
-      }, row.month, true);
-    }), /*#__PURE__*/_jsxDEV("div", {
+        borderTop: "1px solid ".concat(LIGHT_BLUE)
+      }
+    }, hasTheme && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
       style: {
         background: LIGHT_GOLD,
         borderRadius: 10,
-        padding: "12px 14px",
-        marginTop: 6,
-        borderLeft: `4px solid ${GOLD}`
-      },
-      children: [/*#__PURE__*/_jsxDEV("div", {
+        padding: "10px 14px",
+        marginBottom: 12,
+        borderLeft: "4px solid ".concat(GOLD)
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        fontWeight: 700,
+        color: "#92400E",
+        textTransform: "uppercase",
+        letterSpacing: 0.5,
+        marginBottom: 4
+      }
+    }, "\u271D This Month's Theme"), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontWeight: 800,
+        color: ROYAL_BLUE,
+        fontSize: 14,
+        marginBottom: 2
+      }
+    }, row.royalTheme), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: "#374151",
+        marginBottom: 6
+      }
+    }, /*#__PURE__*/React.createElement("strong", null, row.virtue, ":"), " ", row.virtueNote), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: ROYAL_BLUE,
+        fontWeight: 600
+      }
+    }, "\uD83D\uDCD6 ", row.verse), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: GRAY,
+        marginTop: 2
+      }
+    }, "\u2014 ", row.verseRef)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 10,
+        fontWeight: 700,
+        color: GRAY,
+        textTransform: "uppercase",
+        letterSpacing: 0.5,
+        marginBottom: 8
+      }
+    }, "\uD83C\uDFAF PE Games for This Theme"), row.games.map(function (g) {
+      return /*#__PURE__*/React.createElement("div", {
+        key: g,
         style: {
-          fontSize: 12,
-          color: "#92400E",
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "7px 10px",
+          borderRadius: 8,
+          marginBottom: 6,
+          background: LIGHT_BLUE,
+          border: "1px solid #BFDBFE"
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          color: GOLD,
           fontWeight: 700,
-          marginBottom: 3
-        },
-        children: "📌 How to use this tab"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
+          fontSize: 14
+        }
+      }, "\u2192"), /*#__PURE__*/React.createElement("span", {
         style: {
-          fontSize: 12,
-          color: "#374151",
-          lineHeight: 1.7
-        },
-        children: "Each month maps to the Kingdom Kids chapel theme for that month. Tap a month to see the virtue, scripture, and suggested PE games. When you add new games, share the biblical tie-in and we'll add them to the right month automatically."
-      }, void 0, false)]
-    }, void 0, true)]
-  }, void 0, true);
+          fontSize: 13,
+          color: ROYAL_BLUE,
+          fontWeight: 600
+        }
+      }, g));
+    }), /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginTop: 8,
+        fontSize: 11,
+        color: GRAY,
+        fontStyle: "italic"
+      }
+    }, "As you add new games with matching biblical connections, they'll be tagged to this month automatically."))), !hasTheme && /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 12,
+        color: GRAY,
+        fontStyle: "italic",
+        lineHeight: 1.6
+      }
+    }, row.note, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", {
+      style: {
+        color: ROYAL_BLUE
+      }
+    }, "Suggested games:"), " ", row.games.join(", "))));
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: LIGHT_GOLD,
+      borderRadius: 10,
+      padding: "12px 14px",
+      marginTop: 6,
+      borderLeft: "4px solid ".concat(GOLD)
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: "#92400E",
+      fontWeight: 700,
+      marginBottom: 3
+    }
+  }, "\uD83D\uDCCC How to use this tab"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: "#374151",
+      lineHeight: 1.7
+    }
+  }, "Each month maps to the Kingdom Kids chapel theme for that month. Tap a month to see the virtue, scripture, and suggested PE games. When you add new games, share the biblical tie-in and we'll add them to the right month automatically.")));
 }
 
 // ─── MAIN ─────────────────────────────────────────────────────────────────
@@ -1823,7 +1791,7 @@ function CKHTab() {
 // loc: "Thompson" | "MAC" | "TBD"
 // court: "Full" | "Half" | "TBD"
 // msShare: true = sharing with MS (keep kids inside basketball court lines)
-const schedule = {
+var schedule = {
   Monday: [{
     time: "7:30–7:45",
     label: "Morning Meeting",
@@ -2473,7 +2441,7 @@ const schedule = {
 // ─── SUB-COMPONENTS ──────────────────────────────────────────────────────
 
 // Extra slot-type colors used by SlotBlock
-const GC_SLOT = {
+var GC_SLOT = {
   Planning: {
     bg: "#EFF6FF",
     text: "#1D4ED8",
@@ -2507,7 +2475,7 @@ const GC_SLOT = {
 };
 
 // ─── SCHEDULE COMPONENTS ─────────────────────────────────────────────────────
-const LOC_STYLE = {
+var LOC_STYLE = {
   Thompson: {
     bg: "#1B3A6B",
     color: "#fff"
@@ -2521,7 +2489,7 @@ const LOC_STYLE = {
     color: "#6B7280"
   }
 };
-const COURT_STYLE = {
+var COURT_STYLE = {
   Combo: {
     bg: "#1B3A6B",
     color: "#C9A84C"
@@ -2542,23 +2510,20 @@ const COURT_STYLE = {
     color: "#6B7280"
   }
 };
-function SlotBlock({
-  slot,
-  isFiltered,
-  onClick
-}) {
-  const {
-    time,
-    label,
-    type,
-    grade,
-    sameNext,
-    note,
-    loc,
-    court,
-    msShare
-  } = slot;
-  if (type === "Transit") return /*#__PURE__*/_jsxDEV("div", {
+function SlotBlock(_ref6) {
+  var slot = _ref6.slot,
+    isFiltered = _ref6.isFiltered,
+    _onClick = _ref6.onClick;
+  var time = slot.time,
+    label = slot.label,
+    type = slot.type,
+    grade = slot.grade,
+    sameNext = slot.sameNext,
+    note = slot.note,
+    loc = slot.loc,
+    court = slot.court,
+    msShare = slot.msShare;
+  if (type === "Transit") return /*#__PURE__*/React.createElement("div", {
     style: {
       background: "#FAFAFA",
       borderLeft: "3px solid #F3F4F6",
@@ -2567,451 +2532,418 @@ function SlotBlock({
       display: "flex",
       gap: 6,
       alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 8,
+      color: "#D1D5DB"
+    }
+  }, time), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 8,
+      color: note !== null && note !== void 0 && note.includes("⚠") ? "#F59E0B" : "#D1D5DB"
+    }
+  }, note));
+  var faded = isFiltered && type === "Class";
+  var s = type === "Class" ? GC[grade] || {} : GC_SLOT[type] || GC_SLOT.Planning;
+  var ls = LOC_STYLE[loc] || LOC_STYLE.TBD;
+  var cs = COURT_STYLE[court] || COURT_STYLE.TBD;
+  return /*#__PURE__*/React.createElement("div", {
+    onClick: function onClick() {
+      return type === "Class" && _onClick(grade);
     },
-    children: [/*#__PURE__*/_jsxDEV("span", {
-      style: {
-        fontSize: 8,
-        color: "#D1D5DB"
-      },
-      children: time
-    }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-      style: {
-        fontSize: 8,
-        color: note?.includes("⚠") ? "#F59E0B" : "#D1D5DB"
-      },
-      children: note
-    }, void 0, false)]
-  }, void 0, true);
-  const faded = isFiltered && type === "Class";
-  const s = type === "Class" ? GC[grade] || {} : GC_SLOT[type] || GC_SLOT.Planning;
-  const ls = LOC_STYLE[loc] || LOC_STYLE.TBD;
-  const cs = COURT_STYLE[court] || COURT_STYLE.TBD;
-  return /*#__PURE__*/_jsxDEV("div", {
-    onClick: () => type === "Class" && onClick(grade),
     style: {
       background: faded ? "#F9FAFB" : s.bg,
-      borderLeft: `3px solid ${faded ? "#E5E7EB" : s.border}`,
+      borderLeft: "3px solid ".concat(faded ? "#E5E7EB" : s.border),
       borderBottom: "1px solid #E9EFF7",
       padding: "7px 8px",
       cursor: type === "Class" ? "pointer" : "default",
       opacity: faded ? 0.3 : 1,
       transition: "all 0.15s"
-    },
-    children: [/*#__PURE__*/_jsxDEV("div", {
-      style: {
-        fontSize: 9,
-        color: faded ? "#C4C4C4" : GRAY
-      },
-      children: time
-    }, void 0, false), type === "Class" && /*#__PURE__*/_jsxDEV(_Fragment, {
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontWeight: 700,
-          fontSize: 12,
-          color: faded ? "#C4C4C4" : s.text
-        },
-        children: label
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginTop: 3,
-          display: "flex",
-          alignItems: "center",
-          gap: 4,
-          flexWrap: "wrap"
-        },
-        children: [/*#__PURE__*/_jsxDEV(GradePill, {
-          grade: grade
-        }, void 0, false), sameNext && !faded && /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            fontSize: 9,
-            color: s.border,
-            fontWeight: 700
-          },
-          children: "↕"
-        }, void 0, false)]
-      }, void 0, true), !faded && /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginTop: 4,
-          display: "flex",
-          gap: 3,
-          flexWrap: "wrap"
-        },
-        children: [/*#__PURE__*/_jsxDEV("span", {
-          style: {
-            fontSize: 9,
-            fontWeight: 700,
-            borderRadius: 4,
-            padding: "1px 5px",
-            background: ls.bg,
-            color: ls.color
-          },
-          children: loc || "TBD"
-        }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            fontSize: 9,
-            fontWeight: 600,
-            borderRadius: 4,
-            padding: "1px 5px",
-            background: cs.bg,
-            color: cs.color
-          },
-          children: court === "TBD" ? "? court" : court
-        }, void 0, false), msShare && /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            fontSize: 9,
-            fontWeight: 700,
-            borderRadius: 4,
-            padding: "1px 5px",
-            background: "#FEE2E2",
-            color: "#991B1B"
-          },
-          children: "⚠ MS"
-        }, void 0, false)]
-      }, void 0, true)]
-    }, void 0, true), type === "Planning" && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        fontWeight: 600,
-        fontSize: 11,
-        color: s.text
-      },
-      children: ["📝 ", label, /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 9,
-          color: s.border
-        },
-        children: note
-      }, void 0, false)]
-    }, void 0, true), type === "EOD" && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        fontWeight: 600,
-        fontSize: 11,
-        color: s.text
-      },
-      children: ["📝 Planning", /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 9,
-          color: s.border
-        },
-        children: note
-      }, void 0, false)]
-    }, void 0, true), type === "Lunch" && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        fontWeight: 700,
-        fontSize: 12,
-        color: s.text
-      },
-      children: ["🍽 Lunch", /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 9,
-          color: s.border
-        },
-        children: note
-      }, void 0, false)]
-    }, void 0, true), type === "LunchDesk" && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        fontWeight: 700,
-        fontSize: 12,
-        color: s.text
-      },
-      children: ["🥪 Lunch", /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 9,
-          color: s.border
-        },
-        children: note
-      }, void 0, false)]
-    }, void 0, true), type === "Chapel" && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        fontWeight: 600,
-        fontSize: 11,
-        color: s.text
-      },
-      children: "✝ ES Chapel"
-    }, void 0, false), type === "Meeting" && /*#__PURE__*/_jsxDEV("div", {
-      style: {
-        fontWeight: 700,
-        fontSize: 11,
-        color: s.text
-      },
-      children: ["🗓 ", label, /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 9,
-          color: s.border,
-          marginTop: 2,
-          lineHeight: 1.4
-        },
-        children: note
-      }, void 0, false)]
-    }, void 0, true)]
-  }, void 0, true);
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      color: faded ? "#C4C4C4" : GRAY
+    }
+  }, time), type === "Class" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 700,
+      fontSize: 12,
+      color: faded ? "#C4C4C4" : s.text
+    }
+  }, label), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 3,
+      display: "flex",
+      alignItems: "center",
+      gap: 4,
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement(GradePill, {
+    grade: grade
+  }), sameNext && !faded && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 9,
+      color: s.border,
+      fontWeight: 700
+    }
+  }, "\u2195")), !faded && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 4,
+      display: "flex",
+      gap: 3,
+      flexWrap: "wrap"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 9,
+      fontWeight: 700,
+      borderRadius: 4,
+      padding: "1px 5px",
+      background: ls.bg,
+      color: ls.color
+    }
+  }, loc || "TBD"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 9,
+      fontWeight: 600,
+      borderRadius: 4,
+      padding: "1px 5px",
+      background: cs.bg,
+      color: cs.color
+    }
+  }, court === "TBD" ? "? court" : court), msShare && /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 9,
+      fontWeight: 700,
+      borderRadius: 4,
+      padding: "1px 5px",
+      background: "#FEE2E2",
+      color: "#991B1B"
+    }
+  }, "\u26A0 MS"))), type === "Planning" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 600,
+      fontSize: 11,
+      color: s.text
+    }
+  }, "\uD83D\uDCDD ", label, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      color: s.border
+    }
+  }, note)), type === "EOD" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 600,
+      fontSize: 11,
+      color: s.text
+    }
+  }, "\uD83D\uDCDD Planning", /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      color: s.border
+    }
+  }, note)), type === "Lunch" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 700,
+      fontSize: 12,
+      color: s.text
+    }
+  }, "\uD83C\uDF7D Lunch", /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      color: s.border
+    }
+  }, note)), type === "LunchDesk" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 700,
+      fontSize: 12,
+      color: s.text
+    }
+  }, "\uD83E\uDD6A Lunch", /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      color: s.border
+    }
+  }, note)), type === "Chapel" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 600,
+      fontSize: 11,
+      color: s.text
+    }
+  }, "\u271D ES Chapel"), type === "Meeting" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 700,
+      fontSize: 11,
+      color: s.text
+    }
+  }, "\uD83D\uDDD3 ", label, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 9,
+      color: s.border,
+      marginTop: 2,
+      lineHeight: 1.4
+    }
+  }, note)));
 }
-function ScheduleTab({
-  activeGrade,
-  setActiveGrade
-}) {
-  const toggleGrade = g => setActiveGrade(p => p === g ? null : g);
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  const grades = ["K5", "1st", "2nd", "5th"];
-  return /*#__PURE__*/_jsxDEV("div", {
-    children: [/*#__PURE__*/_jsxDEV("div", {
+function ScheduleTab(_ref7) {
+  var activeGrade = _ref7.activeGrade,
+    setActiveGrade = _ref7.setActiveGrade;
+  var toggleGrade = function toggleGrade(g) {
+    return setActiveGrade(function (p) {
+      return p === g ? null : g;
+    });
+  };
+  var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  var grades = ["K5", "1st", "2nd", "5th"];
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexWrap: "wrap",
+      marginBottom: 12
+    }
+  }, grades.map(function (g) {
+    var c = GC[g];
+    var on = activeGrade === g;
+    return /*#__PURE__*/React.createElement("button", {
+      key: g,
+      onClick: function onClick() {
+        return toggleGrade(g);
+      },
+      style: {
+        background: on ? c.border : c.bg,
+        color: on ? WHITE : c.text,
+        border: "2px solid ".concat(c.border),
+        borderRadius: 999,
+        fontSize: 12,
+        fontWeight: 700,
+        padding: "4px 14px",
+        cursor: "pointer"
+      }
+    }, g);
+  }), activeGrade && /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setActiveGrade(null);
+    },
+    style: {
+      background: LIGHT_GRAY,
+      color: GRAY,
+      border: "2px solid #E5E7EB",
+      borderRadius: 999,
+      fontSize: 12,
+      fontWeight: 700,
+      padding: "4px 12px",
+      cursor: "pointer"
+    }
+  }, "\u2715 All")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexWrap: "wrap",
+      marginBottom: 10,
+      fontSize: 10,
+      alignItems: "center"
+    }
+  }, [{
+    color: "#F59E0B",
+    label: "K5"
+  }, {
+    color: "#3B82F6",
+    label: "1st"
+  }, {
+    color: "#10B981",
+    label: "2nd"
+  }, {
+    color: "#EF4444",
+    label: "5th"
+  }, {
+    color: "#93C5FD",
+    label: "📝 Planning"
+  }, {
+    color: "#34D399",
+    label: "🍽 Real lunch"
+  }, {
+    color: "#FB923C",
+    label: "🥪 Desk lunch"
+  }, {
+    color: "#D8B4FE",
+    label: "🗓 Meeting"
+  }].map(function (l) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: l.label,
       style: {
         display: "flex",
-        gap: 6,
-        flexWrap: "wrap",
-        marginBottom: 12
-      },
-      children: [grades.map(g => {
-        const c = GC[g];
-        const on = activeGrade === g;
-        return /*#__PURE__*/_jsxDEV("button", {
-          onClick: () => toggleGrade(g),
-          style: {
-            background: on ? c.border : c.bg,
-            color: on ? WHITE : c.text,
-            border: `2px solid ${c.border}`,
-            borderRadius: 999,
-            fontSize: 12,
-            fontWeight: 700,
-            padding: "4px 14px",
-            cursor: "pointer"
-          },
-          children: g
-        }, g, false);
-      }), activeGrade && /*#__PURE__*/_jsxDEV("button", {
-        onClick: () => setActiveGrade(null),
-        style: {
-          background: LIGHT_GRAY,
-          color: GRAY,
-          border: "2px solid #E5E7EB",
-          borderRadius: 999,
-          fontSize: 12,
-          fontWeight: 700,
-          padding: "4px 12px",
-          cursor: "pointer"
-        },
-        children: "✕ All"
-      }, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
+        alignItems: "center",
+        gap: 3
+      }
+    }, /*#__PURE__*/React.createElement("div", {
       style: {
-        display: "flex",
-        gap: 6,
-        flexWrap: "wrap",
-        marginBottom: 10,
-        fontSize: 10,
-        alignItems: "center"
-      },
-      children: [{
-        color: "#F59E0B",
-        label: "K5"
-      }, {
-        color: "#3B82F6",
-        label: "1st"
-      }, {
-        color: "#10B981",
-        label: "2nd"
-      }, {
-        color: "#EF4444",
-        label: "5th"
-      }, {
-        color: "#93C5FD",
-        label: "📝 Planning"
-      }, {
-        color: "#34D399",
-        label: "🍽 Real lunch"
-      }, {
-        color: "#FB923C",
-        label: "🥪 Desk lunch"
-      }, {
-        color: "#D8B4FE",
-        label: "🗓 Meeting"
-      }].map(l => /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          display: "flex",
-          alignItems: "center",
-          gap: 3
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            width: 8,
-            height: 8,
-            borderRadius: 2,
-            background: l.color
-          }
-        }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            color: GRAY
-          },
-          children: l.label
-        }, void 0, false)]
-      }, l.label, true))
-    }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
+        width: 8,
+        height: 8,
+        borderRadius: 2,
+        background: l.color
+      }
+    }), /*#__PURE__*/React.createElement("span", {
       style: {
-        display: "flex",
-        gap: 6,
-        flexWrap: "wrap",
-        marginBottom: 12,
-        fontSize: 10,
-        alignItems: "center"
-      },
-      children: [/*#__PURE__*/_jsxDEV("span", {
-        style: {
-          fontSize: 10,
-          color: GRAY,
-          fontWeight: 600
-        },
-        children: "Location:"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          background: "#1B3A6B",
-          color: "#fff",
-          borderRadius: 4,
-          padding: "1px 7px",
-          fontSize: 10,
-          fontWeight: 700
-        },
-        children: "Thompson"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          background: "#C9A84C",
-          color: "#1B3A6B",
-          borderRadius: 4,
-          padding: "1px 7px",
-          fontSize: 10,
-          fontWeight: 700
-        },
-        children: "MAC"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          background: "#E5E7EB",
-          color: "#6B7280",
-          borderRadius: 4,
-          padding: "1px 7px",
-          fontSize: 10,
-          fontWeight: 700
-        },
-        children: "TBD"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          fontSize: 10,
-          color: GRAY,
-          fontWeight: 600,
-          marginLeft: 6
-        },
-        children: "Court:"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          background: "#1B3A6B",
-          color: "#C9A84C",
-          borderRadius: 4,
-          padding: "1px 7px",
-          fontSize: 10,
-          fontWeight: 700
-        },
-        children: "Combo"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          background: "#DCFCE7",
-          color: "#166534",
-          borderRadius: 4,
-          padding: "1px 7px",
-          fontSize: 10,
-          fontWeight: 600
-        },
-        children: "Full"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          background: "#FEF9C3",
-          color: "#854D0E",
-          borderRadius: 4,
-          padding: "1px 7px",
-          fontSize: 10,
-          fontWeight: 600
-        },
-        children: "Half"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-        style: {
-          background: "#FEE2E2",
-          color: "#991B1B",
-          borderRadius: 4,
-          padding: "1px 7px",
-          fontSize: 10,
-          fontWeight: 700,
-          marginLeft: 6
-        },
-        children: "⚠ MS shared — stay inside court lines"
-      }, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
+        color: GRAY
+      }
+    }, l.label));
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexWrap: "wrap",
+      marginBottom: 12,
+      fontSize: 10,
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: GRAY,
+      fontWeight: 600
+    }
+  }, "Location:"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      background: "#1B3A6B",
+      color: "#fff",
+      borderRadius: 4,
+      padding: "1px 7px",
+      fontSize: 10,
+      fontWeight: 700
+    }
+  }, "Thompson"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      background: "#C9A84C",
+      color: "#1B3A6B",
+      borderRadius: 4,
+      padding: "1px 7px",
+      fontSize: 10,
+      fontWeight: 700
+    }
+  }, "MAC"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      background: "#E5E7EB",
+      color: "#6B7280",
+      borderRadius: 4,
+      padding: "1px 7px",
+      fontSize: 10,
+      fontWeight: 700
+    }
+  }, "TBD"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: GRAY,
+      fontWeight: 600,
+      marginLeft: 6
+    }
+  }, "Court:"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      background: "#1B3A6B",
+      color: "#C9A84C",
+      borderRadius: 4,
+      padding: "1px 7px",
+      fontSize: 10,
+      fontWeight: 700
+    }
+  }, "Combo"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      background: "#DCFCE7",
+      color: "#166534",
+      borderRadius: 4,
+      padding: "1px 7px",
+      fontSize: 10,
+      fontWeight: 600
+    }
+  }, "Full"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      background: "#FEF9C3",
+      color: "#854D0E",
+      borderRadius: 4,
+      padding: "1px 7px",
+      fontSize: 10,
+      fontWeight: 600
+    }
+  }, "Half"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      background: "#FEE2E2",
+      color: "#991B1B",
+      borderRadius: 4,
+      padding: "1px 7px",
+      fontSize: 10,
+      fontWeight: 700,
+      marginLeft: 6
+    }
+  }, "\u26A0 MS shared \u2014 stay inside court lines")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 4,
+      overflowX: "auto",
+      paddingBottom: 8
+    }
+  }, days.map(function (day) {
+    return /*#__PURE__*/React.createElement("div", {
+      key: day,
       style: {
-        display: "flex",
-        gap: 4,
-        overflowX: "auto",
-        paddingBottom: 8
-      },
-      children: days.map(day => /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          flex: 1,
-          minWidth: 120
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            background: ROYAL_BLUE,
-            color: WHITE,
-            fontWeight: 800,
-            fontSize: 12,
-            padding: "7px 6px",
-            borderRadius: "8px 8px 0 0",
-            textAlign: "center"
-          },
-          children: day
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            border: `1px solid ${LIGHT_BLUE}`,
-            borderTop: "none",
-            borderRadius: "0 0 8px 8px",
-            overflow: "hidden"
-          },
-          children: schedule[day].map((slot, i) => /*#__PURE__*/_jsxDEV(SlotBlock, {
-            slot: slot,
-            isFiltered: activeGrade !== null && slot.type === "Class" && slot.grade !== activeGrade,
-            onClick: toggleGrade
-          }, i, false))
-        }, void 0, false)]
-      }, day, true))
-    }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
+        flex: 1,
+        minWidth: 120
+      }
+    }, /*#__PURE__*/React.createElement("div", {
       style: {
-        background: "#FFF7ED",
-        border: "1px solid #FB923C",
-        borderRadius: 10,
-        padding: "12px 14px",
-        marginTop: 14
-      },
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontWeight: 700,
-          color: "#9A3412",
-          fontSize: 13,
-          marginBottom: 4
-        },
-        children: "🥪 Lunch Note"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 12,
-          color: "#9A3412",
-          lineHeight: 1.8
-        },
-        children: [/*#__PURE__*/_jsxDEV("strong", {
-          children: "Thursday"
-        }, void 0, false), " is your only full lunch break (11:25–12:25, 60 min). Mon, Tue, Wed, and Fri show \"Lunch\" at 10:40–11:20 — that's your eating window but it's at your desk between classes, not a real break. Worth flagging with admin."]
-      }, void 0, true)]
-    }, void 0, true)]
-  }, void 0, true);
+        background: ROYAL_BLUE,
+        color: WHITE,
+        fontWeight: 800,
+        fontSize: 12,
+        padding: "7px 6px",
+        borderRadius: "8px 8px 0 0",
+        textAlign: "center"
+      }
+    }, day), /*#__PURE__*/React.createElement("div", {
+      style: {
+        border: "1px solid ".concat(LIGHT_BLUE),
+        borderTop: "none",
+        borderRadius: "0 0 8px 8px",
+        overflow: "hidden"
+      }
+    }, schedule[day].map(function (slot, i) {
+      return /*#__PURE__*/React.createElement(SlotBlock, {
+        key: i,
+        slot: slot,
+        isFiltered: activeGrade !== null && slot.type === "Class" && slot.grade !== activeGrade,
+        onClick: toggleGrade
+      });
+    })));
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "#FFF7ED",
+      border: "1px solid #FB923C",
+      borderRadius: 10,
+      padding: "12px 14px",
+      marginTop: 14
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 700,
+      color: "#9A3412",
+      fontSize: 13,
+      marginBottom: 4
+    }
+  }, "\uD83E\uDD6A Lunch Note"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: "#9A3412",
+      lineHeight: 1.8
+    }
+  }, /*#__PURE__*/React.createElement("strong", null, "Thursday"), " is your only full lunch break (11:25\u201312:25, 60 min). Mon, Tue, Wed, and Fri show \"Lunch\" at 10:40\u201311:20 \u2014 that's your eating window but it's at your desk between classes, not a real break. Worth flagging with admin.")));
 }
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
 // ─── CURRICULUM MAP ──────────────────────────────────────────────────────────
 // Unit, skills, and Royal Way devotion hook by grade and month
-const CURRICULUM = {
+var CURRICULUM = {
   K5: {
     August: {
       unit: "Rules & Safety",
@@ -3224,14 +3156,14 @@ const CURRICULUM = {
 
 // ─── PLANNER CONSTANTS ────────────────────────────────────────────────────────
 // Which grades appear on each day (in order they teach them)
-const DAY_GRADES = {
+var DAY_GRADES = {
   Monday: ["2nd", "1st", "K5", "5th", "K5"],
   Tuesday: ["2nd", "1st", "5th", "K5", "K5", "1st"],
   Wednesday: ["2nd", "2nd", "1st", "K5", "1st", "1st"],
   Thursday: ["5th", "5th", "2nd", "2nd", "K5", "K5", "K5", "1st"],
   Friday: ["2nd", "2nd", "1st", "K5", "K5", "1st", "1st"]
 };
-const SCHOOL_MONTHS = [{
+var SCHOOL_MONTHS = [{
   label: "August",
   weeks: 2,
   start: "Aug 11"
@@ -3275,35 +3207,52 @@ const SCHOOL_MONTHS = [{
 
 // ─── PLANNER TAB ─────────────────────────────────────────────────────────────
 function PlannerTab() {
-  const [monthIdx, setMonthIdx] = useState(0);
-  const [plan, setPlan] = useState({}); // plan[month][week][day][grade] = { gameId, variation, notes }
-  const [picking, setPicking] = useState(null); // { month, week, day, grade }
-  const [gameFilter, setGameFilter] = useState("All");
-  const [expandedWeek, setExpandedWeek] = useState(0);
-  const month = SCHOOL_MONTHS[monthIdx];
-  const royalRow = ROYAL_WAY.find(r => r.month === month.label);
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  var _picking$editing, _royalRow$games;
+  var _useState7 = useState(0),
+    _useState8 = _slicedToArray(_useState7, 2),
+    monthIdx = _useState8[0],
+    setMonthIdx = _useState8[1];
+  var _useState9 = useState({}),
+    _useState0 = _slicedToArray(_useState9, 2),
+    plan = _useState0[0],
+    setPlan = _useState0[1]; // plan[month][week][day][grade] = { gameId, variation, notes }
+  var _useState1 = useState(null),
+    _useState10 = _slicedToArray(_useState1, 2),
+    picking = _useState10[0],
+    setPicking = _useState10[1]; // { month, week, day, grade }
+  var _useState11 = useState("All"),
+    _useState12 = _slicedToArray(_useState11, 2),
+    gameFilter = _useState12[0],
+    setGameFilter = _useState12[1];
+  var _useState13 = useState(0),
+    _useState14 = _slicedToArray(_useState13, 2),
+    expandedWeek = _useState14[0],
+    setExpandedWeek = _useState14[1];
+  var month = SCHOOL_MONTHS[monthIdx];
+  var royalRow = ROYAL_WAY.find(function (r) {
+    return r.month === month.label;
+  });
+  var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
   // Get or init plan for a slot
-  const getSlot = (w, day, grade) => {
-    return plan?.[month.label]?.[w]?.[day]?.[grade] || null;
+  var getSlot = function getSlot(w, day, grade) {
+    var _plan$month$label;
+    return (plan === null || plan === void 0 || (_plan$month$label = plan[month.label]) === null || _plan$month$label === void 0 || (_plan$month$label = _plan$month$label[w]) === null || _plan$month$label === void 0 || (_plan$month$label = _plan$month$label[day]) === null || _plan$month$label === void 0 ? void 0 : _plan$month$label[grade]) || null;
   };
 
   // Copy one grade's plan to all other classes of same grade across the whole week
-  const copyGradeAcrossDay = (w, sourceDay, grade) => {
-    const sourceSlot = getSlot(w, sourceDay, grade);
+  var copyGradeAcrossDay = function copyGradeAcrossDay(w, sourceDay, grade) {
+    var sourceSlot = getSlot(w, sourceDay, grade);
     if (!sourceSlot) return;
-    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-    setPlan(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
+    var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+    setPlan(function (prev) {
+      var next = JSON.parse(JSON.stringify(prev));
       if (!next[month.label]) next[month.label] = {};
       if (!next[month.label][w]) next[month.label][w] = {};
-      days.forEach(day => {
+      days.forEach(function (day) {
         if ((DAY_GRADES[day] || []).includes(grade)) {
           if (!next[month.label][w][day]) next[month.label][w][day] = {};
-          next[month.label][w][day][grade] = {
-            ...sourceSlot
-          };
+          next[month.label][w][day][grade] = _objectSpread({}, sourceSlot);
         }
       });
       return next;
@@ -3311,10 +3260,13 @@ function PlannerTab() {
   };
 
   // Get/set warmup for a grade+week
-  const getWarmup = (w, grade) => plan?.[month.label]?.[w]?.["_warmup"]?.[grade] || null;
-  const setWarmup = (w, grade, value) => {
-    setPlan(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
+  var getWarmup = function getWarmup(w, grade) {
+    var _plan$month$label2;
+    return (plan === null || plan === void 0 || (_plan$month$label2 = plan[month.label]) === null || _plan$month$label2 === void 0 || (_plan$month$label2 = _plan$month$label2[w]) === null || _plan$month$label2 === void 0 || (_plan$month$label2 = _plan$month$label2["_warmup"]) === null || _plan$month$label2 === void 0 ? void 0 : _plan$month$label2[grade]) || null;
+  };
+  var setWarmup = function setWarmup(w, grade, value) {
+    setPlan(function (prev) {
+      var next = JSON.parse(JSON.stringify(prev));
       if (!next[month.label]) next[month.label] = {};
       if (!next[month.label][w]) next[month.label][w] = {};
       if (!next[month.label][w]["_warmup"]) next[month.label][w]["_warmup"] = {};
@@ -3324,9 +3276,9 @@ function PlannerTab() {
   };
 
   // Save a slot
-  const setSlot = (w, day, grade, value) => {
-    setPlan(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
+  var setSlot = function setSlot(w, day, grade, value) {
+    setPlan(function (prev) {
+      var next = JSON.parse(JSON.stringify(prev));
       if (!next[month.label]) next[month.label] = {};
       if (!next[month.label][w]) next[month.label][w] = {};
       if (!next[month.label][w][day]) next[month.label][w][day] = {};
@@ -3336,10 +3288,11 @@ function PlannerTab() {
   };
 
   // Clear a slot
-  const clearSlot = (w, day, grade) => {
-    setPlan(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
-      if (next?.[month.label]?.[w]?.[day]?.[grade]) {
+  var clearSlot = function clearSlot(w, day, grade) {
+    setPlan(function (prev) {
+      var _next$month$label;
+      var next = JSON.parse(JSON.stringify(prev));
+      if (next !== null && next !== void 0 && (_next$month$label = next[month.label]) !== null && _next$month$label !== void 0 && (_next$month$label = _next$month$label[w]) !== null && _next$month$label !== void 0 && (_next$month$label = _next$month$label[day]) !== null && _next$month$label !== void 0 && _next$month$label[grade]) {
         delete next[month.label][w][day][grade];
       }
       return next;
@@ -3347,1345 +3300,1335 @@ function PlannerTab() {
   };
 
   // Copy entire week to next week
-  const copyWeekDown = w => {
+  var copyWeekDown = function copyWeekDown(w) {
     if (w >= month.weeks - 1) return;
-    setPlan(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
+    setPlan(function (prev) {
+      var _next$month$label2;
+      var next = JSON.parse(JSON.stringify(prev));
       if (!next[month.label]) next[month.label] = {};
-      const src = next?.[month.label]?.[w] || {};
+      var src = (next === null || next === void 0 || (_next$month$label2 = next[month.label]) === null || _next$month$label2 === void 0 ? void 0 : _next$month$label2[w]) || {};
       next[month.label][w + 1] = JSON.parse(JSON.stringify(src));
       return next;
     });
   };
 
   // Collect all equip needed for a week
-  const weekEquip = w => {
-    const equip = new Set();
-    days.forEach(day => {
-      (DAY_GRADES[day] || []).forEach(grade => {
-        const slot = getSlot(w, day, grade);
-        if (slot?.gameId) {
-          const g = games.find(g => g.id === slot.gameId);
-          if (g) g.equip.forEach(e => equip.add(e));
+  var weekEquip = function weekEquip(w) {
+    var equip = new Set();
+    days.forEach(function (day) {
+      (DAY_GRADES[day] || []).forEach(function (grade) {
+        var slot = getSlot(w, day, grade);
+        if (slot !== null && slot !== void 0 && slot.gameId) {
+          var g = games.find(function (g) {
+            return g.id === slot.gameId;
+          });
+          if (g) g.equip.forEach(function (e) {
+            return equip.add(e);
+          });
         }
       });
     });
-    return [...equip];
+    return _toConsumableArray(equip);
   };
 
   // Filtered games for picker
-  const pickerGames = picking ? games.filter(g => gameFilter === "All" || g.grades.includes(gameFilter) || g.category === gameFilter).filter(g => !picking.grade || g.grades.includes(picking.grade)) : [];
-  const gradeColor = grade => GC[grade] || {
-    bg: "#F3F4F6",
-    text: "#374151",
-    border: "#D1D5DB"
+  var pickerGames = picking ? games.filter(function (g) {
+    return gameFilter === "All" || g.grades.includes(gameFilter) || g.category === gameFilter;
+  }).filter(function (g) {
+    return !picking.grade || g.grades.includes(picking.grade);
+  }) : [];
+  var gradeColor = function gradeColor(grade) {
+    return GC[grade] || {
+      bg: "#F3F4F6",
+      text: "#374151",
+      border: "#D1D5DB"
+    };
   };
-  return /*#__PURE__*/_jsxDEV("div", {
-    children: [/*#__PURE__*/_jsxDEV("div", {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      marginBottom: 14
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      setMonthIdx(function (i) {
+        return Math.max(0, i - 1);
+      });
+      setExpandedWeek(0);
+    },
+    style: {
+      background: monthIdx === 0 ? "#F3F4F6" : ROYAL_BLUE,
+      color: monthIdx === 0 ? GRAY : WHITE,
+      border: "none",
+      borderRadius: 8,
+      padding: "7px 14px",
+      fontWeight: 700,
+      fontSize: 14,
+      cursor: monthIdx === 0 ? "default" : "pointer"
+    }
+  }, "\u2039"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1,
+      textAlign: "center"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 900,
+      fontSize: 18,
+      color: ROYAL_BLUE
+    }
+  }, month.label), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: GRAY
+    }
+  }, month.weeks, " school weeks \xB7 starts ", month.start)), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      setMonthIdx(function (i) {
+        return Math.min(SCHOOL_MONTHS.length - 1, i + 1);
+      });
+      setExpandedWeek(0);
+    },
+    style: {
+      background: monthIdx === SCHOOL_MONTHS.length - 1 ? "#F3F4F6" : ROYAL_BLUE,
+      color: monthIdx === SCHOOL_MONTHS.length - 1 ? GRAY : WHITE,
+      border: "none",
+      borderRadius: 8,
+      padding: "7px 14px",
+      fontWeight: 700,
+      fontSize: 14,
+      cursor: monthIdx === SCHOOL_MONTHS.length - 1 ? "default" : "pointer"
+    }
+  }, "\u203A")), royalRow && royalRow.chapelTheme !== "—" && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "linear-gradient(135deg, ".concat(ROYAL_BLUE, ", #2A5298)"),
+      borderRadius: 10,
+      padding: "10px 14px",
+      marginBottom: 14,
+      display: "flex",
+      gap: 12,
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: GOLD,
+      fontWeight: 800,
+      fontSize: 12
+    }
+  }, "\uD83D\uDC51 ", royalRow.chapelTheme, " \u2014 ", royalRow.virtue), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: WHITE,
+      fontSize: 11,
+      marginTop: 2,
+      opacity: 0.85
+    }
+  }, royalRow.virtueNote)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "rgba(201,168,76,0.2)",
+      borderRadius: 8,
+      padding: "6px 10px",
+      textAlign: "center",
+      flexShrink: 0
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: GOLD,
+      fontSize: 10,
+      fontWeight: 700
+    }
+  }, "\uD83D\uDCD6 ", royalRow.verseRef))), Array.from({
+    length: month.weeks
+  }, function (_, w) {
+    var isOpen = expandedWeek === w;
+    var allEquip = weekEquip(w);
+    var filledSlots = days.reduce(function (acc, day) {
+      return acc + (DAY_GRADES[day] || []).filter(function (g) {
+        return getSlot(w, day, g);
+      }).length;
+    }, 0);
+    var totalSlots = days.reduce(function (acc, day) {
+      return acc + (DAY_GRADES[day] || []).length;
+    }, 0);
+    return /*#__PURE__*/React.createElement("div", {
+      key: w,
       style: {
-        display: "flex",
-        alignItems: "center",
-        gap: 8,
-        marginBottom: 14
+        border: "1px solid ".concat(isOpen ? ROYAL_BLUE : "#E5E7EB"),
+        borderRadius: 12,
+        marginBottom: 10,
+        overflow: "hidden"
+      }
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: function onClick() {
+        return setExpandedWeek(isOpen ? -1 : w);
       },
-      children: [/*#__PURE__*/_jsxDEV("button", {
-        onClick: () => {
-          setMonthIdx(i => Math.max(0, i - 1));
-          setExpandedWeek(0);
-        },
-        style: {
-          background: monthIdx === 0 ? "#F3F4F6" : ROYAL_BLUE,
-          color: monthIdx === 0 ? GRAY : WHITE,
-          border: "none",
-          borderRadius: 8,
-          padding: "7px 14px",
-          fontWeight: 700,
-          fontSize: 14,
-          cursor: monthIdx === 0 ? "default" : "pointer"
-        },
-        children: "‹"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          flex: 1,
-          textAlign: "center"
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontWeight: 900,
-            fontSize: 18,
-            color: ROYAL_BLUE
-          },
-          children: month.label
-        }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 11,
-            color: GRAY
-          },
-          children: [month.weeks, " school weeks · starts ", month.start]
-        }, void 0, true)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("button", {
-        onClick: () => {
-          setMonthIdx(i => Math.min(SCHOOL_MONTHS.length - 1, i + 1));
-          setExpandedWeek(0);
-        },
-        style: {
-          background: monthIdx === SCHOOL_MONTHS.length - 1 ? "#F3F4F6" : ROYAL_BLUE,
-          color: monthIdx === SCHOOL_MONTHS.length - 1 ? GRAY : WHITE,
-          border: "none",
-          borderRadius: 8,
-          padding: "7px 14px",
-          fontWeight: 700,
-          fontSize: 14,
-          cursor: monthIdx === SCHOOL_MONTHS.length - 1 ? "default" : "pointer"
-        },
-        children: "›"
-      }, void 0, false)]
-    }, void 0, true), royalRow && royalRow.chapelTheme !== "—" && /*#__PURE__*/_jsxDEV("div", {
       style: {
-        background: `linear-gradient(135deg, ${ROYAL_BLUE}, #2A5298)`,
-        borderRadius: 10,
-        padding: "10px 14px",
-        marginBottom: 14,
+        width: "100%",
+        textAlign: "left",
+        border: "none",
+        cursor: "pointer",
+        background: isOpen ? LIGHT_BLUE : WHITE,
+        padding: "12px 14px",
         display: "flex",
-        gap: 12,
+        justifyContent: "space-between",
         alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontWeight: 800,
+        color: ROYAL_BLUE,
+        fontSize: 14
+      }
+    }, "Week ", w + 1), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: GRAY,
+        marginTop: 2
+      }
+    }, filledSlots, "/", totalSlots, " slots planned", allEquip.length > 0 && /*#__PURE__*/React.createElement("span", {
+      style: {
+        marginLeft: 8
+      }
+    }, "\xB7 Equip: ", allEquip.map(function (e) {
+      return EQUIP_ICONS[e] || "•";
+    }).join(" ")))), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 8,
+        alignItems: "center"
+      }
+    }, w < month.weeks - 1 && /*#__PURE__*/React.createElement("button", {
+      onClick: function onClick(e) {
+        e.stopPropagation();
+        copyWeekDown(w);
       },
-      children: [/*#__PURE__*/_jsxDEV("div", {
+      title: "Copy this week's plan to Week ".concat(w + 2),
+      style: {
+        background: LIGHT_GOLD,
+        color: "#92400E",
+        border: "none",
+        borderRadius: 6,
+        padding: "4px 10px",
+        fontSize: 11,
+        fontWeight: 700,
+        cursor: "pointer"
+      }
+    }, "Copy \u2192 Wk ", w + 2), /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: GOLD,
+        fontSize: 18,
+        fontWeight: 700
+      }
+    }, isOpen ? "▲" : "▼"))), isOpen && /*#__PURE__*/React.createElement("div", {
+      style: {
+        padding: "12px 14px",
+        background: WHITE
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginBottom: 12
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        fontWeight: 700,
+        color: ROYAL_BLUE,
+        textTransform: "uppercase",
+        letterSpacing: 0.5,
+        marginBottom: 8
+      }
+    }, "\uD83D\uDE4F Warmup / Devotion (60\u201390 sec) \u2014 per grade this week"), ["K5", "1st", "2nd", "5th"].map(function (grade) {
+      var _CURRICULUM$grade;
+      var warmup = getWarmup(w, grade);
+      var gc = GC[grade];
+      var cur = (_CURRICULUM$grade = CURRICULUM[grade]) === null || _CURRICULUM$grade === void 0 ? void 0 : _CURRICULUM$grade[month.label];
+      var royalHook = (cur === null || cur === void 0 ? void 0 : cur.devotion) || "";
+      return /*#__PURE__*/React.createElement("div", {
+        key: grade,
+        style: {
+          background: gc.bg,
+          border: "1px solid ".concat(gc.border),
+          borderRadius: 8,
+          padding: "8px 10px",
+          marginBottom: 6
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          gap: 8
+        }
+      }, /*#__PURE__*/React.createElement("div", {
         style: {
           flex: 1
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            color: GOLD,
-            fontWeight: 800,
-            fontSize: 12
-          },
-          children: ["👑 ", royalRow.chapelTheme, " — ", royalRow.virtue]
-        }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            color: WHITE,
-            fontSize: 11,
-            marginTop: 2,
-            opacity: 0.85
-          },
-          children: royalRow.virtueNote
-        }, void 0, false)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
+        }
+      }, /*#__PURE__*/React.createElement("div", {
         style: {
-          background: "rgba(201,168,76,0.2)",
+          fontSize: 10,
+          fontWeight: 800,
+          color: gc.text,
+          marginBottom: 4
+        }
+      }, grade, " warmup/devotion"), /*#__PURE__*/React.createElement("textarea", {
+        value: (warmup === null || warmup === void 0 ? void 0 : warmup.text) || "",
+        onChange: function onChange(e) {
+          return setWarmup(w, grade, {
+            text: e.target.value
+          });
+        },
+        placeholder: royalHook || "Write a 60–90 sec opening talk connecting today's game to the Kingdom Kids theme…",
+        style: {
+          width: "100%",
+          fontSize: 11,
+          padding: "6px 8px",
+          borderRadius: 6,
+          border: "1px solid ".concat(gc.border),
+          fontFamily: "inherit",
+          resize: "vertical",
+          minHeight: 52,
+          background: "#fff",
+          boxSizing: "border-box",
+          outline: "none"
+        }
+      }))), royalHook && !(warmup !== null && warmup !== void 0 && warmup.text) && /*#__PURE__*/React.createElement("button", {
+        onClick: function onClick() {
+          return setWarmup(w, grade, {
+            text: royalHook
+          });
+        },
+        style: {
+          marginTop: 4,
+          fontSize: 10,
+          background: "none",
+          border: "1px solid ".concat(gc.border),
+          borderRadius: 5,
+          padding: "2px 8px",
+          cursor: "pointer",
+          color: gc.text,
+          fontWeight: 600
+        }
+      }, "\u2193 Use suggested devotion"));
+    })), ["K5", "1st", "2nd", "5th"].map(function (grade) {
+      var _CURRICULUM$grade2;
+      var cur = (_CURRICULUM$grade2 = CURRICULUM[grade]) === null || _CURRICULUM$grade2 === void 0 ? void 0 : _CURRICULUM$grade2[month.label];
+      if (!cur) return null;
+      var gc = GC[grade];
+      return /*#__PURE__*/React.createElement("div", {
+        key: grade,
+        style: {
+          background: gc.bg,
+          border: "1px solid ".concat(gc.border),
           borderRadius: 8,
-          padding: "6px 10px",
-          textAlign: "center",
-          flexShrink: 0
-        },
-        children: /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            color: GOLD,
-            fontSize: 10,
-            fontWeight: 700
-          },
-          children: ["📖 ", royalRow.verseRef]
-        }, void 0, true)
-      }, void 0, false)]
-    }, void 0, true), Array.from({
-      length: month.weeks
-    }, (_, w) => {
-      const isOpen = expandedWeek === w;
-      const allEquip = weekEquip(w);
-      const filledSlots = days.reduce((acc, day) => acc + (DAY_GRADES[day] || []).filter(g => getSlot(w, day, g)).length, 0);
-      const totalSlots = days.reduce((acc, day) => acc + (DAY_GRADES[day] || []).length, 0);
-      return /*#__PURE__*/_jsxDEV("div", {
+          padding: "8px 12px",
+          marginBottom: 8
+        }
+      }, /*#__PURE__*/React.createElement("div", {
         style: {
-          border: `1px solid ${isOpen ? ROYAL_BLUE : "#E5E7EB"}`,
-          borderRadius: 12,
-          marginBottom: 10,
-          overflow: "hidden"
-        },
-        children: [/*#__PURE__*/_jsxDEV("button", {
-          onClick: () => setExpandedWeek(isOpen ? -1 : w),
-          style: {
-            width: "100%",
-            textAlign: "left",
-            border: "none",
-            cursor: "pointer",
-            background: isOpen ? LIGHT_BLUE : WHITE,
-            padding: "12px 14px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center"
-          },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            children: [/*#__PURE__*/_jsxDEV("div", {
-              style: {
-                fontWeight: 800,
-                color: ROYAL_BLUE,
-                fontSize: 14
-              },
-              children: ["Week ", w + 1]
-            }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-              style: {
-                fontSize: 11,
-                color: GRAY,
-                marginTop: 2
-              },
-              children: [filledSlots, "/", totalSlots, " slots planned", allEquip.length > 0 && /*#__PURE__*/_jsxDEV("span", {
-                style: {
-                  marginLeft: 8
-                },
-                children: ["· Equip: ", allEquip.map(e => EQUIP_ICONS[e] || "•").join(" ")]
-              }, void 0, true)]
-            }, void 0, true)]
-          }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              display: "flex",
-              gap: 8,
-              alignItems: "center"
-            },
-            children: [w < month.weeks - 1 && /*#__PURE__*/_jsxDEV("button", {
-              onClick: e => {
-                e.stopPropagation();
-                copyWeekDown(w);
-              },
-              title: `Copy this week's plan to Week ${w + 2}`,
-              style: {
-                background: LIGHT_GOLD,
-                color: "#92400E",
-                border: "none",
-                borderRadius: 6,
-                padding: "4px 10px",
-                fontSize: 11,
-                fontWeight: 700,
-                cursor: "pointer"
-              },
-              children: ["Copy → Wk ", w + 2]
-            }, void 0, true), /*#__PURE__*/_jsxDEV("span", {
-              style: {
-                color: GOLD,
-                fontSize: 18,
-                fontWeight: 700
-              },
-              children: isOpen ? "▲" : "▼"
-            }, void 0, false)]
-          }, void 0, true)]
-        }, void 0, true), isOpen && /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            padding: "12px 14px",
-            background: WHITE
-          },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            style: {
-              marginBottom: 12
-            },
-            children: [/*#__PURE__*/_jsxDEV("div", {
-              style: {
-                fontSize: 11,
-                fontWeight: 700,
-                color: ROYAL_BLUE,
-                textTransform: "uppercase",
-                letterSpacing: 0.5,
-                marginBottom: 8
-              },
-              children: "🙏 Warmup / Devotion (60–90 sec) — per grade this week"
-            }, void 0, false), ["K5", "1st", "2nd", "5th"].map(grade => {
-              const warmup = getWarmup(w, grade);
-              const gc = GC[grade];
-              const cur = CURRICULUM[grade]?.[month.label];
-              const royalHook = cur?.devotion || "";
-              return /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  background: gc.bg,
-                  border: `1px solid ${gc.border}`,
-                  borderRadius: 8,
-                  padding: "8px 10px",
-                  marginBottom: 6
-                },
-                children: [/*#__PURE__*/_jsxDEV("div", {
-                  style: {
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    gap: 8
-                  },
-                  children: /*#__PURE__*/_jsxDEV("div", {
-                    style: {
-                      flex: 1
-                    },
-                    children: [/*#__PURE__*/_jsxDEV("div", {
-                      style: {
-                        fontSize: 10,
-                        fontWeight: 800,
-                        color: gc.text,
-                        marginBottom: 4
-                      },
-                      children: [grade, " warmup/devotion"]
-                    }, void 0, true), /*#__PURE__*/_jsxDEV("textarea", {
-                      value: warmup?.text || "",
-                      onChange: e => setWarmup(w, grade, {
-                        text: e.target.value
-                      }),
-                      placeholder: royalHook || "Write a 60–90 sec opening talk connecting today's game to the Kingdom Kids theme…",
-                      style: {
-                        width: "100%",
-                        fontSize: 11,
-                        padding: "6px 8px",
-                        borderRadius: 6,
-                        border: `1px solid ${gc.border}`,
-                        fontFamily: "inherit",
-                        resize: "vertical",
-                        minHeight: 52,
-                        background: "#fff",
-                        boxSizing: "border-box",
-                        outline: "none"
-                      }
-                    }, void 0, false)]
-                  }, void 0, true)
-                }, void 0, false), royalHook && !warmup?.text && /*#__PURE__*/_jsxDEV("button", {
-                  onClick: () => setWarmup(w, grade, {
-                    text: royalHook
-                  }),
-                  style: {
-                    marginTop: 4,
-                    fontSize: 10,
-                    background: "none",
-                    border: `1px solid ${gc.border}`,
-                    borderRadius: 5,
-                    padding: "2px 8px",
-                    cursor: "pointer",
-                    color: gc.text,
-                    fontWeight: 600
-                  },
-                  children: "↓ Use suggested devotion"
-                }, void 0, false)]
-              }, grade, true);
-            })]
-          }, void 0, true), ["K5", "1st", "2nd", "5th"].map(grade => {
-            const cur = CURRICULUM[grade]?.[month.label];
-            if (!cur) return null;
-            const gc = GC[grade];
-            return /*#__PURE__*/_jsxDEV("div", {
-              style: {
-                background: gc.bg,
-                border: `1px solid ${gc.border}`,
-                borderRadius: 8,
-                padding: "8px 12px",
-                marginBottom: 8
-              },
-              children: [/*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  display: "flex",
-                  gap: 8,
-                  alignItems: "baseline",
-                  flexWrap: "wrap"
-                },
-                children: [/*#__PURE__*/_jsxDEV("span", {
-                  style: {
-                    fontSize: 10,
-                    fontWeight: 800,
-                    color: gc.text,
-                    background: WHITE,
-                    border: `1px solid ${gc.border}`,
-                    borderRadius: 4,
-                    padding: "1px 6px"
-                  },
-                  children: grade
-                }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-                  style: {
-                    fontSize: 12,
-                    fontWeight: 700,
-                    color: gc.text
-                  },
-                  children: cur.unit
-                }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-                  style: {
-                    fontSize: 11,
-                    color: GRAY
-                  },
-                  children: ["— ", cur.skills]
-                }, void 0, true)]
-              }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  marginTop: 5,
-                  fontSize: 11,
-                  color: ROYAL_BLUE,
-                  fontStyle: "italic",
-                  display: "flex",
-                  gap: 5
-                },
-                children: [/*#__PURE__*/_jsxDEV("span", {
-                  style: {
-                    color: GOLD,
-                    fontWeight: 700,
-                    flexShrink: 0
-                  },
-                  children: "✝"
-                }, void 0, false), /*#__PURE__*/_jsxDEV("span", {
-                  children: cur.devotion
-                }, void 0, false)]
-              }, void 0, true)]
-            }, grade, true);
-          }), allEquip.length > 0 && /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              background: LIGHT_BLUE,
-              borderRadius: 8,
-              padding: "8px 12px",
-              marginBottom: 12,
-              display: "flex",
-              gap: 8,
-              flexWrap: "wrap",
-              alignItems: "center"
-            },
-            children: [/*#__PURE__*/_jsxDEV("span", {
-              style: {
-                fontSize: 11,
-                fontWeight: 700,
-                color: ROYAL_BLUE
-              },
-              children: "📦 Week equip:"
-            }, void 0, false), allEquip.map(e => /*#__PURE__*/_jsxDEV("span", {
-              style: {
-                background: WHITE,
-                border: `1px solid #BFDBFE`,
-                borderRadius: 6,
-                padding: "2px 8px",
-                fontSize: 11,
-                color: ROYAL_BLUE
-              },
-              children: [EQUIP_ICONS[e] || "•", " ", e]
-            }, e, true))]
-          }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              display: "flex",
-              gap: 6,
-              overflowX: "auto",
-              paddingBottom: 4
-            },
-            children: days.map(day => /*#__PURE__*/_jsxDEV("div", {
-              style: {
-                flex: 1,
-                minWidth: 110
-              },
-              children: [/*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  background: ROYAL_BLUE,
-                  color: WHITE,
-                  fontWeight: 800,
-                  fontSize: 11,
-                  padding: "6px 6px",
-                  borderRadius: "8px 8px 0 0",
-                  textAlign: "center"
-                },
-                children: day
-              }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  border: `1px solid #E5E7EB`,
-                  borderTop: "none",
-                  borderRadius: "0 0 8px 8px",
-                  overflow: "hidden"
-                },
-                children: (DAY_GRADES[day] || []).map(grade => {
-                  const slot = getSlot(w, day, grade);
-                  const gc = gradeColor(grade);
-                  const slotGame = slot ? games.find(g => g.id === slot.gameId) : null;
-                  return /*#__PURE__*/_jsxDEV("div", {
-                    style: {
-                      borderBottom: `1px solid #F3F4F6`,
-                      padding: "6px 6px",
-                      background: slot ? gc.bg : "#FAFAFA"
-                    },
-                    children: [/*#__PURE__*/_jsxDEV("div", {
-                      style: {
-                        fontSize: 9,
-                        fontWeight: 800,
-                        color: gc.text,
-                        marginBottom: 3,
-                        background: gc.bg,
-                        border: `1px solid ${gc.border}`,
-                        borderRadius: 4,
-                        display: "inline-block",
-                        padding: "1px 5px"
-                      },
-                      children: grade
-                    }, void 0, false), slot && slotGame ? /*#__PURE__*/_jsxDEV("div", {
-                      children: [/*#__PURE__*/_jsxDEV("div", {
-                        style: {
-                          fontSize: 11,
-                          fontWeight: 700,
-                          color: ROYAL_BLUE,
-                          lineHeight: 1.3
-                        },
-                        children: slotGame.name
-                      }, void 0, false), slot.variation && /*#__PURE__*/_jsxDEV("div", {
-                        style: {
-                          fontSize: 9,
-                          color: "#92400E",
-                          background: LIGHT_GOLD,
-                          borderRadius: 4,
-                          padding: "1px 4px",
-                          marginTop: 2,
-                          lineHeight: 1.4
-                        },
-                        children: ["📝 ", slot.variation]
-                      }, void 0, true), slot.notes && /*#__PURE__*/_jsxDEV("div", {
-                        style: {
-                          fontSize: 9,
-                          color: GRAY,
-                          marginTop: 2,
-                          fontStyle: "italic",
-                          lineHeight: 1.3
-                        },
-                        children: slot.notes
-                      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-                        style: {
-                          display: "flex",
-                          gap: 4,
-                          marginTop: 5,
-                          flexWrap: "wrap"
-                        },
-                        children: [/*#__PURE__*/_jsxDEV("button", {
-                          onClick: () => setPicking({
-                            month: month.label,
-                            week: w,
-                            day,
-                            grade,
-                            editing: slot
-                          }),
-                          style: {
-                            flex: 1,
-                            background: LIGHT_BLUE,
-                            color: ROYAL_BLUE,
-                            border: "none",
-                            borderRadius: 4,
-                            fontSize: 9,
-                            fontWeight: 700,
-                            padding: "3px 0",
-                            cursor: "pointer"
-                          },
-                          children: "Edit"
-                        }, void 0, false), /*#__PURE__*/_jsxDEV("button", {
-                          onClick: () => clearSlot(w, day, grade),
-                          style: {
-                            background: "#FEE2E2",
-                            color: "#991B1B",
-                            border: "none",
-                            borderRadius: 4,
-                            fontSize: 9,
-                            fontWeight: 700,
-                            padding: "3px 6px",
-                            cursor: "pointer"
-                          },
-                          children: "✕"
-                        }, void 0, false)]
-                      }, void 0, true), /*#__PURE__*/_jsxDEV("button", {
-                        onClick: () => {
-                          copyGradeAcrossDay(w, day, grade);
-                        },
-                        title: `Copy this ${grade} plan to all ${grade} classes this week`,
-                        style: {
-                          width: "100%",
-                          marginTop: 4,
-                          background: GC[grade]?.border || GOLD,
-                          color: "#fff",
-                          border: "none",
-                          borderRadius: 4,
-                          fontSize: 9,
-                          fontWeight: 700,
-                          padding: "3px 4px",
-                          cursor: "pointer",
-                          lineHeight: 1.3
-                        },
-                        children: ["Copy to all ", grade, " ↔"]
-                      }, void 0, true)]
-                    }, void 0, true) : /*#__PURE__*/_jsxDEV("button", {
-                      onClick: () => setPicking({
-                        month: month.label,
-                        week: w,
-                        day,
-                        grade,
-                        editing: null
-                      }),
-                      style: {
-                        width: "100%",
-                        background: "none",
-                        border: `1.5px dashed ${gc.border}`,
-                        borderRadius: 6,
-                        padding: "8px 4px",
-                        cursor: "pointer",
-                        color: gc.text,
-                        fontSize: 10,
-                        fontWeight: 600,
-                        marginTop: 2
-                      },
-                      children: "+ Add game"
-                    }, void 0, false)]
-                  }, grade, true);
-                })
-              }, void 0, false)]
-            }, day, true))
-          }, void 0, false)]
-        }, void 0, true)]
-      }, w, true);
-    }), picking && /*#__PURE__*/_jsxDEV("div", {
+          display: "flex",
+          gap: 8,
+          alignItems: "baseline",
+          flexWrap: "wrap"
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 10,
+          fontWeight: 800,
+          color: gc.text,
+          background: WHITE,
+          border: "1px solid ".concat(gc.border),
+          borderRadius: 4,
+          padding: "1px 6px"
+        }
+      }, grade), /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 12,
+          fontWeight: 700,
+          color: gc.text
+        }
+      }, cur.unit), /*#__PURE__*/React.createElement("span", {
+        style: {
+          fontSize: 11,
+          color: GRAY
+        }
+      }, "\u2014 ", cur.skills)), /*#__PURE__*/React.createElement("div", {
+        style: {
+          marginTop: 5,
+          fontSize: 11,
+          color: ROYAL_BLUE,
+          fontStyle: "italic",
+          display: "flex",
+          gap: 5
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        style: {
+          color: GOLD,
+          fontWeight: 700,
+          flexShrink: 0
+        }
+      }, "\u271D"), /*#__PURE__*/React.createElement("span", null, cur.devotion)));
+    }), allEquip.length > 0 && /*#__PURE__*/React.createElement("div", {
       style: {
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: "rgba(0,0,0,0.5)",
-        zIndex: 1000,
+        background: LIGHT_BLUE,
+        borderRadius: 8,
+        padding: "8px 12px",
+        marginBottom: 12,
         display: "flex",
-        alignItems: "flex-end",
-        justifyContent: "center"
-      },
-      onClick: () => setPicking(null),
-      children: /*#__PURE__*/_jsxDEV("div", {
-        onClick: e => e.stopPropagation(),
+        gap: 8,
+        flexWrap: "wrap",
+        alignItems: "center"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 11,
+        fontWeight: 700,
+        color: ROYAL_BLUE
+      }
+    }, "\uD83D\uDCE6 Week equip:"), allEquip.map(function (e) {
+      return /*#__PURE__*/React.createElement("span", {
+        key: e,
         style: {
           background: WHITE,
-          borderRadius: "16px 16px 0 0",
-          padding: "16px",
-          width: "100%",
-          maxWidth: 600,
-          maxHeight: "85vh",
-          display: "flex",
-          flexDirection: "column"
-        },
-        children: [/*#__PURE__*/_jsxDEV("div", {
+          border: "1px solid #BFDBFE",
+          borderRadius: 6,
+          padding: "2px 8px",
+          fontSize: 11,
+          color: ROYAL_BLUE
+        }
+      }, EQUIP_ICONS[e] || "•", " ", e);
+    })), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 6,
+        overflowX: "auto",
+        paddingBottom: 4
+      }
+    }, days.map(function (day) {
+      return /*#__PURE__*/React.createElement("div", {
+        key: day,
+        style: {
+          flex: 1,
+          minWidth: 110
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          background: ROYAL_BLUE,
+          color: WHITE,
+          fontWeight: 800,
+          fontSize: 11,
+          padding: "6px 6px",
+          borderRadius: "8px 8px 0 0",
+          textAlign: "center"
+        }
+      }, day), /*#__PURE__*/React.createElement("div", {
+        style: {
+          border: "1px solid #E5E7EB",
+          borderTop: "none",
+          borderRadius: "0 0 8px 8px",
+          overflow: "hidden"
+        }
+      }, (DAY_GRADES[day] || []).map(function (grade) {
+        var _GC$grade;
+        var slot = getSlot(w, day, grade);
+        var gc = gradeColor(grade);
+        var slotGame = slot ? games.find(function (g) {
+          return g.id === slot.gameId;
+        }) : null;
+        return /*#__PURE__*/React.createElement("div", {
+          key: grade,
+          style: {
+            borderBottom: "1px solid #F3F4F6",
+            padding: "6px 6px",
+            background: slot ? gc.bg : "#FAFAFA"
+          }
+        }, /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: 9,
+            fontWeight: 800,
+            color: gc.text,
+            marginBottom: 3,
+            background: gc.bg,
+            border: "1px solid ".concat(gc.border),
+            borderRadius: 4,
+            display: "inline-block",
+            padding: "1px 5px"
+          }
+        }, grade), slot && slotGame ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: 11,
+            fontWeight: 700,
+            color: ROYAL_BLUE,
+            lineHeight: 1.3
+          }
+        }, slotGame.name), slot.variation && /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: 9,
+            color: "#92400E",
+            background: LIGHT_GOLD,
+            borderRadius: 4,
+            padding: "1px 4px",
+            marginTop: 2,
+            lineHeight: 1.4
+          }
+        }, "\uD83D\uDCDD ", slot.variation), slot.notes && /*#__PURE__*/React.createElement("div", {
+          style: {
+            fontSize: 9,
+            color: GRAY,
+            marginTop: 2,
+            fontStyle: "italic",
+            lineHeight: 1.3
+          }
+        }, slot.notes), /*#__PURE__*/React.createElement("div", {
           style: {
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 12
+            gap: 4,
+            marginTop: 5,
+            flexWrap: "wrap"
+          }
+        }, /*#__PURE__*/React.createElement("button", {
+          onClick: function onClick() {
+            return setPicking({
+              month: month.label,
+              week: w,
+              day: day,
+              grade: grade,
+              editing: slot
+            });
           },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            children: [/*#__PURE__*/_jsxDEV("div", {
-              style: {
-                fontWeight: 800,
-                color: ROYAL_BLUE,
-                fontSize: 15
-              },
-              children: [picking.day, " · ", picking.grade]
-            }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-              style: {
-                fontSize: 11,
-                color: GRAY
-              },
-              children: ["Week ", picking.week + 1, " · ", picking.month]
-            }, void 0, true)]
-          }, void 0, true), /*#__PURE__*/_jsxDEV("button", {
-            onClick: () => setPicking(null),
-            style: {
-              background: "#F3F4F6",
-              border: "none",
-              borderRadius: 8,
-              padding: "6px 12px",
-              fontWeight: 700,
-              fontSize: 13,
-              cursor: "pointer",
-              color: GRAY
-            },
-            children: "✕"
-          }, void 0, false)]
-        }, void 0, true), picking.editing?.gameId ? /*#__PURE__*/_jsxDEV(SlotEditForm, {
-          slot: picking.editing,
-          game: games.find(g => g.id === picking.editing.gameId),
-          onSave: updated => {
-            setSlot(picking.week, picking.day, picking.grade, updated);
-            setPicking(null);
+          style: {
+            flex: 1,
+            background: LIGHT_BLUE,
+            color: ROYAL_BLUE,
+            border: "none",
+            borderRadius: 4,
+            fontSize: 9,
+            fontWeight: 700,
+            padding: "3px 0",
+            cursor: "pointer"
+          }
+        }, "Edit"), /*#__PURE__*/React.createElement("button", {
+          onClick: function onClick() {
+            return clearSlot(w, day, grade);
           },
-          onBack: () => setPicking({
-            ...picking,
-            editing: null
-          })
-        }, void 0, false) : /*#__PURE__*/_jsxDEV(_Fragment, {
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            style: {
-              display: "flex",
-              gap: 6,
-              flexWrap: "wrap",
-              marginBottom: 10
-            },
-            children: ["All", "Tag", "Dodgeball", "Fitness Station", "Cooperative"].map(f => /*#__PURE__*/_jsxDEV("button", {
-              onClick: () => setGameFilter(f),
-              style: {
-                padding: "4px 10px",
-                borderRadius: 999,
-                fontSize: 11,
-                fontWeight: 600,
-                border: `1.5px solid ${gameFilter === f ? ROYAL_BLUE : "#E5E7EB"}`,
-                background: gameFilter === f ? ROYAL_BLUE : WHITE,
-                color: gameFilter === f ? WHITE : GRAY,
-                cursor: "pointer"
-              },
-              children: f
-            }, f, false))
-          }, void 0, false), royalRow?.games?.length > 0 && /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              background: LIGHT_GOLD,
-              borderRadius: 8,
-              padding: "7px 10px",
-              marginBottom: 10
-            },
-            children: [/*#__PURE__*/_jsxDEV("div", {
-              style: {
-                fontSize: 10,
-                fontWeight: 700,
-                color: "#92400E",
-                marginBottom: 5
-              },
-              children: ["👑 This month's Royal Way games — ", royalRow.virtue]
-            }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-              style: {
-                display: "flex",
-                gap: 6,
-                flexWrap: "wrap"
-              },
-              children: royalRow.games.map(gName => {
-                const found = games.find(g => g.name === gName);
-                if (!found || picking.grade && !found.grades.includes(picking.grade)) return null;
-                return /*#__PURE__*/_jsxDEV("button", {
-                  onClick: () => setPicking({
-                    ...picking,
-                    editing: {
-                      gameId: found.id,
-                      variation: "",
-                      notes: ""
-                    }
-                  }),
-                  style: {
-                    background: GOLD,
-                    color: ROYAL_BLUE,
-                    border: "none",
-                    borderRadius: 6,
-                    padding: "4px 10px",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    cursor: "pointer"
-                  },
-                  children: gName
-                }, gName, false);
-              })
-            }, void 0, false)]
-          }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              overflowY: "auto",
-              flex: 1
-            },
-            children: [pickerGames.map(g => /*#__PURE__*/_jsxDEV("button", {
-              onClick: () => setPicking({
-                ...picking,
-                editing: {
-                  gameId: g.id,
-                  variation: "",
-                  notes: ""
-                }
-              }),
-              style: {
-                width: "100%",
-                textAlign: "left",
-                background: WHITE,
-                border: `1px solid #E5E7EB`,
-                borderRadius: 10,
-                padding: "10px 12px",
-                marginBottom: 7,
-                cursor: "pointer",
-                display: "block"
-              },
-              children: [/*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  fontWeight: 700,
-                  color: ROYAL_BLUE,
-                  fontSize: 13
-                },
-                children: g.name
-              }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  display: "flex",
-                  gap: 6,
-                  marginTop: 4,
-                  flexWrap: "wrap"
-                },
-                children: [g.grades.map(gr => /*#__PURE__*/_jsxDEV(GradePill, {
-                  grade: gr
-                }, gr, false)), /*#__PURE__*/_jsxDEV("span", {
-                  style: {
-                    fontSize: 10,
-                    color: GRAY
-                  },
-                  children: ["⏱ ", g.time]
-                }, void 0, true), /*#__PURE__*/_jsxDEV("span", {
-                  style: {
-                    fontSize: 10,
-                    color: GRAY
-                  },
-                  children: ["· ", g.category]
-                }, void 0, true)]
-              }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-                style: {
-                  fontSize: 11,
-                  color: GRAY,
-                  marginTop: 4
-                },
-                children: ["✝ ", g.biblical.theme]
-              }, void 0, true)]
-            }, g.id, true)), pickerGames.length === 0 && /*#__PURE__*/_jsxDEV("div", {
-              style: {
-                textAlign: "center",
-                color: GRAY,
-                fontSize: 13,
-                marginTop: 20
-              },
-              children: "No games match — try changing the filter"
-            }, void 0, false)]
-          }, void 0, true)]
-        }, void 0, true)]
-      }, void 0, true)
-    }, void 0, false)]
-  }, void 0, true);
+          style: {
+            background: "#FEE2E2",
+            color: "#991B1B",
+            border: "none",
+            borderRadius: 4,
+            fontSize: 9,
+            fontWeight: 700,
+            padding: "3px 6px",
+            cursor: "pointer"
+          }
+        }, "\u2715")), /*#__PURE__*/React.createElement("button", {
+          onClick: function onClick() {
+            copyGradeAcrossDay(w, day, grade);
+          },
+          title: "Copy this ".concat(grade, " plan to all ").concat(grade, " classes this week"),
+          style: {
+            width: "100%",
+            marginTop: 4,
+            background: ((_GC$grade = GC[grade]) === null || _GC$grade === void 0 ? void 0 : _GC$grade.border) || GOLD,
+            color: "#fff",
+            border: "none",
+            borderRadius: 4,
+            fontSize: 9,
+            fontWeight: 700,
+            padding: "3px 4px",
+            cursor: "pointer",
+            lineHeight: 1.3
+          }
+        }, "Copy to all ", grade, " \u2194")) : /*#__PURE__*/React.createElement("button", {
+          onClick: function onClick() {
+            return setPicking({
+              month: month.label,
+              week: w,
+              day: day,
+              grade: grade,
+              editing: null
+            });
+          },
+          style: {
+            width: "100%",
+            background: "none",
+            border: "1.5px dashed ".concat(gc.border),
+            borderRadius: 6,
+            padding: "8px 4px",
+            cursor: "pointer",
+            color: gc.text,
+            fontSize: 10,
+            fontWeight: 600,
+            marginTop: 2
+          }
+        }, "+ Add game"));
+      })));
+    }))));
+  }), picking && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: "rgba(0,0,0,0.5)",
+      zIndex: 1000,
+      display: "flex",
+      alignItems: "flex-end",
+      justifyContent: "center"
+    },
+    onClick: function onClick() {
+      return setPicking(null);
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    },
+    style: {
+      background: WHITE,
+      borderRadius: "16px 16px 0 0",
+      padding: "16px",
+      width: "100%",
+      maxWidth: 600,
+      maxHeight: "85vh",
+      display: "flex",
+      flexDirection: "column"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 800,
+      color: ROYAL_BLUE,
+      fontSize: 15
+    }
+  }, picking.day, " \xB7 ", picking.grade), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: GRAY
+    }
+  }, "Week ", picking.week + 1, " \xB7 ", picking.month)), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setPicking(null);
+    },
+    style: {
+      background: "#F3F4F6",
+      border: "none",
+      borderRadius: 8,
+      padding: "6px 12px",
+      fontWeight: 700,
+      fontSize: 13,
+      cursor: "pointer",
+      color: GRAY
+    }
+  }, "\u2715")), (_picking$editing = picking.editing) !== null && _picking$editing !== void 0 && _picking$editing.gameId ? /*#__PURE__*/React.createElement(SlotEditForm, {
+    slot: picking.editing,
+    game: games.find(function (g) {
+      return g.id === picking.editing.gameId;
+    }),
+    onSave: function onSave(updated) {
+      setSlot(picking.week, picking.day, picking.grade, updated);
+      setPicking(null);
+    },
+    onBack: function onBack() {
+      return setPicking(_objectSpread(_objectSpread({}, picking), {}, {
+        editing: null
+      }));
+    }
+  }) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexWrap: "wrap",
+      marginBottom: 10
+    }
+  }, ["All", "Tag", "Dodgeball", "Fitness Station", "Cooperative"].map(function (f) {
+    return /*#__PURE__*/React.createElement("button", {
+      key: f,
+      onClick: function onClick() {
+        return setGameFilter(f);
+      },
+      style: {
+        padding: "4px 10px",
+        borderRadius: 999,
+        fontSize: 11,
+        fontWeight: 600,
+        border: "1.5px solid ".concat(gameFilter === f ? ROYAL_BLUE : "#E5E7EB"),
+        background: gameFilter === f ? ROYAL_BLUE : WHITE,
+        color: gameFilter === f ? WHITE : GRAY,
+        cursor: "pointer"
+      }
+    }, f);
+  })), (royalRow === null || royalRow === void 0 || (_royalRow$games = royalRow.games) === null || _royalRow$games === void 0 ? void 0 : _royalRow$games.length) > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: LIGHT_GOLD,
+      borderRadius: 8,
+      padding: "7px 10px",
+      marginBottom: 10
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: "#92400E",
+      marginBottom: 5
+    }
+  }, "\uD83D\uDC51 This month's Royal Way games \u2014 ", royalRow.virtue), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexWrap: "wrap"
+    }
+  }, royalRow.games.map(function (gName) {
+    var found = games.find(function (g) {
+      return g.name === gName;
+    });
+    if (!found || picking.grade && !found.grades.includes(picking.grade)) return null;
+    return /*#__PURE__*/React.createElement("button", {
+      key: gName,
+      onClick: function onClick() {
+        return setPicking(_objectSpread(_objectSpread({}, picking), {}, {
+          editing: {
+            gameId: found.id,
+            variation: "",
+            notes: ""
+          }
+        }));
+      },
+      style: {
+        background: GOLD,
+        color: ROYAL_BLUE,
+        border: "none",
+        borderRadius: 6,
+        padding: "4px 10px",
+        fontSize: 11,
+        fontWeight: 700,
+        cursor: "pointer"
+      }
+    }, gName);
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      overflowY: "auto",
+      flex: 1
+    }
+  }, pickerGames.map(function (g) {
+    return /*#__PURE__*/React.createElement("button", {
+      key: g.id,
+      onClick: function onClick() {
+        return setPicking(_objectSpread(_objectSpread({}, picking), {}, {
+          editing: {
+            gameId: g.id,
+            variation: "",
+            notes: ""
+          }
+        }));
+      },
+      style: {
+        width: "100%",
+        textAlign: "left",
+        background: WHITE,
+        border: "1px solid #E5E7EB",
+        borderRadius: 10,
+        padding: "10px 12px",
+        marginBottom: 7,
+        cursor: "pointer",
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontWeight: 700,
+        color: ROYAL_BLUE,
+        fontSize: 13
+      }
+    }, g.name), /*#__PURE__*/React.createElement("div", {
+      style: {
+        display: "flex",
+        gap: 6,
+        marginTop: 4,
+        flexWrap: "wrap"
+      }
+    }, g.grades.map(function (gr) {
+      return /*#__PURE__*/React.createElement(GradePill, {
+        key: gr,
+        grade: gr
+      });
+    }), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 10,
+        color: GRAY
+      }
+    }, "\u23F1 ", g.time), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 10,
+        color: GRAY
+      }
+    }, "\xB7 ", g.category)), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontSize: 11,
+        color: GRAY,
+        marginTop: 4
+      }
+    }, "\u271D ", g.biblical.theme));
+  }), pickerGames.length === 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      textAlign: "center",
+      color: GRAY,
+      fontSize: 13,
+      marginTop: 20
+    }
+  }, "No games match \u2014 try changing the filter"))))));
 }
 
 // ─── SLOT EDIT FORM ───────────────────────────────────────────────────────────
-function SlotEditForm({
-  slot,
-  game,
-  onSave,
-  onBack
-}) {
-  const [variation, setVariation] = useState(slot.variation || "");
-  const [notes, setNotes] = useState(slot.notes || "");
-  const [devotion, setDevotion] = useState(slot.devotion || "");
-  return /*#__PURE__*/_jsxDEV("div", {
+function SlotEditForm(_ref8) {
+  var _game$variations2, _game$biblical, _game$biblical2;
+  var slot = _ref8.slot,
+    game = _ref8.game,
+    onSave = _ref8.onSave,
+    onBack = _ref8.onBack;
+  var _useState15 = useState(slot.variation || ""),
+    _useState16 = _slicedToArray(_useState15, 2),
+    variation = _useState16[0],
+    setVariation = _useState16[1];
+  var _useState17 = useState(slot.notes || ""),
+    _useState18 = _slicedToArray(_useState17, 2),
+    notes = _useState18[0],
+    setNotes = _useState18[1];
+  var _useState19 = useState(slot.devotion || ""),
+    _useState20 = _slicedToArray(_useState19, 2),
+    devotion = _useState20[0],
+    setDevotion = _useState20[1];
+  return /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       flexDirection: "column",
       gap: 12,
       flex: 1,
       overflowY: "auto"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: LIGHT_BLUE,
+      borderRadius: 10,
+      padding: "10px 14px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 800,
+      color: ROYAL_BLUE,
+      fontSize: 15
+    }
+  }, "\u2713 ", game.name), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      marginTop: 5,
+      flexWrap: "wrap"
+    }
+  }, game.grades.map(function (g) {
+    return /*#__PURE__*/React.createElement(GradePill, {
+      key: g,
+      grade: g
+    });
+  }), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: GRAY
+    }
+  }, "\u23F1 ", game.time, " \xB7 ", game.space)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 6,
+      fontSize: 11,
+      color: ROYAL_BLUE,
+      fontWeight: 600
+    }
+  }, "\u271D ", game.biblical.theme), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 2,
+      fontSize: 11,
+      color: GRAY
+    }
+  }, "\uD83D\uDCE6 ", game.equip.join(", ") || "No equipment")), ((_game$variations2 = game.variations) === null || _game$variations2 === void 0 ? void 0 : _game$variations2.length) > 0 && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: GRAY,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 6
+    }
+  }, "Variation (optional)"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 5
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setVariation("");
     },
-    children: [/*#__PURE__*/_jsxDEV("div", {
-      style: {
-        background: LIGHT_BLUE,
-        borderRadius: 10,
-        padding: "10px 14px"
+    style: {
+      textAlign: "left",
+      padding: "7px 10px",
+      borderRadius: 8,
+      border: "1.5px solid ".concat(variation === "" ? ROYAL_BLUE : "#E5E7EB"),
+      background: variation === "" ? LIGHT_BLUE : WHITE,
+      fontSize: 12,
+      cursor: "pointer",
+      color: variation === "" ? ROYAL_BLUE : GRAY,
+      fontWeight: variation === "" ? 700 : 400
+    }
+  }, "Standard (no variation)"), game.variations.map(function (v, i) {
+    var label = v.length > 60 ? v.slice(0, 60) + "…" : v;
+    return /*#__PURE__*/React.createElement("button", {
+      key: i,
+      onClick: function onClick() {
+        return setVariation(v);
       },
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontWeight: 800,
-          color: ROYAL_BLUE,
-          fontSize: 15
-        },
-        children: ["✓ ", game.name]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          display: "flex",
-          gap: 6,
-          marginTop: 5,
-          flexWrap: "wrap"
-        },
-        children: [game.grades.map(g => /*#__PURE__*/_jsxDEV(GradePill, {
-          grade: g
-        }, g, false)), /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            fontSize: 10,
-            color: GRAY
-          },
-          children: ["⏱ ", game.time, " · ", game.space]
-        }, void 0, true)]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginTop: 6,
-          fontSize: 11,
-          color: ROYAL_BLUE,
-          fontWeight: 600
-        },
-        children: ["✝ ", game.biblical.theme]
-      }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginTop: 2,
-          fontSize: 11,
-          color: GRAY
-        },
-        children: ["📦 ", game.equip.join(", ") || "No equipment"]
-      }, void 0, true)]
-    }, void 0, true), game.variations?.length > 0 && /*#__PURE__*/_jsxDEV("div", {
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 11,
-          fontWeight: 700,
-          color: GRAY,
-          textTransform: "uppercase",
-          letterSpacing: 0.5,
-          marginBottom: 6
-        },
-        children: "Variation (optional)"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          display: "flex",
-          flexDirection: "column",
-          gap: 5
-        },
-        children: [/*#__PURE__*/_jsxDEV("button", {
-          onClick: () => setVariation(""),
-          style: {
-            textAlign: "left",
-            padding: "7px 10px",
-            borderRadius: 8,
-            border: `1.5px solid ${variation === "" ? ROYAL_BLUE : "#E5E7EB"}`,
-            background: variation === "" ? LIGHT_BLUE : WHITE,
-            fontSize: 12,
-            cursor: "pointer",
-            color: variation === "" ? ROYAL_BLUE : GRAY,
-            fontWeight: variation === "" ? 700 : 400
-          },
-          children: "Standard (no variation)"
-        }, void 0, false), game.variations.map((v, i) => {
-          const label = v.length > 60 ? v.slice(0, 60) + "…" : v;
-          return /*#__PURE__*/_jsxDEV("button", {
-            onClick: () => setVariation(v),
-            style: {
-              textAlign: "left",
-              padding: "7px 10px",
-              borderRadius: 8,
-              border: `1.5px solid ${variation === v ? ROYAL_BLUE : "#E5E7EB"}`,
-              background: variation === v ? LIGHT_BLUE : WHITE,
-              fontSize: 12,
-              cursor: "pointer",
-              color: variation === v ? ROYAL_BLUE : "#374151",
-              fontWeight: variation === v ? 700 : 400,
-              lineHeight: 1.4
-            },
-            children: label
-          }, i, false);
-        })]
-      }, void 0, true)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 11,
-          fontWeight: 700,
-          color: ROYAL_BLUE,
-          textTransform: "uppercase",
-          letterSpacing: 0.5,
-          marginBottom: 4
-        },
-        children: "✝ Devotion / Kingdom Connection (60–90 sec)"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 10,
-          color: GRAY,
-          marginBottom: 6,
-          fontStyle: "italic"
-        },
-        children: "How does today's game connect to this month's Royal Way theme? Write your opening talk here."
-      }, void 0, false), /*#__PURE__*/_jsxDEV("textarea", {
-        value: devotion,
-        onChange: e => setDevotion(e.target.value),
-        placeholder: game.biblical?.connection ? `Suggested: "${game.biblical.connection.slice(0, 80)}…"` : "e.g. Today in Armor Up, the spinning hoop is your Shield of Faith — Ephesians 6:16…",
-        style: {
-          width: "100%",
-          minHeight: 70,
-          padding: "8px 10px",
-          borderRadius: 8,
-          border: `1.5px solid #BFDBFE`,
-          fontSize: 12,
-          fontFamily: "inherit",
-          resize: "vertical",
-          boxSizing: "border-box",
-          outline: "none",
-          background: LIGHT_BLUE
-        }
-      }, void 0, false), game.biblical?.verse && /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          marginTop: 4,
-          fontSize: 10,
-          color: ROYAL_BLUE,
-          fontStyle: "italic"
-        },
-        children: ["📖 ", game.biblical.verse]
-      }, void 0, true)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 11,
-          fontWeight: 700,
-          color: GRAY,
-          textTransform: "uppercase",
-          letterSpacing: 0.5,
-          marginBottom: 6
-        },
-        children: "Notes / How it went"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("textarea", {
-        value: notes,
-        onChange: e => setNotes(e.target.value),
-        placeholder: "e.g. Tried the silent variation — K5 loved it. Shorten time next week.",
-        style: {
-          width: "100%",
-          minHeight: 70,
-          padding: "8px 10px",
-          borderRadius: 8,
-          border: `1.5px solid #E5E7EB`,
-          fontSize: 12,
-          fontFamily: "inherit",
-          resize: "vertical",
-          boxSizing: "border-box",
-          outline: "none"
-        }
-      }, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
       style: {
-        display: "flex",
-        gap: 8
-      },
-      children: [/*#__PURE__*/_jsxDEV("button", {
-        onClick: onBack,
-        style: {
-          flex: 1,
-          background: "#F3F4F6",
-          color: GRAY,
-          border: "none",
-          borderRadius: 8,
-          padding: "10px",
-          fontSize: 13,
-          fontWeight: 700,
-          cursor: "pointer"
-        },
-        children: "← Change game"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("button", {
-        onClick: () => onSave({
-          gameId: game.id,
-          variation,
-          notes,
-          devotion
-        }),
-        style: {
-          flex: 2,
-          background: ROYAL_BLUE,
-          color: WHITE,
-          border: "none",
-          borderRadius: 8,
-          padding: "10px",
-          fontSize: 13,
-          fontWeight: 800,
-          cursor: "pointer"
-        },
-        children: "✓ Save to plan"
-      }, void 0, false)]
-    }, void 0, true)]
-  }, void 0, true);
+        textAlign: "left",
+        padding: "7px 10px",
+        borderRadius: 8,
+        border: "1.5px solid ".concat(variation === v ? ROYAL_BLUE : "#E5E7EB"),
+        background: variation === v ? LIGHT_BLUE : WHITE,
+        fontSize: 12,
+        cursor: "pointer",
+        color: variation === v ? ROYAL_BLUE : "#374151",
+        fontWeight: variation === v ? 700 : 400,
+        lineHeight: 1.4
+      }
+    }, label);
+  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: ROYAL_BLUE,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 4
+    }
+  }, "\u271D Devotion / Kingdom Connection (60\u201390 sec)"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: GRAY,
+      marginBottom: 6,
+      fontStyle: "italic"
+    }
+  }, "How does today's game connect to this month's Royal Way theme? Write your opening talk here."), /*#__PURE__*/React.createElement("textarea", {
+    value: devotion,
+    onChange: function onChange(e) {
+      return setDevotion(e.target.value);
+    },
+    placeholder: (_game$biblical = game.biblical) !== null && _game$biblical !== void 0 && _game$biblical.connection ? "Suggested: \"".concat(game.biblical.connection.slice(0, 80), "\u2026\"") : "e.g. Today in Armor Up, the spinning hoop is your Shield of Faith — Ephesians 6:16…",
+    style: {
+      width: "100%",
+      minHeight: 70,
+      padding: "8px 10px",
+      borderRadius: 8,
+      border: "1.5px solid #BFDBFE",
+      fontSize: 12,
+      fontFamily: "inherit",
+      resize: "vertical",
+      boxSizing: "border-box",
+      outline: "none",
+      background: LIGHT_BLUE
+    }
+  }), ((_game$biblical2 = game.biblical) === null || _game$biblical2 === void 0 ? void 0 : _game$biblical2.verse) && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 4,
+      fontSize: 10,
+      color: ROYAL_BLUE,
+      fontStyle: "italic"
+    }
+  }, "\uD83D\uDCD6 ", game.biblical.verse)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: GRAY,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 6
+    }
+  }, "Notes / How it went"), /*#__PURE__*/React.createElement("textarea", {
+    value: notes,
+    onChange: function onChange(e) {
+      return setNotes(e.target.value);
+    },
+    placeholder: "e.g. Tried the silent variation \u2014 K5 loved it. Shorten time next week.",
+    style: {
+      width: "100%",
+      minHeight: 70,
+      padding: "8px 10px",
+      borderRadius: 8,
+      border: "1.5px solid #E5E7EB",
+      fontSize: 12,
+      fontFamily: "inherit",
+      resize: "vertical",
+      boxSizing: "border-box",
+      outline: "none"
+    }
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: onBack,
+    style: {
+      flex: 1,
+      background: "#F3F4F6",
+      color: GRAY,
+      border: "none",
+      borderRadius: 8,
+      padding: "10px",
+      fontSize: 13,
+      fontWeight: 700,
+      cursor: "pointer"
+    }
+  }, "\u2190 Change game"), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return onSave({
+        gameId: game.id,
+        variation: variation,
+        notes: notes,
+        devotion: devotion
+      });
+    },
+    style: {
+      flex: 2,
+      background: ROYAL_BLUE,
+      color: WHITE,
+      border: "none",
+      borderRadius: 8,
+      padding: "10px",
+      fontSize: 13,
+      fontWeight: 800,
+      cursor: "pointer"
+    }
+  }, "\u2713 Save to plan")));
 }
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
-function App({
-  persistentPlan,
-  setPersistentPlan,
-  customGames,
-  setCustomGames
-}) {
-  const [tab, setTab] = useState("schedule");
-  const [activeGrade, setActiveGrade] = useState(null);
-  const [gradeFilter, setGradeFilter] = useState("All");
-  const [catFilter, setCatFilter] = useState("All");
-  const [showAddGame, setShowAddGame] = useState(false);
-  const games = [...GAMES_DEFAULT, ...(customGames || [])];
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  const grades = ["All", "K5", "1st", "2nd", "5th"];
-  const cats = ["All", "Tag", "Dodgeball", "Fitness Station", "Cooperative", "Sport Skill"];
-  const filtered = games.filter(g => (gradeFilter === "All" || g.grades.includes(gradeFilter)) && (catFilter === "All" || g.category === catFilter));
-  return /*#__PURE__*/_jsxDEV("div", {
+function App(_ref9) {
+  var persistentPlan = _ref9.persistentPlan,
+    setPersistentPlan = _ref9.setPersistentPlan,
+    customGames = _ref9.customGames,
+    setCustomGames = _ref9.setCustomGames;
+  var _useState21 = useState("schedule"),
+    _useState22 = _slicedToArray(_useState21, 2),
+    tab = _useState22[0],
+    setTab = _useState22[1];
+  var _useState23 = useState(null),
+    _useState24 = _slicedToArray(_useState23, 2),
+    activeGrade = _useState24[0],
+    setActiveGrade = _useState24[1];
+  var _useState25 = useState("All"),
+    _useState26 = _slicedToArray(_useState25, 2),
+    gradeFilter = _useState26[0],
+    setGradeFilter = _useState26[1];
+  var _useState27 = useState("All"),
+    _useState28 = _slicedToArray(_useState27, 2),
+    catFilter = _useState28[0],
+    setCatFilter = _useState28[1];
+  var _useState29 = useState(false),
+    _useState30 = _slicedToArray(_useState29, 2),
+    showAddGame = _useState30[0],
+    setShowAddGame = _useState30[1];
+  var games = [].concat(GAMES_DEFAULT, _toConsumableArray(customGames || []));
+  var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  var grades = ["All", "K5", "1st", "2nd", "5th"];
+  var cats = ["All", "Tag", "Dodgeball", "Fitness Station", "Cooperative", "Sport Skill"];
+  var filtered = games.filter(function (g) {
+    return (gradeFilter === "All" || g.grades.includes(gradeFilter)) && (catFilter === "All" || g.category === catFilter);
+  });
+  return /*#__PURE__*/React.createElement("div", {
     style: {
       fontFamily: "'Segoe UI',system-ui,sans-serif",
       maxWidth: 900,
       margin: "0 auto",
       background: "#F0F4FA",
       minHeight: "100vh"
+    }
+  }, showAddGame && /*#__PURE__*/React.createElement(AddGameModal, {
+    onSave: function onSave(g) {
+      setCustomGames(function (prev) {
+        return [].concat(_toConsumableArray(prev), [g]);
+      });
+      setShowAddGame(false);
     },
-    children: [showAddGame && /*#__PURE__*/_jsxDEV(AddGameModal, {
-      onSave: g => {
-        setCustomGames(prev => [...prev, g]);
-        setShowAddGame(false);
-      },
-      onClose: () => setShowAddGame(false)
-    }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
+    onClose: function onClose() {
+      return setShowAddGame(false);
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "linear-gradient(135deg,".concat(ROYAL_BLUE, ",#0F2347)"),
+      padding: "20px 16px 16px",
+      textAlign: "center",
+      borderBottom: "4px solid ".concat(GOLD)
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 26
+    }
+  }, "\uD83D\uDC51\uD83E\uDD81"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: GOLD,
+      fontWeight: 900,
+      fontSize: 20,
+      letterSpacing: 1
+    }
+  }, "BCA ROYALS \u2014 PE PLANNER"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: WHITE,
+      fontSize: 12,
+      marginTop: 2
+    }
+  }, "Taylor \xB7 2026\u20132027 \xB7 K5 \xB7 1st \xB7 2nd \xB7 5th"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      justifyContent: "center",
+      marginTop: 8,
+      flexWrap: "wrap"
+    }
+  }, ["32 classes/wk", "Thompson Gym", "Thurs lunch only", "Biblical integration"].map(function (l) {
+    return /*#__PURE__*/React.createElement("span", {
+      key: l,
       style: {
-        background: `linear-gradient(135deg,${ROYAL_BLUE},#0F2347)`,
-        padding: "20px 16px 16px",
-        textAlign: "center",
-        borderBottom: `4px solid ${GOLD}`
+        background: "rgba(201,168,76,0.2)",
+        color: GOLD,
+        borderRadius: 999,
+        fontSize: 10,
+        fontWeight: 600,
+        padding: "2px 10px"
+      }
+    }, l);
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      background: WHITE,
+      borderBottom: "1px solid #E5E7EB",
+      overflowX: "auto"
+    }
+  }, [{
+    id: "schedule",
+    label: "📅 Schedule"
+  }, {
+    id: "games",
+    label: "🎮 Games"
+  }, {
+    id: "equipment",
+    label: "📦 Equipment"
+  }, {
+    id: "planner",
+    label: "📋 Planner"
+  }, {
+    id: "ckh",
+    label: "👑 Royal Way"
+  }].map(function (t) {
+    return /*#__PURE__*/React.createElement("button", {
+      key: t.id,
+      onClick: function onClick() {
+        return setTab(t.id);
       },
-      children: [/*#__PURE__*/_jsxDEV("div", {
-        style: {
-          fontSize: 26
-        },
-        children: "👑🦁"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          color: GOLD,
-          fontWeight: 900,
-          fontSize: 20,
-          letterSpacing: 1
-        },
-        children: "BCA ROYALS — PE PLANNER"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          color: WHITE,
-          fontSize: 12,
-          marginTop: 2
-        },
-        children: "Taylor · 2026–2027 · K5 · 1st · 2nd · 5th"
-      }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          display: "flex",
-          gap: 6,
-          justifyContent: "center",
-          marginTop: 8,
-          flexWrap: "wrap"
-        },
-        children: ["32 classes/wk", "Thompson Gym", "Thurs lunch only", "Biblical integration"].map(l => /*#__PURE__*/_jsxDEV("span", {
-          style: {
-            background: "rgba(201,168,76,0.2)",
-            color: GOLD,
-            borderRadius: 999,
-            fontSize: 10,
-            fontWeight: 600,
-            padding: "2px 10px"
-          },
-          children: l
-        }, l, false))
-      }, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
       style: {
-        display: "flex",
-        background: WHITE,
-        borderBottom: "1px solid #E5E7EB",
-        overflowX: "auto"
+        flex: 1,
+        padding: "11px 8px",
+        border: "none",
+        cursor: "pointer",
+        fontSize: 12,
+        fontWeight: 600,
+        whiteSpace: "nowrap",
+        background: tab === t.id ? LIGHT_BLUE : WHITE,
+        color: tab === t.id ? ROYAL_BLUE : GRAY,
+        borderBottom: tab === t.id ? "3px solid ".concat(ROYAL_BLUE) : "3px solid transparent"
+      }
+    }, t.label);
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "16px 12px"
+    }
+  }, tab === "schedule" && /*#__PURE__*/React.createElement(ScheduleTab, {
+    activeGrade: activeGrade,
+    setActiveGrade: setActiveGrade
+  }), tab === "games" && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 14
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 800,
+      color: ROYAL_BLUE,
+      fontSize: 14
+    }
+  }, "\uD83C\uDFAE Game Library ", /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 11,
+      color: GRAY,
+      fontWeight: 400
+    }
+  }, "(", games.length, " games)")), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return setShowAddGame(true);
+    },
+    style: {
+      background: GOLD,
+      color: ROYAL_BLUE,
+      border: "none",
+      borderRadius: 8,
+      padding: "7px 16px",
+      fontWeight: 800,
+      fontSize: 12,
+      cursor: "pointer"
+    }
+  }, "+ Add Game")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: 14
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: GRAY,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 6
+    }
+  }, "Filter by Grade"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexWrap: "wrap",
+      marginBottom: 10
+    }
+  }, grades.map(function (g) {
+    var active = gradeFilter === g;
+    return /*#__PURE__*/React.createElement("button", {
+      key: g,
+      onClick: function onClick() {
+        return setGradeFilter(g);
       },
-      children: [{
-        id: "schedule",
-        label: "📅 Schedule"
-      }, {
-        id: "games",
-        label: "🎮 Games"
-      }, {
-        id: "equipment",
-        label: "📦 Equipment"
-      }, {
-        id: "planner",
-        label: "📋 Planner"
-      }, {
-        id: "ckh",
-        label: "👑 Royal Way"
-      }].map(t => /*#__PURE__*/_jsxDEV("button", {
-        onClick: () => setTab(t.id),
-        style: {
-          flex: 1,
-          padding: "11px 8px",
-          border: "none",
-          cursor: "pointer",
-          fontSize: 12,
-          fontWeight: 600,
-          whiteSpace: "nowrap",
-          background: tab === t.id ? LIGHT_BLUE : WHITE,
-          color: tab === t.id ? ROYAL_BLUE : GRAY,
-          borderBottom: tab === t.id ? `3px solid ${ROYAL_BLUE}` : "3px solid transparent"
-        },
-        children: t.label
-      }, t.id, false))
-    }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
       style: {
-        padding: "16px 12px"
+        padding: "5px 14px",
+        borderRadius: 999,
+        fontSize: 12,
+        fontWeight: 700,
+        border: "2px solid ".concat(active ? ROYAL_BLUE : "#E5E7EB"),
+        background: active ? ROYAL_BLUE : WHITE,
+        color: active ? WHITE : GRAY,
+        cursor: "pointer"
+      }
+    }, g);
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: GRAY,
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+      marginBottom: 6
+    }
+  }, "Filter by Category"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexWrap: "wrap"
+    }
+  }, cats.map(function (c) {
+    var active = catFilter === c;
+    return /*#__PURE__*/React.createElement("button", {
+      key: c,
+      onClick: function onClick() {
+        return setCatFilter(c);
       },
-      children: [tab === "schedule" && /*#__PURE__*/_jsxDEV(ScheduleTab, {
-        activeGrade: activeGrade,
-        setActiveGrade: setActiveGrade
-      }, void 0, false), tab === "games" && /*#__PURE__*/_jsxDEV("div", {
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 14
-          },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            style: {
-              fontWeight: 800,
-              color: ROYAL_BLUE,
-              fontSize: 14
-            },
-            children: ["🎮 Game Library ", /*#__PURE__*/_jsxDEV("span", {
-              style: {
-                fontSize: 11,
-                color: GRAY,
-                fontWeight: 400
-              },
-              children: ["(", games.length, " games)"]
-            }, void 0, true)]
-          }, void 0, true), /*#__PURE__*/_jsxDEV("button", {
-            onClick: () => setShowAddGame(true),
-            style: {
-              background: GOLD,
-              color: ROYAL_BLUE,
-              border: "none",
-              borderRadius: 8,
-              padding: "7px 16px",
-              fontWeight: 800,
-              fontSize: 12,
-              cursor: "pointer"
-            },
-            children: "+ Add Game"
-          }, void 0, false)]
-        }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            marginBottom: 14
-          },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            style: {
-              fontSize: 11,
-              fontWeight: 700,
-              color: GRAY,
-              textTransform: "uppercase",
-              letterSpacing: 0.5,
-              marginBottom: 6
-            },
-            children: "Filter by Grade"
-          }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              display: "flex",
-              gap: 6,
-              flexWrap: "wrap",
-              marginBottom: 10
-            },
-            children: grades.map(g => {
-              const active = gradeFilter === g;
-              return /*#__PURE__*/_jsxDEV("button", {
-                onClick: () => setGradeFilter(g),
-                style: {
-                  padding: "5px 14px",
-                  borderRadius: 999,
-                  fontSize: 12,
-                  fontWeight: 700,
-                  border: `2px solid ${active ? ROYAL_BLUE : "#E5E7EB"}`,
-                  background: active ? ROYAL_BLUE : WHITE,
-                  color: active ? WHITE : GRAY,
-                  cursor: "pointer"
-                },
-                children: g
-              }, g, false);
-            })
-          }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              fontSize: 11,
-              fontWeight: 700,
-              color: GRAY,
-              textTransform: "uppercase",
-              letterSpacing: 0.5,
-              marginBottom: 6
-            },
-            children: "Filter by Category"
-          }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              display: "flex",
-              gap: 6,
-              flexWrap: "wrap"
-            },
-            children: cats.map(c => {
-              const active = catFilter === c;
-              return /*#__PURE__*/_jsxDEV("button", {
-                onClick: () => setCatFilter(c),
-                style: {
-                  padding: "5px 14px",
-                  borderRadius: 999,
-                  fontSize: 12,
-                  fontWeight: 600,
-                  border: `2px solid ${active ? GOLD : "#E5E7EB"}`,
-                  background: active ? LIGHT_GOLD : WHITE,
-                  color: active ? "#92400E" : GRAY,
-                  cursor: "pointer"
-                },
-                children: c
-              }, c, false);
-            })
-          }, void 0, false)]
-        }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
-          style: {
-            fontSize: 12,
-            color: GRAY,
-            marginBottom: 12
-          },
-          children: [filtered.length, " game", filtered.length !== 1 ? "s" : "", " shown"]
-        }, void 0, true), filtered.map(g => /*#__PURE__*/_jsxDEV(GameCard, {
-          game: g
-        }, g.id, false))]
-      }, void 0, true), tab === "equipment" && /*#__PURE__*/_jsxDEV("div", {
-        children: [/*#__PURE__*/_jsxDEV("div", {
-          style: {
-            background: LIGHT_GOLD,
-            borderRadius: 10,
-            padding: "12px 14px",
-            marginBottom: 14,
-            borderLeft: `4px solid ${GOLD}`
-          },
-          children: [/*#__PURE__*/_jsxDEV("div", {
-            style: {
-              fontWeight: 700,
-              color: "#92400E",
-              fontSize: 13,
-              marginBottom: 4
-            },
-            children: "Universal Rule"
-          }, void 0, false), /*#__PURE__*/_jsxDEV("div", {
-            style: {
-              fontSize: 12,
-              color: "#374151",
-              lineHeight: 1.6
-            },
-            children: ["🔶 ", /*#__PURE__*/_jsxDEV("strong", {
-              children: "Cones"
-            }, void 0, false), " and 🟦 ", /*#__PURE__*/_jsxDEV("strong", {
-              children: "Noodles"
-            }, void 0, false), " stay out all day.", /*#__PURE__*/_jsxDEV("br", {}, void 0, false), "🔵 ", /*#__PURE__*/_jsxDEV("strong", {
-              children: "Pit balls"
-            }, void 0, false), " → K5 \xA0·\xA0 🟠 ", /*#__PURE__*/_jsxDEV("strong", {
-              children: "Foam balls"
-            }, void 0, false), " → 1st & 2nd \xA0·\xA0 🏀 ", /*#__PURE__*/_jsxDEV("strong", {
-              children: "Basketballs"
-            }, void 0, false), " → 5th"]
-          }, void 0, true)]
-        }, void 0, true), days.map(day => /*#__PURE__*/_jsxDEV(DayEquipCard, {
-          day: day,
-          data: dailyEquip[day]
-        }, day, false))]
-      }, void 0, true), tab === "planner" && /*#__PURE__*/_jsxDEV(PlannerTab, {
-        games: games,
-        plan: persistentPlan,
-        setPlan: setPersistentPlan
-      }, void 0, false), tab === "ckh" && /*#__PURE__*/_jsxDEV(CKHTab, {}, void 0, false)]
-    }, void 0, true), /*#__PURE__*/_jsxDEV("div", {
       style: {
-        padding: "14px 20px",
-        textAlign: "center",
-        borderTop: `1px solid ${LIGHT_BLUE}`
-      },
-      children: /*#__PURE__*/_jsxDEV("div", {
-        style: {
-          color: GRAY,
-          fontSize: 11
-        },
-        children: "BCA Royals PE · Taylor · 2026–2027 · The Royal Way — Kingdom Kids Integration"
-      }, void 0, false)
-    }, void 0, false)]
-  }, void 0, true);
+        padding: "5px 14px",
+        borderRadius: 999,
+        fontSize: 12,
+        fontWeight: 600,
+        border: "2px solid ".concat(active ? GOLD : "#E5E7EB"),
+        background: active ? LIGHT_GOLD : WHITE,
+        color: active ? "#92400E" : GRAY,
+        cursor: "pointer"
+      }
+    }, c);
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: GRAY,
+      marginBottom: 12
+    }
+  }, filtered.length, " game", filtered.length !== 1 ? "s" : "", " shown"), filtered.map(function (g) {
+    return /*#__PURE__*/React.createElement(GameCard, {
+      key: g.id,
+      game: g
+    });
+  })), tab === "equipment" && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: LIGHT_GOLD,
+      borderRadius: 10,
+      padding: "12px 14px",
+      marginBottom: 14,
+      borderLeft: "4px solid ".concat(GOLD)
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontWeight: 700,
+      color: "#92400E",
+      fontSize: 13,
+      marginBottom: 4
+    }
+  }, "Universal Rule"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      color: "#374151",
+      lineHeight: 1.6
+    }
+  }, "\uD83D\uDD36 ", /*#__PURE__*/React.createElement("strong", null, "Cones"), " and \uD83D\uDFE6 ", /*#__PURE__*/React.createElement("strong", null, "Noodles"), " stay out all day.", /*#__PURE__*/React.createElement("br", null), "\uD83D\uDD35 ", /*#__PURE__*/React.createElement("strong", null, "Pit balls"), " \u2192 K5 \xA0\xB7\xA0 \uD83D\uDFE0 ", /*#__PURE__*/React.createElement("strong", null, "Foam balls"), " \u2192 1st & 2nd \xA0\xB7\xA0 \uD83C\uDFC0 ", /*#__PURE__*/React.createElement("strong", null, "Basketballs"), " \u2192 5th")), days.map(function (day) {
+    return /*#__PURE__*/React.createElement(DayEquipCard, {
+      key: day,
+      day: day,
+      data: dailyEquip[day]
+    });
+  })), tab === "planner" && /*#__PURE__*/React.createElement(PlannerTab, {
+    games: games,
+    plan: persistentPlan,
+    setPlan: setPersistentPlan
+  }), tab === "ckh" && /*#__PURE__*/React.createElement(CKHTab, null)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "14px 20px",
+      textAlign: "center",
+      borderTop: "1px solid ".concat(LIGHT_BLUE)
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: GRAY,
+      fontSize: 11
+    }
+  }, "BCA Royals PE \xB7 Taylor \xB7 2026\u20132027 \xB7 The Royal Way \u2014 Kingdom Kids Integration")));
 }
 
 
-// ─── LOCALSTORAGE PERSISTENCE ───────────────────────────────────────────────
 function usePersistentState(key, defaultValue) {
-  var _React$useState = React.useState(function() {
+  var result = React.useState(function() {
     try {
       var stored = localStorage.getItem(key);
       return stored ? JSON.parse(stored) : defaultValue;
     } catch(e) { return defaultValue; }
-  }), state = _React$useState[0], setState = _React$useState[1];
-
+  });
+  var state = result[0], setState = result[1];
   var setPersistent = React.useCallback(function(value) {
     setState(function(prev) {
       var next = typeof value === "function" ? value(prev) : value;
@@ -4697,12 +4640,12 @@ function usePersistentState(key, defaultValue) {
 }
 
 function PersistentApp() {
-  var _plan   = usePersistentState("bca-pe-plan-v2", {});
-  var plan    = _plan[0], setPlan = _plan[1];
-  var _custom = usePersistentState("bca-pe-games-v1", []);
-  var customGames = _custom[0], setCustomGames = _custom[1];
-  var _saved  = React.useState(null);
-  var lastSaved = _saved[0], setLastSaved = _saved[1];
+  var r1 = usePersistentState("bca-pe-plan-v2", {});
+  var plan = r1[0], setPlan = r1[1];
+  var r2 = usePersistentState("bca-pe-games-v1", []);
+  var customGames = r2[0], setCustomGames = r2[1];
+  var r3 = React.useState(null);
+  var lastSaved = r3[0], setLastSaved = r3[1];
 
   React.useEffect(function() {
     setLastSaved(new Date().toLocaleTimeString());
@@ -4715,21 +4658,23 @@ function PersistentApp() {
       customGames: customGames,
       setCustomGames: setCustomGames
     }),
-    lastSaved && React.createElement("div", {
+    lastSaved ? React.createElement("div", {
       style: {
         position:"fixed", bottom:12, right:12,
         background:"#1B3A6B", color:"#C9A84C",
         borderRadius:8, padding:"5px 12px",
         fontSize:11, fontWeight:700,
         boxShadow:"0 2px 8px rgba(0,0,0,0.2)",
-        zIndex:9999, opacity:0.9
+        zIndex:9999
       }
-    }, "Saved " + lastSaved)
+    }, "Saved " + lastSaved) : null
   );
 }
 
-var root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(React.createElement(PersistentApp));
+ReactDOM.createRoot(document.getElementById("root")).render(
+  React.createElement(PersistentApp)
+);
+
 
 })();
 </script>
