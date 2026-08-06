@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BCA Royals PE Planner — Taylor</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #F0F4FA;
+      min-height: 100vh;
+    }
+    #root { max-width: 900px; margin: 0 auto; }
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 2px; }
+    /* Button reset */
+    button { font-family: inherit; }
+    /* Textarea reset */
+    textarea { font-family: inherit; }
+    /* Smooth transitions globally */
+    * { transition: background 0.1s, border-color 0.1s, opacity 0.1s; }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useCallback } = React;
+
+const ROYAL_BLUE = "#1B3A6B";
+const GOLD = "#C9A84C";
+const LIGHT_GOLD = "#F5E9C9";
+const LIGHT_BLUE = "#E8EEF7";
+const WHITE = "#FFFFFF";
+const GRAY = "#6B7280";
+const LIGHT_GRAY = "#F3F4F6";
+
+const GC = {
+  "K5":  { bg: "#FEF3C7", text: "#92400E", border: "#F59E0B" },
+  "1st": { bg: "#DBEAFE", text: "#1E40AF", border: "#3B82F6" },
+  "2nd": { bg: "#D1FAE5", text: "#065F46", border: "#10B981" },
+  "5th": { bg: "#FEE2E2", text: "#991B1B", border: "#EF4444" },
+};
+
+const EQUIP_ICONS = {
+  cones: "🔶", beanbags: "🫘", hoops: "⭕", noodles: "🟦",
+  foamballs: "🟠", pitballs: "🔵", scooters: "🛴", jumpropes: "➰",
+  parachute: "🪂", basketballs: "🏀", soccer: "⚽", volleyballs: "🏐",
+  scarves: "🎀", flags: "🚩", rollmats: "🟩", balancebeam: "📏",
+};
+
+function Badge({ text, bg = GOLD, color = WHITE, small = false }) {
+  return <span style={{ background: bg, color, borderRadius: 999, fontSize: small ? 10 : 11, fontWeight: 700, padding: small ? "1px 8px" : "2px 10px", display: "inline-block", whiteSpace: "nowrap" }}>{text}</span>;
+}
+function GradePill({ grade }) {
+  const c = GC[grade] || {}; return <Badge text={grade} bg={c.bg} color={c.text} small />;
+}
+function ETag({ id }) {
+  const icon = EQUIP_ICONS[id] || "•";
+  const label = id.replace(/([A-Z])/g, " $1").replace(/^./, s => s.toUpperCase());
+  return <span style={{ background: LIGHT_GOLD, color: ROYAL_BLUE, borderRadius: 999, fontSize: 10, fontWeight: 600, padding: "2px 8px", display: "inline-flex", alignItems: "center", gap: 3 }}>{icon} {label}</span>;
+}
+
+// ─── ALL GAMES ────────────────────────────────────────────────────────────
+const GAMES_DEFAULT = [
+
+  // TAG GAMES
+  {
+    id: "fireice", name: "Fire & Ice Tag", category: "Tag",
+    grades: ["K5","1st","2nd"], space: "Full", time: "15–25 min",
+    equip: ["noodles"], existing: true,
+    setup: "2 colors of pool noodles. Red = Fire taggers (freeze people). Blue = Ice rescuers (unfreeze). Start with 3 Fire, 3 Ice. Everyone else = runners.",
+    how: [
+      "Fire taggers chase runners and tag them (shoulder and below only).",
+      "Tagged runners freeze in place — arms out, can't move.",
+      "Ice players run to frozen teammates and tap them to unfreeze.",
+      "Fire wins only if ALL players are frozen simultaneously (nearly impossible — celebrate the class when it doesn't happen).",
+      "Rotate Fire and Ice roles every 3–4 min.",
+    ],
+    biblical: {
+      theme: "Light vs. Darkness — John 8:12",
+      connection: "Red = darkness that tries to freeze you and stop you. Blue = the light of Christ that sets you free. No matter how many times you're frozen, the light always comes.",
+      debrief: "When you were frozen, did anyone come to help you? How quickly? That's a picture of grace — Jesus doesn't wait for you to fix yourself before He runs to you.",
+      verse: "John 8:12 — 'I am the light of the world. Whoever follows me will never walk in darkness.'",
+    },
+    variations: ["Add a GOLD 'Holy Spirit' noodle — can unfreeze 2 at once, rotates every 2 min.", "Increase Fire count as the game goes on to raise difficulty."],
+    tips: "Establish noodle rules Day 1: shoulder/below only, no swinging hard. Game self-regulates once kids understand rescue.",
+  },
+  {
+    id: "stuckinthemud", name: "Stuck in the Mud", category: "Tag",
+    grades: ["K5","1st"], space: "Full", time: "15–20 min",
+    equip: ["noodles"],existing: true,
+    setup: "2–3 taggers with noodles. Everyone else = runners. Open gym.",
+    how: [
+      "Taggers chase runners and tag them (noodle, shoulder and below).",
+      "Tagged players freeze: feet wide apart, hands in the air — 'stuck in the mud.'",
+      "An untagged teammate can free them by crawling through their legs (girls free girls, boys free boys).",
+      "Tagger wins if everyone is stuck simultaneously.",
+      "Rotate taggers every 3–4 min.",
+    ],
+    biblical: {
+      theme: "Being Rescued — Psalm 40:2",
+      connection: "Psalm 40:2 says God lifted David out of the 'slimy pit.' When you're stuck — in the mud, in a hard situation, in sin — God sends people to help rescue you. The person crawling through? That's a friend willing to humble themselves to get you out.",
+      debrief: "What did you have to do to rescue someone in this game? You had to go LOW. Why might it be hard to humble yourself to help someone? Who in your life has gone low to help you?",
+      verse: "Psalm 40:2 — 'He lifted me out of the slimy pit, out of the mud and mire; he set my feet on a rock.'",
+    },
+    variations: ["Theme as 'quicksand' — whoever was rescued can rejoin but must go very slowly (they're still a little stuck).", "Add a safe zone 'rock' cone — rescuers can carry one player to the rock zone to permanently free them."],
+    tips: "Girls/boys only rule keeps it appropriate and avoids any awkwardness. Make this very clear before the game starts.",
+  },
+  {
+    id: "scarvetag", name: "Scarf Flag Tag", category: "Tag",
+    grades: ["K5","1st","2nd"], space: "Full or Half", time: "15–20 min",
+    equip: ["scarves"], existing: true,
+    setup: "Every player tucks a scarf into their waistband as a 'flag.' Open gym. Everyone is both a tagger and a runner at the same time.",
+    how: [
+      "Every player has a scarf flag tucked in their waistband.",
+      "Goal: grab other players' scarves while protecting your own.",
+      "If your scarf is pulled, pick it up and tuck it back in — you stay in the game (cooperative version).",
+      "For a competitive round: if your scarf is pulled, you're out. Last scarf standing wins.",
+      "You may not hold your scarf with your hands.",
+    ],
+    biblical: {
+      theme: "Self-Control & Protecting What Matters — Proverbs 25:28",
+      connection: "Proverbs 25:28 says a person without self-control is like a city with broken-down walls. Your scarf is like your 'wall' — you have to protect it while still being in the game. You can't hide in a corner. You have to learn to move with both offense AND defense.",
+      debrief: "Was it hard to go after someone else's scarf while keeping yours safe? What does it look like to protect your character — your 'flag' — while still being engaged in daily life?",
+      verse: "Proverbs 25:28 — 'Like a city whose walls are broken through is a person who lacks self-control.'",
+    },
+    variations: ["Team version: teams protect their scarves while grabbing opponents'. Most scarves at end wins.", "Slow-motion round: everyone moves at 50% speed — easier for K5."],
+    tips: "Works beautifully as a warm-up for any lesson since no setup is required — just hand out scarves.",
+  },
+  {
+    id: "scooterag", name: "Scooter Flag Tag", category: "Tag",
+    grades: ["1st","2nd","5th"], space: "Full", time: "20–25 min",
+    equip: ["scooters","noodles","flags"], existing: true,
+    setup: "Stick a flag (or scarf) into the handle of each scooter. Students sit on scooters. Flag sticks up from handle like a mast.",
+    how: [
+      "Everyone sits on a scooter with a flag in the handle.",
+      "Using hands only to propel (feet stay on scooter), try to grab other players' flags.",
+      "If your flag is grabbed, park your scooter at the sideline and cheer.",
+      "Last flag standing wins the round.",
+      "Restart with new flag placements every 3–4 min.",
+    ],
+    biblical: {
+      theme: "Perseverance & Self-Control — Hebrews 12:1",
+      connection: "You're in a race but you have to control your vehicle AND protect something at the same time. Hebrews 12:1 says to run with perseverance the race marked out for us — that race has obstacles, other runners, and requires constant focus.",
+      debrief: "What made this game hard? Was it the scooter, or protecting the flag, or both? What happens when you focus only on grabbing others' flags and forget your own?",
+      verse: "Hebrews 12:1 — 'Let us run with perseverance the race marked out for us.'",
+    },
+    variations: ["Team version: 2 teams, grab opponents' flags while protecting team flags.", "Cooperative version: work together to deliver ALL flags to a central cone without losing your own."],
+    tips: "Safety first: sitting only, fingers away from wheels. Scooter tag is a highlight activity — use as earned or as a unit reward.",
+  },
+
+  // DODGEBALL GAMES
+  {
+    id: "jetball", name: "Jet Ball", category: "Dodgeball",
+    grades: ["1st","2nd","5th"], space: "Full", time: "20–30 min",
+    equip: ["foamballs","basketballs"], existing: true,
+    setup: "2 throwers stand at the free throw line on each end. All runners line up on the baseline opposite them. 2 foam dodgeballs — one per thrower.",
+    how: [
+      "Throwers simultaneously throw their balls hard at the backboard. The bounce off the backboard is the 'GO' signal — runners take off.",
+      "Throwers retrieve balls off the backboard and immediately start throwing at runners crossing the court.",
+      "Runners must reach the opposite baseline without being hit (shoulders and below only).",
+      "If a runner is hit, they sit down in place for that round — frozen, but they can still cheer.",
+      "Last 2 runners standing become the new throwers. New round begins.",
+    ],
+    biblical: {
+      theme: "Courage Under Pressure — Joshua 1:9",
+      connection: "You know the balls are coming. You know it's going to be hard. The moment that ball hits the backboard is your moment — do you flinch, or do you run? Joshua 1:9 says 'Be strong and courageous.' Not because it's safe — because God is with you.",
+      debrief: "Was there a moment you wanted to hesitate when the ball hit the backboard? What made you run anyway? What does courage look like when you KNOW something hard is coming?",
+      verse: "Joshua 1:9 — 'Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go.'",
+    },
+    variations: ["'Jet Ball with a Buddy' — runners pair up and must cross holding hands. If one is hit, both sit.", "Team Jet Ball — two throwers per team on opposite ends simultaneously."],
+    tips: "Throwers should be your strongest/most controlled throwers — pick kids who won't aim at heads. Emphasize: shoulders and below, no headshots. For 1st grade, reduce distance between throwers and runners.",
+  },
+  {
+    id: "fruitdodge", name: "Fruit of the Spirit Dodgeball", category: "Dodgeball",
+    grades: ["1st","2nd","5th"], space: "Full", time: "30–40 min",
+    equip: ["foamballs","cones"],
+    setup: "Standard dodgeball halves divided by a center line. Label cards for each round at center. 3–4 foam balls per side.",
+    how: [
+      "Standard dodgeball rules — hit below shoulders = out, catch = thrower is out and one teammate returns.",
+      "Each 5-min round has a FRUIT RULE that changes how you play.",
+      "LOVE: If you're out, a teammate can volunteer to take your spot — someone must choose to sacrifice.",
+      "PATIENCE: Count silently to 3 before every throw. Rushing = automatic out.",
+      "KINDNESS: If a teammate drops a ball, you help pick it up before resuming.",
+      "SELF-CONTROL: Underhand throws only. Overhand = your team loses a player.",
+      "JOY: After every out — yours or theirs — everyone says something encouraging before play resumes.",
+    ],
+    biblical: {
+      theme: "Fruit of the Spirit — Galatians 5:22-23",
+      connection: "The Fruit of the Spirit isn't a feeling — it's a practice. Today you practiced it under pressure, which is exactly when it counts. Anyone can be kind when it's easy.",
+      debrief: "Which fruit was hardest to keep during dodgeball? Why is it harder to be patient or kind when you're competing and adrenaline is going?",
+      verse: "Galatians 5:22-23 — 'But the fruit of the Spirit is love, joy, peace, patience, kindness...'",
+    },
+    variations: ["Appoint a 'Fruit Inspector' per round (works great for 5th) — they watch for violations.", "Run all 9 fruits over multiple class sessions as a unit."],
+    tips: "The fruit rule IS the lesson — enforce it seriously. Celebrate teams that live the fruit even when losing.",
+  },
+  {
+    id: "jailbreak", name: "Jailbreak Dodgeball", category: "Dodgeball",
+    grades: ["5th"], space: "Full", time: "25–35 min",
+    equip: ["foamballs","cones"],
+    setup: "Split gym in half. Mark a 'prison zone' along the back wall of each side with cones. 3–4 foam balls per side. Teams of 8–10.",
+    how: [
+      "Standard dodgeball halves. When a player is hit, they go to PRISON — the zone behind the opposing team's back wall.",
+      "Prisoners are NOT out of the game. From prison, they can still catch and throw balls at active players.",
+      "If a prisoner hits an active player from behind, the prisoner is FREE — they walk back to their team, and the player they hit goes to prison.",
+      "If an active player's throw is caught by a prisoner (not an active player), the prisoner who caught it is freed.",
+      "Basketball hoop bonus: if a player throws a ball into the opposing team's basketball hoop, ALL prisoners on their team are freed at once.",
+      "Game ends when all players on one team are in prison simultaneously.",
+    ],
+    biblical: {
+      theme: "Grace & the Prisoner Set Free — Isaiah 61:1 / Luke 4:18",
+      connection: "Isaiah 61:1 says Jesus came 'to proclaim freedom for the captives.' In this game, no one stays in prison forever — there's always a way back. That's the Gospel. No one is too far gone. You can still contribute from 'prison.' Your situation doesn't eliminate your purpose.",
+      debrief: "Did anyone make a big play from prison? How did it feel to be freed? Has there been a time you felt 'stuck' — in trouble, in a conflict, in a mistake — and someone gave you a way back in?",
+      verse: "Isaiah 61:1 — 'He has sent me to proclaim freedom for the captives and release from darkness for the prisoners.'",
+    },
+    variations: ["Hoop Shot Jailbreak: only way to free ALL prisoners at once is the basketball shot — makes it strategic and exciting.", "'Jailbreak Grace' round: once per game, one player can call 'Grace' and walk into prison to free one teammate, taking their place."],
+    tips: "5th graders catch on fast — explain once, then let them play and adjust. The prison-to-active throw is the key mechanic to emphasize. Awareness of ALL directions (front and back) is the strategic skill.",
+  },
+
+  // GYMNASTICS / FITNESS STATIONS
+  {
+    id: "royalsgymnastics", name: "Royals Gymnastics Circuit", category: "Fitness Station",
+    grades: ["K5","1st"], space: "Full", time: "30–40 min",
+    equip: ["rollmats","balancebeam","cones","hoops","beanbags","jumpropes"],
+    setup: "5–6 stations set up around the gym. Picture cards at each station. Groups of 3–4, rotate every 5–6 min.",
+    how: [
+      "STATION 1 — Forward Rolls: Roll mat, forward roll with chin tucked. K5: assisted or log roll. 1st: full forward roll attempt.",
+      "STATION 2 — Balance Beam: Low floor beam or tape line. Walk across forward, then backward, then sideways. Add bean bag on head for challenge.",
+      "STATION 3 — Frog Hops: Jump from hoop to hoop in sequence. Two feet in each hoop, no skipping. Count hops per round.",
+      "STATION 4 — Bear Crawl / Crab Walk Lane: Cone-marked lane. Bear crawl down, crab walk back.",
+      "STATION 5 — Jump Rope Skills: Individual rope work. K5 = jump over stationary rope. 1st = timed jumps.",
+      "STATION 6 — Star Balance: Stand on one foot, arms out like a star. Eyes open, then try eyes closed. Hold for 10 sec — personal challenge only.",
+    ],
+    biblical: {
+      theme: "Stewardship of the Body — 1 Corinthians 6:19-20",
+      connection: "1 Corinthians 6:19-20 says your body is a temple of the Holy Spirit. Fitness stations aren't about looking a certain way — they're about taking care of what God gave you. Every forward roll, every balance attempt, every jump is an act of stewardship.",
+      debrief: "Was there a station that was really hard for you? Did you quit or keep trying? Taking care of our bodies takes the same kind of perseverance it takes to grow in faith.",
+      verse: "1 Corinthians 6:19-20 — 'Do you not know that your bodies are temples of the Holy Spirit... Therefore honor God with your bodies.'",
+    },
+    variations: ["Add a 'Courage Station' card: students write or say one thing they tried today that scared them.", "For advanced 1st graders: cartwheel attempt at Station 1 (with spotter/mat only)."],
+    tips: "Roll mats must be checked for slip on gym floor before students use them. Forward rolls: emphasize chin tuck always. Never force a roll. For balance beam, spot K5 students for the first rotation.",
+  },
+
+  // EXISTING GAMES WITH BIBLICAL INTEGRATION ADDED
+  {
+    id: "shepherdsheep", name: "Shepherd & Sheep", category: "Tag",
+    grades: ["K5","1st"], space: "Full", time: "20–25 min",
+    equip: ["cones","hoops","noodles"],
+    setup: "3–4 Shepherds. 2 Wolves (noodle taggers). Everyone else = Sheep. One hula hoop cluster = 'The Fold' (safe zone).",
+    how: [
+      "Sheep wander freely around the gym.",
+      "If a Wolf tags a Sheep, that Sheep sits down (lost).",
+      "Shepherds can rescue sitting Sheep by touching their shoulder and walking them back to the Fold.",
+      "Wolves cannot enter the Fold.",
+      "Optional Lost Sheep round: one sheep is blindfolded and guided back by a Shepherd using voice only ('3 steps left, stop, turn right').",
+    ],
+    biblical: {
+      theme: "The Good Shepherd — Psalm 23 / John 10:11",
+      connection: "Jesus calls himself the Good Shepherd — and the Good Shepherd leaves the 99 to find the one. In this game, Shepherds don't just protect — they go OUT to where the lost Sheep are. That's the posture of grace: going toward people who are stuck, not waiting for them to find their way back.",
+      debrief: "Did your Shepherd ever give up looking for you? How does it feel to know that no matter how 'lost' you get, God is still looking?",
+      verse: "John 10:11 — 'I am the good shepherd. The good shepherd lays down his life for the sheep.'",
+    },
+    variations: [], tips: "The blindfold round unlocks a great trust conversation — use it with 1st grade.",
+  },
+
+  // ── NEW GAMES ADDED 2026 ──────────────────────────────────────────────────
+
+  // FOUR CORNERS
+  {
+    id: "fourcorners", name: "Four Corners", category: "Tag",
+    grades: ["K5","1st","2nd","5th"], space: "Full", time: "10–20 min",
+    equip: ["cones"],
+    setup: "Place 4 cones in a large square — one at each corner. 4 players start at the cones. All other players line up outside the square.",
+    how: [
+      "First player in line enters the center of the square and yells 'SCRAMBLE!'",
+      "All 4 corner players MUST immediately leave their cone and run to a different corner — they cannot return to their own cone.",
+      "The player in the center races to steal any empty cone.",
+      "5 people, 4 corners — one person ends up without a cone.",
+      "The player left without a cone goes to the back of the line. The player who just came from the center takes a corner. Next person in line enters the center.",
+      "Repeat — everyone rotates through quickly.",
+    ],
+    biblical: {
+      theme: "Courage & Acting Quickly — Joshua 1:9",
+      connection: "When God told Joshua to move, he didn't hesitate. 'Scramble!' in this game is your Joshua moment — the moment to move fast and trust your instincts. Hesitation costs you the corner. In life, courage often looks like moving before you feel ready.",
+      debrief: "What happened when you hesitated? Did fear of making the wrong choice make you freeze? What's one area of your life where you know God is saying 'scramble' and you're still waiting?",
+      verse: "Joshua 1:9 — 'Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.'",
+    },
+    variations: [
+      "Silent Scramble: the center player holds up a hand signal instead of yelling — tests focus and attention.",
+      "Team Scramble (2nd/5th): 2 teams, 2 corners each — center player tries to steal a cone from the opposing team only.",
+      "Seasonal theme: 'Apple Picking' in fall — cones = apple trees, center player = the picker.",
+    ],
+    tips: "Moves very fast — kids get multiple turns quickly which keeps energy high and complaints low. Perfect as a warm-up or filler game when you have 10 min. Establish the 'must leave your cone' rule clearly or kids will hover.",
+  },
+
+  // ISLAND ATTACK → rename: WATCHTOWER
+  {
+    id: "watchtower", name: "Watchtower", category: "Dodgeball",
+    grades: ["K5","1st","2nd"], space: "Full or Half", time: "15–25 min",
+    equip: ["hoops","foamballs"],
+    setup: "Scatter 6–8 hula hoops across full court (or 5–6 for half court sideways). Place one foam dodgeball in each hoop. Pick one player per hoop to be a 'Watchman' — they stand on their island (one foot in hoop at all times to throw).",
+    how: [
+      "All other players ('travelers') line up on one end line.",
+      "On 'GO,' travelers run across the gym to the other end line while Watchmen try to hit them below the shoulder with their dodgeball.",
+      "A Watchman may leave their hoop ONLY to retrieve a ball — but cannot throw until back on their island with at least one foot inside.",
+      "Travelers hit below the shoulder sit down where they were hit — they are out for that round.",
+      "Last players still standing (equal to the number of islands) become the new Watchmen. Reset and play again.",
+    ],
+    biblical: {
+      theme: "Standing Guard — Ezekiel 33:6 / Nehemiah 4:9",
+      connection: "In the Bible, watchmen stood on towers or walls to protect the city — they couldn't leave their post to throw a spear. Their job was to guard their ground and call out threats from where they stood. This game is exactly that: you have power and a post, but you must stay accountable to it.",
+      debrief: "Was it tempting to run away from your island to chase someone? What happened to your team when a watchman abandoned their post? In your family, school, or team — what does it look like to 'hold your post' even when it's hard?",
+      verse: "Nehemiah 4:9 — 'We prayed to our God and posted a guard day and night to meet this threat.'",
+    },
+    variations: [
+      "Seasonal — 'Apple Orchard': hoops = trees, travelers = worms trying to reach the orchard, watchmen = birds protecting the trees.",
+      "For K5: reduce islands to 4, use softer pit balls, shorten the court.",
+      "Power-up round: one island gets a 'lighthouse' (extra ball) — that watchman can throw twice per run.",
+    ],
+    tips: "The 'one foot in hoop' rule is the whole game — enforce it from the start or travelers will complain. Watchmen retrieving balls creates natural chaos that keeps runners moving. Works great half-court sideways if gym is split.",
+  },
+
+  // KNOCKOUT (BASKETBALL)
+  {
+    id: "knockout", name: "Knockout", category: "Fitness Station",
+    grades: ["5th"], space: "Half (one basket)", time: "15–25 min",
+    equip: ["basketballs"],
+    setup: "All players line up at the free throw line (or closer for beginners). Two basketballs at the front of the line.",
+    how: [
+      "Player 1 shoots. Immediately after, Player 2 shoots.",
+      "Player 1 must make their shot before Player 2 — if Player 2 makes it first, Player 1 is knocked out.",
+      "After shooting, each player follows their own ball and shoots from wherever they rebound (no waiting at the line).",
+      "If Player 1 makes their shot first, they pass the ball to Player 3, who now chases Player 2.",
+      "Players who are knocked out cheer from the sideline.",
+      "Last player standing wins the round.",
+    ],
+    biblical: {
+      theme: "Perseverance Under Pressure — Philippians 4:13",
+      connection: "There's always someone right behind you in this game — you can't slow down, can't coast. That pressure is real. But so is this: 'I can do all things through Christ who strengthens me.' The pressure doesn't go away in life either. The question is who you're running toward.",
+      debrief: "How did it feel when the person behind you was close? Did it make you rush and miss, or focus and make it? When life puts pressure on you, what helps you stay focused instead of panicking?",
+      verse: "Philippians 4:13 — 'I can do all things through Christ who gives me strength.'",
+    },
+    variations: [
+      "Tournament bracket: run multiple rounds, track winners, do a class championship.",
+      "Free throw only: everyone must shoot from the line — tests consistency over athleticism.",
+      "Granny shots allowed: players who miss 3 in a row may shoot underhand — keeps less confident players engaged.",
+    ],
+    tips: "Fast, self-refereeing, kids love it. Establish 'you must attempt a shot before chasing your rebound' or kids skip directly to the board and create a pile-up. Works best with 8–15 players per basket.",
+  },
+
+  // GAGA BALL
+  {
+    id: "gagaball", name: "Gaga Ball", category: "Tag",
+    grades: ["1st","2nd","5th"], space: "Half", time: "15–25 min",
+    equip: ["pitballs","cones"],
+    setup: "Set up a Gaga pit boundary using cones in a rough octagon or circle (or use the center circle of the gym floor). One foam or pit ball in the center. All players inside the boundary.",
+    how: [
+      "One player drops the ball in the center. Everyone chants 'GA — GA — GO!' and the ball is live.",
+      "Players hit the ball with an open hand only — no catching, no throwing, no kicking.",
+      "If the ball touches you at or below the knee, you're out — step outside the boundary.",
+      "Players outside can re-enter only if they catch a ball hit out of bounds before it bounces twice.",
+      "Last player inside wins the round.",
+      "Keep rounds short (2–3 min) so eliminated players cycle back in quickly.",
+    ],
+    biblical: {
+      theme: "Humility & Staying Low — Micah 6:8 / Matthew 23:12",
+      connection: "The strategy of Gaga Ball is literally to stay low. The moment you stand tall and stop watching, you get hit. Humility in Scripture works the same way — 'whoever exalts himself will be humbled.' Staying low, staying aware, watching out for others — that's wisdom.",
+      debrief: "What happened when you stood up straight and stopped watching the ball? What does 'staying humble' look like at school — not in your posture, but in how you treat people and how aware you are of others?",
+      verse: "Micah 6:8 — 'What does the Lord require of you? To act justly, to love mercy, and to walk humbly with your God.'",
+    },
+    variations: [
+      "Multi-ball: add a second ball mid-round for chaos — good for large classes.",
+      "Team Gaga: split pit in half with a line of cones, teams try to eliminate all players on the other side.",
+      "Works well for K5 with a smaller boundary and a lighter pit ball.",
+    ],
+    tips: "If no pit is available, cones in an octagon work fine. The re-entry rule (catching out-of-bounds balls) keeps eliminated players engaged and reduces wait time. Enforce open-hand rule from round one.",
+  },
+
+  // ROCK PAPER SCISSORS TAG
+  {
+    id: "rpstag", name: "Rock Paper Scissors Tag", category: "Tag",
+    grades: ["K5","1st","2nd"], space: "Full or Half", time: "10–15 min",
+    equip: ["cones"],
+    setup: "Pairs of players spread throughout the gym. Optional: assign team colors with pinnies or cone markers.",
+    how: [
+      "Partners face each other and count '1, 2, 3' together, then throw Rock, Paper, or Scissors.",
+      "Winner immediately becomes the chaser — loser runs away.",
+      "Chaser tries to tag the runner before they reach a designated safe zone (cone or wall).",
+      "After the chase (tag or safe), partners reset and find a new partner.",
+      "Can also be run as team elimination: teams spread along opposite walls, pairs meet in the middle, losers join the winning team.",
+    ],
+    biblical: {
+      theme: "Choosing Wisely — Proverbs 3:13–14",
+      connection: "Every round requires a split-second choice, then immediate action. Proverbs says wisdom is more valuable than silver or gold. In this game, the 'wise' choice wins — but even when you lose, you get back up and try again. That's resilience, and that's also wisdom.",
+      debrief: "Did you try to 'read' your partner — predict what they'd throw? How do we develop wisdom like that in real life — by watching, listening, and paying attention to others?",
+      verse: "Proverbs 3:13 — 'Blessed are those who find wisdom, those who gain understanding.'",
+    },
+    variations: [
+      "Bean Bag Toss partner game: stand 5–8 feet apart, toss a bean bag back and forth, step back one step after each catch. Last pair connected wins.",
+      "Trio RPS: three players, each throws — two who match become chasers after the odd one out.",
+      "Seasonal: 'Pilgrim vs. Turkey vs. Corn' in November — same mechanics, new hand gestures.",
+    ],
+    tips: "RPS Tag is a perfect 5-minute warm-up or transition filler — zero setup, instant energy. For bean bag toss variation, use the same cones already out and space partners evenly across the gym.",
+  },
+
+  // NIGHT AT THE MUSEUM → ROYAL GALLERY
+  {
+    id: "royalgallery", name: "Royal Gallery", category: "Tag",
+    grades: ["K5","1st"], space: "Full", time: "10–20 min",
+    equip: [],
+    setup: "No equipment needed. Choose one player to be the 'Royal Guard.' All other players are 'Statues in the King's Gallery.'",
+    how: [
+      "The Royal Guard faces a wall and counts to 10 loudly: '1… 2… 3…' (eyes fully closed or facing wall).",
+      "All Statues move freely around the gym during the count.",
+      "When the Guard yells 'FREEZE — the King is watching!' and turns around, all Statues must instantly freeze.",
+      "The Guard walks among the frozen Statues looking for any movement — breathing and blinking are allowed, everything else is not.",
+      "Any Statue seen moving is out and sits on the sideline.",
+      "Last Statue frozen wins and becomes the new Royal Guard.",
+    ],
+    biblical: {
+      theme: "Being Seen by God — Psalm 139:1–3",
+      connection: "In this game, the Guard can only see what's in front of them. But God sees everything — always — even when no one else is watching. The Statues in the King's Gallery are always before the King. The best thing about God's gaze? It's not a gaze of judgment — it's a gaze of love and deep knowledge.",
+      debrief: "When the guard turned around, did you feel nervous — like you were being watched? Now think about this: God always sees you. Does that feel scary, or does it feel like being known and loved? What's the difference between being watched and being cared for?",
+      verse: "Psalm 139:1–2 — 'You have searched me, Lord, and you know me. You know when I sit and when I rise; you perceive my thoughts from afar.'",
+    },
+    variations: [
+      "Nativity version (Christmas): students freeze in Nativity poses — manger scene, shepherds, wise men. Guard tries to guess what each Statue is depicting.",
+      "Original 'Night at the Museum' framing still works if you prefer it — biblical tie is optional.",
+      "For 2nd grade: add a 'Curator' — a second guard who circles from the other direction.",
+    ],
+    tips: "Zero setup makes this a go-to for back-to-back days when you're moving gyms or forgot to stage equipment. Works beautifully as a calm-down game after a high-energy round. K5 loves the 'freeze and giggle' dynamic.",
+  },
+
+  // COLOR SORT
+  {
+    id: "colorsort", name: "Color Sort", category: "Cooperative",
+    grades: ["K5","1st"], space: "Full", time: "10–20 min",
+    equip: ["pitballs","hoops"],
+    setup: "Scatter pit balls of mixed colors all over the gym floor. Place one hula hoop per color in different corners or zones.",
+    how: [
+      "Call out a color — students race to find all balls of that color and place them in the matching hoop.",
+      "Once all balls are sorted, call the next color.",
+      "Cooperative version: everyone works together to sort all colors as fast as possible — beat the clock.",
+      "Competitive version: split into color teams, each team is responsible for finding their color. Most sorted wins.",
+    ],
+    biblical: {
+      theme: "Order, Creation & Working Together — Genesis 1 / 1 Corinthians 14:40",
+      connection: "God created the world in order — He didn't throw everything together and call it good. He sorted light from dark, water from land, and called each thing by name. When we bring order to chaos together, we reflect something true about how God made the world.",
+      debrief: "Was it easy or hard to find your color when everything was mixed up? What does it look like when a team or a class is 'mixed up' — no one knows their job? What happens when everyone knows their role?",
+      verse: "1 Corinthians 14:40 — 'Everything should be done in a fitting and orderly way.'",
+    },
+    variations: [
+      "Apple Picking (Fall): red = apples, green = pears, yellow = bananas — seasonal sorting story.",
+      "Easter Egg Hunt (Spring): assign egg colors to teams, race to fill baskets (hoops).",
+      "Extend for 2nd: students sort by two rules at once — color AND size (small vs. large pit balls) if you have mixed sizes.",
+    ],
+    tips: "Fantastic fine motor + cognitive + aerobic combo for K5. Doubles as a color recognition activity for early K5. Scatter balls far apart so students actually run. Also a great gym reset game — scatter at end of class and sort as cleanup.",
+  },
+
+  // THING 1 & THING 2 (DR. SEUSS)
+  {
+    id: "thing1thing2", name: "Thing 1 & Thing 2 Cleanup", category: "Cooperative",
+    grades: ["K5","1st","2nd"], space: "Full", time: "10–15 min",
+    equip: ["foamballs","beanbags","scarves","hoops","pitballs"],
+    setup: "Before class, scatter everything — foam balls, bean bags, scarves, pit balls, anything available — all over the gym floor. Walk in with kids and act surprised.",
+    how: [
+      "Teacher: 'Oh no — Thing 1 and Thing 2 were in here! Look at this mess! We have to clean it up before the Cat in the Hat finds out!'",
+      "Cooperative version: entire class works together to sort all items into labeled hula hoops by type — beat the class record time.",
+      "Competitive version: split into 2–3 teams, each team has a hoop. Race to collect and sort as many items as possible. Most items in hoop at the buzzer wins — then throw everything out again!",
+      "You can run 2–3 rounds, each with a shorter time limit.",
+    ],
+    biblical: {
+      theme: "Stewardship & Caring for What We're Given — Genesis 2:15 / Luke 16:10",
+      connection: "God put Adam in the garden to 'tend and keep it' — to take care of what he was given. When we walk in and see chaos, our response matters. Picking things up, putting things in order, working together — that's stewardship. Even a messy gym teaches us something about how God calls us to care for our space, our school, and each other.",
+      debrief: "Why did you want to clean it up? Was it for yourself, or for the class, or for Mr./Ms. Taylor? What's something in your life — your room, your locker, your relationships — that needs a little 'cleaning up'?",
+      verse: "Luke 16:10 — 'Whoever can be trusted with very little can also be trusted with much.'",
+    },
+    variations: [
+      "Seasonal: 'The Great Pumpkin Patch Scramble' (fall), 'Snowball Blizzard Cleanup' (winter with white balls), 'Garden Planting Day' (spring).",
+      "Extend the story: hide a 'message from the Cat in the Hat' (index card) somewhere in the room — finding it unlocks bonus challenge.",
+    ],
+    tips: "The teacher acting surprised sells the whole thing for K5 and 1st. Keep it in your back pocket for the week of Dr. Seuss (early March) — kids recognize the theme immediately. Very low prep: just dump the equipment bin before they arrive.",
+  },
+
+  // HEAD SHOULDERS KNEES CONE
+  {
+    id: "hskc", name: "Head Shoulders Knees Cone", category: "Tag",
+    grades: ["K5","1st","2nd","5th"], space: "Half", time: "10–20 min",
+    equip: ["cones"],
+    setup: "Partners sit or stand across from each other with one cone between them on the floor.",
+    how: [
+      "Teacher (or leader) calls out: 'Head… shoulders… knees…' — players touch each body part as called.",
+      "At any moment, teacher calls 'CONE!' — both players race to grab the cone.",
+      "Whoever grabs the cone first wins the point (or the round).",
+      "Elimination version: loser sits out. Last pair standing wins.",
+      "Point version: play to 5 — winner rotates to a new partner.",
+    ],
+    biblical: {
+      theme: "Alertness & Readiness — Mark 13:33 / 1 Peter 5:8",
+      connection: "Jesus said 'Watch! Be alert! You do not know when the time will come.' This whole game is about staying alert while doing something else — your body is doing one thing, but your mind must be ready for the moment that counts. That's what spiritual alertness looks like too.",
+      debrief: "When did you get tricked into grabbing too early — or miss it because you stopped paying attention? What pulls your attention away when you should be paying attention to God — to what really matters?",
+      verse: "Mark 13:33 — 'Be on guard! Be alert! You do not know when that time will come.'",
+    },
+    variations: [
+      "Trio version (older kids): 3 players, 1 cone — any two can grab it, third is the odd one out.",
+      "Elimination tournament for 5th: single elimination bracket, run a class champion.",
+      "Add fake-outs: 'head… shoulders… cones… just kidding… knees… CONE!' — teacher trickery is part of the fun.",
+    ],
+    tips: "Works as a partner warm-up or station. For elimination style with 5th grade, have students keep their own wins and losses honest — great character opportunity. Very fast rounds keep energy high.",
+  },
+
+  // OBSTACLE COURSE / RELAY CIRCUIT
+  {
+    id: "obstaclecourse", name: "Royal Obstacle Course", category: "Fitness Station",
+    grades: ["K5","1st","2nd","5th"], space: "Full", time: "20–35 min",
+    equip: ["cones","hoops","beanbags","scarves"],
+    setup: "Set up a circuit of 5–8 stations along the gym perimeter or in a straight relay line. Rotate seasonally. See variations for station ideas.",
+    how: [
+      "Relay version: teams run one at a time through the full course — fastest team wins.",
+      "Station rotation: students spread across stations, rotate every 45–60 seconds on a whistle.",
+      "Timed challenge: one student at a time, others cheer — beat your own time.",
+      "Mix physical and cognitive challenges: stations may include counting, spelling a word, or answering a trivia question before moving on.",
+    ],
+    biblical: {
+      theme: "Running the Race — Hebrews 12:1–2",
+      connection: "Hebrews says to 'throw off everything that hinders' and run with perseverance. Every obstacle course station is something to push through — crawling, jumping, balancing. Real life has obstacles too: hard friendships, hard subjects, hard days. We don't skip them. We run through them.",
+      debrief: "What was the hardest station? Did you want to skip it or go around it? What does it mean to 'throw off' something that slows you down — in PE and in life?",
+      verse: "Hebrews 12:1 — 'Let us throw off everything that hinders and the sin that so easily entangles, and let us run with perseverance the race marked out for us.'",
+    },
+    variations: [
+      "Station ideas — mix and match by season/theme:\n  🐻 Bear crawl with hands on bean bags or cloths (core + upper body)\n  ⭕ Jump in/out of 5 hula hoops in a line\n  🔺 Zigzag sprint through 6 cones\n  🎯 Bean bag toss into a hoop from 8 feet\n  🛴 Scooter push across a zone (hands only)\n  🤸 3 forward rolls on a mat\n  🦀 Crab walk between two cones\n  🏃 Broad jump series (3 consecutive two-foot jumps)\n  👊 Wall push-ups × 5 at a cone station\n  🎀 Scarf balance on head while walking a line",
+      "Seasonal themes: Harvest Run (fall), North Pole Challenge (winter), Resurrection Race (Easter), Royal Training Camp (any time).",
+      "For 5th grade: add a Presidential Fitness challenge station (pushups, sit-ups, squat hold) — connects directly to Royal Olympics prep.",
+    ],
+    tips: "Keep station transitions fast — whistle or countdown timer on your phone. Post visual station signs so students don't have to ask. Bean bags under hands for bear crawl reduces floor friction and adds a balance challenge. Cloths (cheap dish towels) also work great for sliding bear crawl on smooth gym floors.",
+  },
+
+  // ROYAL OLYMPICS (5TH GRADE)
+  {
+    id: "royalolympics", name: "Royal Olympics", category: "Fitness Station",
+    grades: ["5th"], space: "Full", time: "30–40 min",
+    equip: ["cones","beanbags"],
+    setup: "Four fitness stations plus one running lane. Presidential Fitness Standards chart posted at each station. Track scores on a class scoresheet or individual cards.",
+    how: [
+      "Students rotate through 4 fitness stations: Push-ups (max reps, proper form), Sit-ups (max reps in 60 sec), Squats (max reps or timed hold), and Pacer/Sprint Run (gym laps or timed shuttle run).",
+      "Each student completes their event and records their score.",
+      "Compare scores to Presidential Fitness Standards and National Standards charts — identify their classification.",
+      "Optional: class-wide totals tallied for a 'Royals Olympic Score.'",
+      "Award 'Royal Standard' (meets national average), 'Presidential Standard' (top 15%), and 'Royals Gold' (class-best in each event).",
+    ],
+    biblical: {
+      theme: "Honoring God with Your Body — 1 Corinthians 6:19–20",
+      connection: "Your body is not yours to do whatever you want with — it's a temple. The Royal Olympics isn't about being the strongest kid in the class. It's about stewarding what God gave you. Every push-up, every sit-up, every lap is an act of worship when you're doing it for the right reason.",
+      debrief: "Are you happy with your score, or do you wish it were different? What would it take to improve it by next time? Is it okay to compete with yourself — to want to get better — without comparing yourself to everyone else?",
+      verse: "1 Corinthians 6:19–20 — 'Your bodies are temples of the Holy Spirit… Therefore honor God with your bodies.'",
+    },
+    variations: [
+      "Presidential Fitness Standards (reference targets for 5th grade):\n  Push-ups: 10–15+ for boys, 7–12+ for girls\n  Sit-ups (60 sec): 30+ for boys, 25+ for girls\n  Squats: 20+ sustained or 30–45 sec wall sit\n  Pacer/Mile: 9:00–10:30 min mile equivalent",
+      "Add a 'Royal Challenge' each quarter — beat your previous personal best to earn a Royal seal on your scorecard.",
+      "Pair with Knockout (basketball) and Gaga Ball as active recovery between Royal Olympics test days.",
+    ],
+    tips: "Run this quarterly — fall baseline, winter check-in, spring final. Let students set personal goals after the first round. Keep it encouraging: the goal is personal growth, not embarrassment. Pacer shuttle run using half-court lines works great if you can't do a full outdoor run.",
+  },
+
+  // ARMOR UP (Twister Tag)
+  {
+    id: "armorup", name: "Armor Up", category: "Tag",
+    grades: ["K5","1st","2nd"], space: "Full or Half", time: "10–20 min",
+    equip: ["hoops","noodles"],
+    setup: "Students pair up across the gym. Each pair has one hula hoop and one pool noodle. Partners decide who starts as the Runner and who starts as the Tagger.",
+    how: [
+      "The Runner spins the hula hoop on the floor like a top — this raises the 'Shield of Faith.'",
+      "The moment the hoop is spinning, the Tagger tries to tag the Runner with the noodle before the hoop falls or stops spinning.",
+      "If the Runner dodges every tag while the hoop is still spinning, they earn 1 point.",
+      "If the Tagger tags the Runner before the hoop falls, the Tagger earns 1 point.",
+      "Once the hoop falls or stops, the round is over — switch roles.",
+      "Play 3–5 rounds each, then compare points. Highest score wins that matchup.",
+      "Optional: rotate partners after each full set so kids play multiple opponents.",
+    ],
+    biblical: {
+      theme: "Shield of Faith — Ephesians 6:16",
+      connection: "In the Armor of God, the Shield of Faith is the one piece that moves — it's active, not passive. You raise it to stop the 'fiery darts' coming at you. In this game, the spinning hoop is your shield: the moment it's raised and moving, you're protected. The second it stops — you're exposed. Faith works the same way. It has to be active, spinning, alive. A faith that's stopped moving can't protect you.",
+      debrief: "What made you vulnerable in this game — when did the Tagger have the best chance? What does it look like when your faith 'stops spinning' in real life — what are some things that slow it down? What keeps it going?",
+      verse: "Ephesians 6:16 — 'In addition to all this, take up the shield of faith, with which you can extinguish all the flaming arrows of the evil one.'",
+    },
+    variations: [
+      "Team Armor Up (2nd grade): two pairs compete simultaneously — first pair where both runners survive a full spin wins the round.",
+      "Double shield: Runner spins two hoops — harder to manage but longer protection window. Good challenge for competitive 2nd graders.",
+      "Armor of God stations: combine with other themed games as a circuit — each station = one piece of armor (belt, breastplate, shield, helmet, sword).",
+    ],
+    tips: "Teach hoop spinning technique first — some K5 kids struggle to get it going. Let them practice 2–3 spins before the game starts. Noodle tags must be gentle; establish that clearly before round one. Pairs spread out so hoops don't interfere with neighboring games. Zero equipment reset needed between rounds.",
+  },
+
+  // HUMAN FOOSBALL
+  {
+    id: "humanfoosball", name: "Human Foosball", category: "Cooperative",
+    grades: ["K5","1st","2nd","5th"], space: "Half", time: "15–25 min",
+    equip: ["noodles","foamballs","cones"],
+    setup: "Divide class into 2 teams. Each team kneels in a single-file line facing the opposing team's line — lines run parallel across the width of the court. Set up a small cone goal at each end of the lines. Every player gets a pool noodle. Coach tosses the dodgeball into the center.",
+    how: [
+      "Players must stay on their knees — no standing, no moving from their spot (just like a foosball rod).",
+      "Use pool noodles to hit, deflect, and pass the ball toward the opponent's goal.",
+      "No hands on the ball — noodles only.",
+      "Coach tosses the ball back in at center whenever it goes out of bounds or a goal is scored.",
+      "First team to a set number of goals wins the round — rotate player positions between rounds so everyone plays different spots.",
+    ],
+    biblical: {
+      theme: "Working Together — Ecclesiastes 4:9–10",
+      connection: "In foosball, no single player can reach the whole field — you need every person in every position doing their job. Ecclesiastes says two are better than one because they can help each other. Your knees-on-the-floor neighbor is your teammate, not your competition. Win or lose as a line.",
+      debrief: "Could one player have won this game alone? What happened when a player in the middle checked out or stopped trying? What does it look like in your class, your family, or your team when someone in the 'middle' decides their spot doesn't matter?",
+      verse: "Ecclesiastes 4:9–10 — 'Two are better than one, because they have a good return for their labor: if either of them falls down, one can help the other up.'",
+    },
+    variations: [
+      "Add a goalie at each end who may stand — good leadership role for older or more experienced players.",
+      "Knees-only enforcement is the whole game — make it a big deal and kids self-police quickly.",
+      "For K5/1st: shorten the lines to 4–5 players per side and use a lighter pit ball instead of a foam dodgeball.",
+      "Tournament style for 5th: run 3-round matches, rotate teams, track wins on the board.",
+    ],
+    tips: "Extremely low setup — noodles are already out, just need cones for goals and a ball. Works well as a same-grade back-to-back game since zero reset is needed between classes. Knees on a gym floor can be rough for longer rounds — keep rounds to 3–5 min and rotate frequently.",
+  },
+
+];
+
+// ─── EQUIPMENT STAGING ───────────────────────────────────────────────────
+const dailyEquip = {
+  Monday: {
+    stageAtStart: ["cones","noodles"],
+    blocks: [
+      { classes: ["Owens (2nd)"], add: ["foamballs","basketballs"], remove: [] },
+      { classes: ["Poser (1st)"], add: ["jumpropes","beanbags"], remove: ["basketballs"] },
+      { classes: ["Caldwell (K5)"], add: ["pitballs","hoops"], remove: ["foamballs","jumpropes"] },
+      { classes: ["Phelps (5th)"], add: ["foamballs","basketballs"], remove: ["pitballs","hoops"], alert: "15 min to reset — stage 5th equip during Caldwell" },
+      { classes: ["Carr (K5)"], add: ["pitballs","hoops"], remove: ["foamballs","basketballs"], alert: "⚠ 5 min only — swap ball bin only" },
+    ],
+  },
+  Tuesday: {
+    stageAtStart: ["cones","noodles"],
+    blocks: [
+      { classes: ["Kimrey (2nd)"], add: ["foamballs"], remove: [] },
+      { classes: ["Allmond (1st)"], add: ["jumpropes","beanbags"], remove: ["foamballs"] },
+      { classes: ["Tilley (5th)"], add: ["foamballs","basketballs"], remove: ["jumpropes","beanbags"] },
+      { classes: ["Caldwell (K5)", "Sharpe (K5)"], add: ["pitballs","hoops"], remove: ["basketballs","foamballs"], alert: "⚠ 5 min — ball bin swap only. K5 x2 — same setup runs twice" },
+      { classes: ["Wright (1st)"], add: ["foamballs","jumpropes"], remove: ["pitballs","hoops"], alert: "⚠ 5 min — add foam balls, noodles already out" },
+    ],
+  },
+  Wednesday: {
+    stageAtStart: ["cones","noodles","foamballs","basketballs"],
+    blocks: [
+      { classes: ["Kimrey (2nd)", "Midkiff (2nd)", "Owens (2nd)"], add: [], remove: [], note: "2nd grade triple — same setup runs 3x" },
+      { classes: ["Allmond (1st)"], add: ["jumpropes","beanbags"], remove: ["basketballs"], note: "Lunch 10:40–11:20 — swap during break" },
+      { classes: ["Sharpe (K5)"], add: ["pitballs","hoops"], remove: ["foamballs","jumpropes","beanbags"] },
+      { classes: ["Wright (1st)", "Walker (1st)"], add: ["foamballs","jumpropes"], remove: ["pitballs","hoops"], note: "1st x2 — same setup runs twice" },
+    ],
+  },
+  Thursday: {
+    stageAtStart: ["cones","noodles","foamballs","basketballs"],
+    blocks: [
+      { classes: ["Bean (5th)", "Tilley (5th)"], add: [], remove: [], note: "5th x2 — go complex. Relay stations ok. Same setup runs twice." },
+      { classes: ["Allred (2nd)"], add: [], remove: ["basketballs"], note: "50 min planning before this — prep 2nd during that window" },
+      { classes: ["Mills (K5)", "Brown (K5)", "Carr (K5)"], add: ["pitballs","hoops"], remove: ["foamballs"], note: "Lunch 11:25–12:25 — set up K5 triple ahead of time. Runs 3x." },
+      { classes: ["Sockwell (1st)"], add: ["foamballs","jumpropes"], remove: ["pitballs","hoops"], alert: "⚠ 5 min — add foam balls only, noodles already out" },
+    ],
+  },
+  Friday: {
+    stageAtStart: ["cones","noodles"],
+    blocks: [
+      { classes: ["Midkiff (2nd)", "Allred (2nd)"], add: ["foamballs"], remove: [], note: "2nd x2 — same setup runs twice" },
+      { classes: ["Walker (1st)"], add: ["jumpropes","beanbags"], remove: [], note: "Lunch 10:40–11:20 — swap during break" },
+      { classes: ["Brown (K5)", "Mills (K5)"], add: ["pitballs","hoops"], remove: ["foamballs","jumpropes","beanbags"], alert: "10 min transition — K5 pair runs back-to-back" },
+      { classes: ["Poser (1st)", "Sockwell (1st)"], add: ["foamballs","jumpropes"], remove: ["pitballs","hoops"], note: "1st x2 — everything already staged, just swap ball bin" },
+    ],
+  },
+};
+
+// ─── THE ROYAL WAY — Kingdom Kids Chapel Themes ──────────────────────────────
+const ROYAL_WAY = [
+  {
+    month: "August", chapelTheme: "—", royalTheme: "—", virtue: "—",
+    verse: "—", verseRef: "—",
+    note: "No chapel theme assigned — use as welcome-back month",
+    games: ["Four Corners","Fire & Ice Tag","Royal Gallery"],
+  },
+  {
+    month: "September", chapelTheme: "Kingdom Kids", royalTheme: "I Am a Child of the King",
+    virtue: "Acceptance",
+    virtueNote: "We accept all those around us because we were adopted into God's family",
+    verse: "See what great love the Father has lavished on us, that we should be called children of God!", verseRef: "1 John 3:1",
+    games: ["Shepherd & Sheep","Stuck in the Mud","Royal Gallery","Color Sort"],
+  },
+  {
+    month: "October", chapelTheme: "Kingdom Character", royalTheme: "Kingdom Character",
+    virtue: "Integrity & Honesty",
+    virtueNote: "Doing what is right when no one is watching",
+    verse: "Whoever walks in integrity walks securely, but whoever takes crooked paths will be found out.", verseRef: "Proverbs 10:9",
+    games: ["Head Shoulders Knees Cone","Scarf Flag Tag","Jailbreak Dodgeball","Rock Paper Scissors Tag"],
+  },
+  {
+    month: "November", chapelTheme: "Kingdom Courage", royalTheme: "Kingdom Courage",
+    virtue: "Courage",
+    virtueNote: "Standing for what is right",
+    verse: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", verseRef: "Joshua 1:9",
+    games: ["Four Corners","Jet Ball","Jailbreak Dodgeball","Watchtower","Knockout"],
+  },
+  {
+    month: "December", chapelTheme: "Kingdom Hope", royalTheme: "Kingdom Hope",
+    virtue: "Kindness",
+    virtueNote: "A heart touched by Jesus speaks kind words",
+    verse: "She opens her arms to the poor and extends her hands to the needy.", verseRef: "Proverbs 31:20",
+    games: ["Fruit of the Spirit Dodgeball","Thing 1 & Thing 2 Cleanup","Human Foosball","Stuck in the Mud"],
+  },
+  {
+    month: "January", chapelTheme: "Kingdom Wisdom", royalTheme: "Kingdom Wisdom",
+    virtue: "Responsibility",
+    virtueNote: "We are responsible for making Godly choices",
+    verse: "Blessed are those who find wisdom, those who gain understanding.", verseRef: "Proverbs 3:13",
+    games: ["Rock Paper Scissors Tag","Head Shoulders Knees Cone","Royal Olympics","Scooter Flag Tag"],
+  },
+  {
+    month: "February", chapelTheme: "Kingdom Love", royalTheme: "Kingdom Love",
+    virtue: "Compassion",
+    virtueNote: "Caring about others enough to help them",
+    verse: "Two are better than one, because they have a good return for their labor.", verseRef: "Ecclesiastes 4:9",
+    games: ["Human Foosball","Stuck in the Mud","Shepherd & Sheep","Fruit of the Spirit Dodgeball"],
+  },
+  {
+    month: "March", chapelTheme: "Kingdom Mission", royalTheme: "Kingdom Mission",
+    virtue: "Encouragement",
+    virtueNote: "Using our words to build others up; sharing Jesus",
+    verse: "Therefore encourage one another and build each other up, just as in fact you are doing.", verseRef: "1 Thessalonians 5:11",
+    games: ["Thing 1 & Thing 2 Cleanup","Royal Obstacle Course","Watchtower","Gaga Ball"],
+  },
+  {
+    month: "April", chapelTheme: "Kingdom Gratitude", royalTheme: "Kingdom Gratitude",
+    virtue: "Gratitude",
+    virtueNote: "I recognize God\'s goodness and express thanks",
+    verse: "Give thanks to the Lord, for he is good; his love endures forever.", verseRef: "Psalm 107:1",
+    games: ["Color Sort","Royal Gallery","Four Corners","Royal Obstacle Course"],
+  },
+  {
+    month: "May", chapelTheme: "—", royalTheme: "—", virtue: "—",
+    verse: "—", verseRef: "—",
+    note: "End-of-year wrap-up — revisit favorite games from each Royal Way theme",
+    games: ["Royal Olympics","Knockout","Gaga Ball","Human Foosball"],
+  },
+];
+
+// ─── COMPONENTS ───────────────────────────────────────────────────────────
+function GameCard({ game }) {
+  const isCustom = game.custom === true;
+  const [open, setOpen] = useState(false);
+  const catColor = {
+    "Tag": "#7C3AED", "Dodgeball": "#DC2626",
+    "Fitness Station": "#059669", "Cooperative": "#0891B2",
+  }[game.category] || ROYAL_BLUE;
+
+  return (
+    <div style={{ border: `1px solid #E5E7EB`, borderRadius: 12, marginBottom: 10, overflow: "hidden", boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
+      <button onClick={() => setOpen(o => !o)} style={{ width: "100%", textAlign: "left", border: "none", cursor: "pointer", background: open ? LIGHT_BLUE : WHITE, padding: "12px 16px", display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+            <span style={{ fontWeight: 800, color: ROYAL_BLUE, fontSize: 14 }}>{game.name}</span>
+            {game.existing && <Badge text="✓ Already Using" bg="#DCFCE7" color="#166534" small />}
+            <Badge text={game.category} bg={catColor + "22"} color={catColor} small />
+          </div>
+          <div style={{ display: "flex", gap: 6, marginTop: 5, flexWrap: "wrap" }}>
+            {game.grades.map(g => <GradePill key={g} grade={g} />)}
+            <span style={{ fontSize: 10, color: GRAY }}>⏱ {game.time} · {game.space} court</span>
+          </div>
+        </div>
+        <span style={{ color: GOLD, fontSize: 18, fontWeight: 700, marginLeft: 8 }}>{open ? "▲" : "▼"}</span>
+      </button>
+      {open && (
+        <div style={{ padding: "14px 16px", background: WHITE, borderTop: `1px solid ${LIGHT_BLUE}` }}>
+          {/* Equipment */}
+          <div style={{ marginBottom: 12 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: GRAY, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Equipment</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>{game.equip.map(e => <ETag key={e} id={e} />)}</div>
+          </div>
+          {/* Setup */}
+          <div style={{ marginBottom: 12 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: GRAY, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Setup</div>
+            <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{game.setup}</div>
+          </div>
+          {/* How to play */}
+          <div style={{ marginBottom: 12 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: GRAY, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>How to Play</div>
+            {game.how.map((step, i) => (
+              <div key={i} style={{ display: "flex", gap: 8, marginBottom: 6, alignItems: "flex-start" }}>
+                <div style={{ minWidth: 20, height: 20, borderRadius: "50%", background: ROYAL_BLUE, color: WHITE, fontSize: 10, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{i+1}</div>
+                <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{step}</div>
+              </div>
+            ))}
+          </div>
+          {/* Biblical Connection */}
+          <div style={{ background: LIGHT_GOLD, borderRadius: 10, padding: "12px 14px", borderLeft: `4px solid ${GOLD}`, marginBottom: 10 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: "#92400E", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>✝ Biblical Connection — {game.biblical.theme}</div>
+            <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.6, marginBottom: 6, fontStyle: "italic" }}>{game.biblical.connection}</div>
+            <div style={{ fontSize: 11, fontWeight: 600, color: ROYAL_BLUE, marginBottom: 4 }}>📖 {game.biblical.verse}</div>
+            <div style={{ fontSize: 11, color: "#92400E", fontWeight: 600 }}>💬 Debrief: <span style={{ fontWeight: 400, fontStyle: "italic" }}>{game.biblical.debrief}</span></div>
+          </div>
+          {/* Variations */}
+          {game.variations?.length > 0 && (
+            <div style={{ background: LIGHT_GRAY, borderRadius: 8, padding: "10px 12px", marginBottom: 10 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: GRAY, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>Variations</div>
+              {game.variations.map((v, i) => <div key={i} style={{ fontSize: 12, color: "#374151", marginBottom: 3 }}>• {v}</div>)}
+            </div>
+          )}
+          {/* Tips */}
+          <div style={{ background: LIGHT_BLUE, borderRadius: 8, padding: "10px 12px" }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: ROYAL_BLUE, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 3 }}>💡 Teacher Tips</div>
+            <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.5 }}>{game.tips}</div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function DayEquipCard({ day, data }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ border: `1px solid #E5E7EB`, borderRadius: 12, marginBottom: 10, overflow: "hidden" }}>
+      <button onClick={() => setOpen(o => !o)} style={{ width: "100%", textAlign: "left", border: "none", cursor: "pointer", background: open ? LIGHT_BLUE : WHITE, padding: "12px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div>
+          <div style={{ fontWeight: 800, color: ROYAL_BLUE, fontSize: 14 }}>{day}</div>
+          <div style={{ fontSize: 11, color: GRAY, marginTop: 2 }}>
+            Stage at start: {data.stageAtStart.map(e => EQUIP_ICONS[e] || "•").join(" ")} {data.stageAtStart.join(", ")}
+          </div>
+        </div>
+        <span style={{ color: GOLD, fontSize: 18, fontWeight: 700 }}>{open ? "▲" : "▼"}</span>
+      </button>
+      {open && (
+        <div style={{ padding: "0 16px 14px", background: WHITE }}>
+          {/* Always out */}
+          <div style={{ background: LIGHT_BLUE, borderRadius: 8, padding: "10px 12px", margin: "10px 0" }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: ROYAL_BLUE, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>📦 Stage at Gym Start</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>{data.stageAtStart.map(e => <ETag key={e} id={e} />)}</div>
+            <div style={{ fontSize: 11, color: GRAY, marginTop: 5 }}>These stay out all day — never put away between classes.</div>
+          </div>
+          {/* Per-block */}
+          {data.blocks.map((block, i) => (
+            <div key={i} style={{ border: `1px solid ${LIGHT_BLUE}`, borderRadius: 10, padding: "10px 12px", marginBottom: 8 }}>
+              {/* Class header */}
+              <div style={{ fontWeight: 700, color: ROYAL_BLUE, fontSize: 12, marginBottom: 6 }}>
+                {block.classes.join(" → ")}
+              </div>
+              {block.alert && (
+                <div style={{ background: "#FEF3C7", borderRadius: 6, padding: "5px 8px", marginBottom: 6, fontSize: 11, color: "#92400E", fontWeight: 600 }}>
+                  {block.alert}
+                </div>
+              )}
+              {block.note && (
+                <div style={{ fontSize: 11, color: GRAY, marginBottom: 6, fontStyle: "italic" }}>📝 {block.note}</div>
+              )}
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {block.add.length > 0 && (
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: "#059669", textTransform: "uppercase", marginBottom: 4 }}>✅ Add</div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                      {block.add.map(e => <ETag key={e} id={e} />)}
+                    </div>
+                  </div>
+                )}
+                {block.remove.length > 0 && (
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: "#DC2626", textTransform: "uppercase", marginBottom: 4 }}>🗑 Put Away</div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                      {block.remove.map(e => <ETag key={e} id={e} />)}
+                    </div>
+                  </div>
+                )}
+                {block.add.length === 0 && block.remove.length === 0 && (
+                  <div style={{ fontSize: 12, color: "#059669", fontWeight: 600 }}>♻️ No reset needed — same setup continues</div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CKHTab() {
+  const [expanded, setExpanded] = useState(null);
+
+  return (
+    <div>
+      {/* Header */}
+      <div style={{ background: `linear-gradient(135deg, ${ROYAL_BLUE}, #2A5298)`, borderRadius: 12, padding: "14px 16px", marginBottom: 16 }}>
+        <div style={{ color: GOLD, fontWeight: 800, fontSize: 14, marginBottom: 4 }}>👑 The Royal Way — Kingdom Kids Chapel Integration</div>
+        <div style={{ color: WHITE, fontSize: 12, lineHeight: 1.6 }}>
+          Monthly chapel themes from Kingdom Kids, pre-mapped to PE games that reinforce the virtue and biblical connection for that month.
+          As you add new games, they'll be tagged here automatically by theme.
+        </div>
+      </div>
+
+      {ROYAL_WAY.map((row, i) => {
+        const hasTheme = row.chapelTheme !== "—";
+        const isOpen = expanded === i;
+        return (
+          <div key={row.month} style={{ background: WHITE, borderRadius: 12, marginBottom: 10, boxShadow: "0 1px 4px rgba(0,0,0,0.07)", border: `1px solid ${hasTheme ? GOLD : "#E5E7EB"}`, overflow: "hidden" }}>
+            {/* Month header row */}
+            <button onClick={() => setExpanded(isOpen ? null : i)} style={{ width: "100%", textAlign: "left", border: "none", cursor: "pointer", background: isOpen ? LIGHT_BLUE : WHITE, padding: "12px 14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                  <span style={{ fontWeight: 800, color: ROYAL_BLUE, fontSize: 15 }}>{row.month}</span>
+                  {hasTheme && <span style={{ background: LIGHT_GOLD, color: "#92400E", borderRadius: 6, padding: "2px 8px", fontSize: 11, fontWeight: 700 }}>{row.chapelTheme}</span>}
+                </div>
+                {hasTheme && (
+                  <div style={{ marginTop: 3, fontSize: 12, color: ROYAL_BLUE, fontWeight: 700 }}>{row.virtue} — <span style={{ fontWeight: 400, color: GRAY }}>{row.virtueNote}</span></div>
+                )}
+                {!hasTheme && row.note && (
+                  <div style={{ marginTop: 3, fontSize: 12, color: GRAY, fontStyle: "italic" }}>{row.note}</div>
+                )}
+              </div>
+              <span style={{ color: GOLD, fontSize: 18, fontWeight: 700, marginLeft: 8 }}>{isOpen ? "▲" : "▼"}</span>
+            </button>
+
+            {/* Expanded content */}
+            {isOpen && (
+              <div style={{ padding: "14px 16px", borderTop: `1px solid ${LIGHT_BLUE}` }}>
+                {/* Royal Way theme */}
+                {hasTheme && (
+                  <>
+                    <div style={{ background: LIGHT_GOLD, borderRadius: 10, padding: "10px 14px", marginBottom: 12, borderLeft: `4px solid ${GOLD}` }}>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: "#92400E", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>✝ This Month's Theme</div>
+                      <div style={{ fontWeight: 800, color: ROYAL_BLUE, fontSize: 14, marginBottom: 2 }}>{row.royalTheme}</div>
+                      <div style={{ fontSize: 12, color: "#374151", marginBottom: 6 }}><strong>{row.virtue}:</strong> {row.virtueNote}</div>
+                      <div style={{ fontSize: 11, color: ROYAL_BLUE, fontWeight: 600 }}>📖 {row.verse}</div>
+                      <div style={{ fontSize: 11, color: GRAY, marginTop: 2 }}>— {row.verseRef}</div>
+                    </div>
+
+                    {/* Suggested games */}
+                    <div>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: GRAY, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 }}>🎯 PE Games for This Theme</div>
+                      {row.games.map(g => (
+                        <div key={g} style={{ display: "flex", alignItems: "center", gap: 8, padding: "7px 10px", borderRadius: 8, marginBottom: 6, background: LIGHT_BLUE, border: `1px solid #BFDBFE` }}>
+                          <span style={{ color: GOLD, fontWeight: 700, fontSize: 14 }}>→</span>
+                          <span style={{ fontSize: 13, color: ROYAL_BLUE, fontWeight: 600 }}>{g}</span>
+                        </div>
+                      ))}
+                      <div style={{ marginTop: 8, fontSize: 11, color: GRAY, fontStyle: "italic" }}>
+                        As you add new games with matching biblical connections, they'll be tagged to this month automatically.
+                      </div>
+                    </div>
+                  </>
+                )}
+                {!hasTheme && (
+                  <div style={{ fontSize: 12, color: GRAY, fontStyle: "italic", lineHeight: 1.6 }}>
+                    {row.note}<br/><br/>
+                    <strong style={{ color: ROYAL_BLUE }}>Suggested games:</strong>{" "}
+                    {row.games.join(", ")}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      <div style={{ background: LIGHT_GOLD, borderRadius: 10, padding: "12px 14px", marginTop: 6, borderLeft: `4px solid ${GOLD}` }}>
+        <div style={{ fontSize: 12, color: "#92400E", fontWeight: 700, marginBottom: 3 }}>📌 How to use this tab</div>
+        <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.7 }}>
+          Each month maps to the Kingdom Kids chapel theme for that month. Tap a month to see the virtue, scripture, and suggested PE games.
+          When you add new games, share the biblical tie-in and we'll add them to the right month automatically.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── MAIN ─────────────────────────────────────────────────────────────────
+
+// ─── SCHEDULE DATA ───────────────────────────────────────────────────────
+// loc: "Thompson" | "MAC" | "TBD"
+// court: "Full" | "Half" | "TBD"
+// msShare: true = sharing with MS (keep kids inside basketball court lines)
+const schedule = {
+  Monday: [
+    { time: "7:30–7:45",   label: "Morning Meeting",      type: "Meeting",   grade: null,  sameNext: false, note: "All-staff — required" },
+    { time: "7:55–8:15",   label: "Traffic Duty (C)",     type: "Meeting",   grade: null,  sameNext: false, note: "Post C" },
+    { time: "8:15–9:15",   label: "Planning",             type: "Planning",  grade: null,  sameNext: false, note: "60 min" },
+    { time: "9:15–9:55",   label: "Owens",                type: "Class",     grade: "2nd", sameNext: false, loc: "Thompson", court: "Combo", msShare: false, note: "w/ Meadows/Miller" },
+    { time: "9:55–10:45",  label: "Planning",             type: "Planning",  grade: null,  sameNext: false, note: "50 min" },
+    { time: "10:45–11:15", label: "Lunch",                type: "Lunch",     grade: null,  sameNext: false, note: "30 min" },
+    { time: "11:20–12:00", label: "Poser",                type: "Class",     grade: "1st", sameNext: false, loc: "Thompson", court: "Full",  msShare: false },
+    { time: "12:00–12:15", label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "15 min" },
+    { time: "12:15–12:45", label: "Caldwell",             type: "Class",     grade: "K5",  sameNext: false, loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Cranford same time" },
+    { time: "12:45–1:00",  label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "15 min" },
+    { time: "1:00–1:40",   label: "Phelps",               type: "Class",     grade: "5th", sameNext: false, loc: "Thompson", court: "Half",  msShare: true,  note: "Meadows-MS" },
+    { time: "1:40–1:45",   label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min ⚠ ball swap" },
+    { time: "1:45–2:15",   label: "Carr",                 type: "Class",     grade: "K5",  sameNext: false, loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Cranford same time" },
+    { time: "2:15–3:10",   label: "Planning",             type: "EOD",       grade: null,  sameNext: false, note: "55 min" },
+  ],
+  Tuesday: [
+    { time: "7:30–7:45",   label: "Morning Meeting",      type: "Meeting",   grade: null,  sameNext: false, note: "All-staff — required" },
+    { time: "7:55–8:15",   label: "Traffic Duty (C)",     type: "Meeting",   grade: null,  sameNext: false, note: "Post C" },
+    { time: "8:30–9:10",   label: "ES Chapel",            type: "Chapel",    grade: null,  sameNext: false },
+    { time: "9:10–10:00",  label: "Planning",             type: "Planning",  grade: null,  sameNext: false, note: "50 min" },
+    { time: "10:00–10:40", label: "Kimrey",               type: "Class",     grade: "2nd", sameNext: false, loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Willis same time" },
+    { time: "10:45–11:15", label: "Lunch",                type: "LunchDesk", grade: null,  sameNext: false, note: "30 min — at desk" },
+    { time: "11:20–12:00", label: "Wright",               type: "Class",     grade: "1st", sameNext: false, loc: "Thompson", court: "Full",  msShare: false },
+    { time: "12:00–12:15", label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "15 min" },
+    { time: "12:15–12:55", label: "Tilley",               type: "Class",     grade: "5th", sameNext: false, loc: "Thompson", court: "Combo", msShare: false, note: "w/ Meadows/Dolby" },
+    { time: "12:55–1:00",  label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "1:00–1:30",   label: "Caldwell",             type: "Class",     grade: "K5",  sameNext: true,  loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/White same time" },
+    { time: "1:30–1:35",   label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "1:35–2:05",   label: "Sharpe",               type: "Class",     grade: "K5",  sameNext: false, loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Combs same time" },
+    { time: "2:05–2:10",   label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "2:10–2:50",   label: "Allmond",              type: "Class",     grade: "1st", sameNext: false, loc: "Thompson", court: "Full",  msShare: false },
+    { time: "2:50–3:10",   label: "Planning",             type: "EOD",       grade: null,  sameNext: false, note: "20 min" },
+  ],
+  Wednesday: [
+    { time: "7:55–8:15",   label: "Traffic Duty (C)",     type: "Meeting",   grade: null,  sameNext: false, note: "Post C" },
+    { time: "8:30–9:10",   label: "Kimrey",               type: "Class",     grade: "2nd", sameNext: true,  loc: "Thompson", court: "Half",  msShare: false, note: "Meadows in MS gym" },
+    { time: "9:10–9:15",   label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "9:15–9:55",   label: "Midkiff",              type: "Class",     grade: "2nd", sameNext: false, loc: "Thompson", court: "Combo", msShare: false, note: "w/ Meadows/Miller" },
+    { time: "9:55–10:45",  label: "Planning",             type: "Planning",  grade: null,  sameNext: false, note: "50 min" },
+    { time: "10:45–11:15", label: "Lunch",                type: "LunchDesk", grade: null,  sameNext: false, note: "30 min — at desk" },
+    { time: "11:20–12:00", label: "Allmond",              type: "Class",     grade: "1st", sameNext: false, loc: "Thompson", court: "Full",  msShare: false },
+    { time: "12:00–12:20", label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "20 min" },
+    { time: "12:20–12:50", label: "Sharpe",               type: "Class",     grade: "K5",  sameNext: false, loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Bean same time" },
+    { time: "12:50–1:00",  label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "10 min" },
+    { time: "1:00–1:40",   label: "Wright",               type: "Class",     grade: "1st", sameNext: true,  loc: "Thompson", court: "Half",  msShare: true,  note: "Meadows-MS" },
+    { time: "1:40–1:45",   label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "1:45–2:25",   label: "Walker",               type: "Class",     grade: "1st", sameNext: false, loc: "Thompson", court: "Half",  msShare: false },
+    { time: "2:25–3:10",   label: "Planning",             type: "EOD",       grade: null,  sameNext: false, note: "45 min" },
+    { time: "3:30–4:30",   label: "Wed. PM Meeting",      type: "Meeting",   grade: null,  sameNext: false, note: "Wk1: All-faculty PD (Cafe C) • Wk2: ES Leveled (B Cafe) • Wk3: Curriculum/Dept Head • Wk4: New Teacher KE • Wk5: No meeting" },
+  ],
+  Thursday: [
+    { time: "7:30–7:45",   label: "Morning Meeting",      type: "Meeting",   grade: null,  sameNext: false, note: "All-staff — required" },
+    { time: "7:55–8:15",   label: "Traffic Duty (C)",     type: "Meeting",   grade: null,  sameNext: false, note: "Post C" },
+    { time: "8:30–9:10",   label: "Bean",                 type: "Class",     grade: "5th", sameNext: true,  loc: "Thompson", court: "Combo", msShare: false, note: "w/ Meadows/Phelps — 1st sem." },
+    { time: "9:10–9:15",   label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "9:15–9:55",   label: "Tilley",               type: "Class",     grade: "5th", sameNext: false, loc: "Thompson", court: "Combo", msShare: false, note: "w/ Meadows/Dolby" },
+    { time: "9:55–10:00",  label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "10:00–10:40", label: "Owens",                type: "Class",     grade: "2nd", sameNext: true,  loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Sanders same time" },
+    { time: "10:40–10:45", label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "10:45–11:25", label: "Allred",               type: "Class",     grade: "2nd", sameNext: false, loc: "Thompson", court: "Full",  msShare: false, note: "Meadows in MS gym" },
+    { time: "11:30–12:15", label: "Lunch",                type: "Lunch",     grade: null,  sameNext: false, note: "45 min — full break ✓" },
+    { time: "12:25–12:55", label: "Mills",                type: "Class",     grade: "K5",  sameNext: true,  loc: "Thompson", court: "Full",  msShare: false },
+    { time: "12:55–1:00",  label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "1:00–1:30",   label: "Brown",                type: "Class",     grade: "K5",  sameNext: true,  loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Stout same time" },
+    { time: "1:30–1:35",   label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "1:35–2:05",   label: "Carr",                 type: "Class",     grade: "K5",  sameNext: false, loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Wall same time" },
+    { time: "2:05–2:10",   label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "2:10–2:50",   label: "Sockwell",             type: "Class",     grade: "1st", sameNext: false, loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/White same time" },
+    { time: "2:50–3:10",   label: "Planning",             type: "EOD",       grade: null,  sameNext: false, note: "20 min" },
+  ],
+  Friday: [
+    { time: "7:55–8:15",   label: "Traffic Duty (C)",     type: "Meeting",   grade: null,  sameNext: false, note: "Post C" },
+    { time: "8:15–9:15",   label: "Planning",             type: "Planning",  grade: null,  sameNext: false, note: "60 min" },
+    { time: "9:15–9:55",   label: "Midkiff",              type: "Class",     grade: "2nd", sameNext: true,  loc: "Thompson", court: "Full",  msShare: false },
+    { time: "9:55–10:00",  label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "10:00–10:40", label: "Allred",               type: "Class",     grade: "2nd", sameNext: false, loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Kohns same time" },
+    { time: "10:45–11:15", label: "Lunch",                type: "LunchDesk", grade: null,  sameNext: false, note: "30 min — at desk" },
+    { time: "11:20–12:00", label: "Walker",               type: "Class",     grade: "1st", sameNext: false, loc: "Thompson", court: "Full",  msShare: false },
+    { time: "12:00–12:10", label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "10 min" },
+    { time: "12:10–12:40", label: "Brown",                type: "Class",     grade: "K5",  sameNext: true,  loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Combs same time" },
+    { time: "12:40–12:45", label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "12:45–1:15",  label: "Mills",                type: "Class",     grade: "K5",  sameNext: false, loc: "Thompson", court: "Half",  msShare: true,  note: "Meadows-MS" },
+    { time: "1:15–1:25",   label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "10 min" },
+    { time: "1:25–2:05",   label: "Poser",                type: "Class",     grade: "1st", sameNext: true,  loc: "Thompson", court: "Half",  msShare: false },
+    { time: "2:05–2:10",   label: "",                     type: "Transit",   grade: null,  sameNext: false, note: "5 min" },
+    { time: "2:10–2:50",   label: "Sockwell",             type: "Class",     grade: "1st", sameNext: false, loc: "Thompson", court: "Half",  msShare: false, note: "Meadows/Stout same time" },
+    { time: "2:50–3:10",   label: "Planning",             type: "EOD",       grade: null,  sameNext: false, note: "20 min" },
+  ],
+};
+
+// ─── SUB-COMPONENTS ──────────────────────────────────────────────────────
+
+
+// Extra slot-type colors used by SlotBlock
+const GC_SLOT = {
+  Planning:  { bg: "#EFF6FF", text: "#1D4ED8", border: "#93C5FD" },
+  EOD:       { bg: "#F5F3FF", text: "#6D28D9", border: "#C4B5FD" },
+  Lunch:     { bg: "#ECFDF5", text: "#065F46", border: "#34D399" },
+  LunchDesk: { bg: "#FFF7ED", text: "#9A3412", border: "#FB923C" },
+  Chapel:    { bg: "#F5F3FF", text: "#6D28D9", border: "#C4B5FD" },
+  Meeting:   { bg: "#FDF4FF", text: "#7E22CE", border: "#D8B4FE" },
+};
+
+// ─── SCHEDULE COMPONENTS ─────────────────────────────────────────────────────
+const LOC_STYLE = {
+  Thompson: { bg: "#1B3A6B", color: "#fff" },
+  MAC:      { bg: "#C9A84C", color: "#1B3A6B" },
+  TBD:      { bg: "#E5E7EB", color: "#6B7280" },
+};
+const COURT_STYLE = {
+  Combo: { bg: "#1B3A6B", color: "#C9A84C" },   // navy + gold = combo class
+  Full:  { bg: "#DCFCE7", color: "#166534" },   // green = full court alone
+  Half:  { bg: "#FEF9C3", color: "#854D0E" },   // yellow = half court
+  TBD:   { bg: "#F3F4F6", color: "#6B7280" },
+};
+
+function SlotBlock({ slot, isFiltered, onClick }) {
+  const { time, label, type, grade, sameNext, note, loc, court, msShare } = slot;
+  if (type === "Transit") return (
+    <div style={{ background: "#FAFAFA", borderLeft: "3px solid #F3F4F6", borderBottom: "1px solid #F3F4F6", padding: "2px 8px", display: "flex", gap: 6, alignItems: "center" }}>
+      <span style={{ fontSize: 8, color: "#D1D5DB" }}>{time}</span>
+      <span style={{ fontSize: 8, color: note?.includes("⚠") ? "#F59E0B" : "#D1D5DB" }}>{note}</span>
+    </div>
+  );
+  const faded = isFiltered && type === "Class";
+  const s = type === "Class" ? (GC[grade] || {}) : (GC_SLOT[type] || GC_SLOT.Planning);
+  const ls = LOC_STYLE[loc] || LOC_STYLE.TBD;
+  const cs = COURT_STYLE[court] || COURT_STYLE.TBD;
+  return (
+    <div onClick={() => type === "Class" && onClick(grade)} style={{ background: faded ? "#F9FAFB" : s.bg, borderLeft: `3px solid ${faded ? "#E5E7EB" : s.border}`, borderBottom: "1px solid #E9EFF7", padding: "7px 8px", cursor: type === "Class" ? "pointer" : "default", opacity: faded ? 0.3 : 1, transition: "all 0.15s" }}>
+      <div style={{ fontSize: 9, color: faded ? "#C4C4C4" : GRAY }}>{time}</div>
+      {type === "Class" && <>
+        <div style={{ fontWeight: 700, fontSize: 12, color: faded ? "#C4C4C4" : s.text }}>{label}</div>
+        <div style={{ marginTop: 3, display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
+          <GradePill grade={grade} />
+          {sameNext && !faded && <span style={{ fontSize: 9, color: s.border, fontWeight: 700 }}>↕</span>}
+        </div>
+        {!faded && (
+          <div style={{ marginTop: 4, display: "flex", gap: 3, flexWrap: "wrap" }}>
+            <span style={{ fontSize: 9, fontWeight: 700, borderRadius: 4, padding: "1px 5px", background: ls.bg, color: ls.color }}>{loc || "TBD"}</span>
+            <span style={{ fontSize: 9, fontWeight: 600, borderRadius: 4, padding: "1px 5px", background: cs.bg, color: cs.color }}>{court === "TBD" ? "? court" : court}</span>
+            {msShare && <span style={{ fontSize: 9, fontWeight: 700, borderRadius: 4, padding: "1px 5px", background: "#FEE2E2", color: "#991B1B" }}>⚠ MS</span>}
+          </div>
+        )}
+      </>}
+      {type === "Planning"  && <div style={{ fontWeight: 600, fontSize: 11, color: s.text }}>📝 {label}<div style={{ fontSize: 9, color: s.border }}>{note}</div></div>}
+      {type === "EOD"       && <div style={{ fontWeight: 600, fontSize: 11, color: s.text }}>📝 Planning<div style={{ fontSize: 9, color: s.border }}>{note}</div></div>}
+      {type === "Lunch"     && <div style={{ fontWeight: 700, fontSize: 12, color: s.text }}>🍽 Lunch<div style={{ fontSize: 9, color: s.border }}>{note}</div></div>}
+      {type === "LunchDesk" && <div style={{ fontWeight: 700, fontSize: 12, color: s.text }}>🥪 Lunch<div style={{ fontSize: 9, color: s.border }}>{note}</div></div>}
+      {type === "Chapel"    && <div style={{ fontWeight: 600, fontSize: 11, color: s.text }}>✝ ES Chapel</div>}
+      {type === "Meeting"   && <div style={{ fontWeight: 700, fontSize: 11, color: s.text }}>🗓 {label}<div style={{ fontSize: 9, color: s.border, marginTop: 2, lineHeight: 1.4 }}>{note}</div></div>}
+    </div>
+  );
+}
+
+function ScheduleTab({ activeGrade, setActiveGrade }) {
+  const toggleGrade = g => setActiveGrade(p => p === g ? null : g);
+  const days   = ["Monday","Tuesday","Wednesday","Thursday","Friday"];
+  const grades = ["K5","1st","2nd","5th"];
+  return (
+    <div>
+      {/* Grade filter */}
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
+        {grades.map(g => {
+          const c = GC[g]; const on = activeGrade === g;
+          return <button key={g} onClick={() => toggleGrade(g)} style={{ background: on ? c.border : c.bg, color: on ? WHITE : c.text, border: `2px solid ${c.border}`, borderRadius: 999, fontSize: 12, fontWeight: 700, padding: "4px 14px", cursor: "pointer" }}>{g}</button>;
+        })}
+        {activeGrade && <button onClick={() => setActiveGrade(null)} style={{ background: LIGHT_GRAY, color: GRAY, border: "2px solid #E5E7EB", borderRadius: 999, fontSize: 12, fontWeight: 700, padding: "4px 12px", cursor: "pointer" }}>✕ All</button>}
+      </div>
+      {/* Legend */}
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10, fontSize: 10, alignItems: "center" }}>
+        {[{color:"#F59E0B",label:"K5"},{color:"#3B82F6",label:"1st"},{color:"#10B981",label:"2nd"},{color:"#EF4444",label:"5th"},
+          {color:"#93C5FD",label:"📝 Planning"},{color:"#34D399",label:"🍽 Real lunch"},{color:"#FB923C",label:"🥪 Desk lunch"},{color:"#D8B4FE",label:"🗓 Meeting"}
+        ].map(l => (
+          <div key={l.label} style={{ display: "flex", alignItems: "center", gap: 3 }}>
+            <div style={{ width: 8, height: 8, borderRadius: 2, background: l.color }} />
+            <span style={{ color: GRAY }}>{l.label}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12, fontSize: 10, alignItems: "center" }}>
+        <span style={{ fontSize: 10, color: GRAY, fontWeight: 600 }}>Location:</span>
+        <span style={{ background: "#1B3A6B", color: "#fff", borderRadius: 4, padding: "1px 7px", fontSize: 10, fontWeight: 700 }}>Thompson</span>
+        <span style={{ background: "#C9A84C", color: "#1B3A6B", borderRadius: 4, padding: "1px 7px", fontSize: 10, fontWeight: 700 }}>MAC</span>
+        <span style={{ background: "#E5E7EB", color: "#6B7280", borderRadius: 4, padding: "1px 7px", fontSize: 10, fontWeight: 700 }}>TBD</span>
+        <span style={{ fontSize: 10, color: GRAY, fontWeight: 600, marginLeft: 6 }}>Court:</span>
+        <span style={{ background: "#1B3A6B", color: "#C9A84C", borderRadius: 4, padding: "1px 7px", fontSize: 10, fontWeight: 700 }}>Combo</span>
+        <span style={{ background: "#DCFCE7", color: "#166534", borderRadius: 4, padding: "1px 7px", fontSize: 10, fontWeight: 600 }}>Full</span>
+        <span style={{ background: "#FEF9C3", color: "#854D0E", borderRadius: 4, padding: "1px 7px", fontSize: 10, fontWeight: 600 }}>Half</span>
+        <span style={{ background: "#FEE2E2", color: "#991B1B", borderRadius: 4, padding: "1px 7px", fontSize: 10, fontWeight: 700, marginLeft: 6 }}>⚠ MS shared — stay inside court lines</span>
+      </div>
+      {/* Grid */}
+      <div style={{ display: "flex", gap: 4, overflowX: "auto", paddingBottom: 8 }}>
+        {days.map(day => (
+          <div key={day} style={{ flex: 1, minWidth: 120 }}>
+            <div style={{ background: ROYAL_BLUE, color: WHITE, fontWeight: 800, fontSize: 12, padding: "7px 6px", borderRadius: "8px 8px 0 0", textAlign: "center" }}>{day}</div>
+            <div style={{ border: `1px solid ${LIGHT_BLUE}`, borderTop: "none", borderRadius: "0 0 8px 8px", overflow: "hidden" }}>
+              {schedule[day].map((slot, i) => (
+                <SlotBlock key={i} slot={slot} isFiltered={activeGrade !== null && slot.type === "Class" && slot.grade !== activeGrade} onClick={toggleGrade} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* Lunch note */}
+      <div style={{ background: "#FFF7ED", border: "1px solid #FB923C", borderRadius: 10, padding: "12px 14px", marginTop: 14 }}>
+        <div style={{ fontWeight: 700, color: "#9A3412", fontSize: 13, marginBottom: 4 }}>🥪 Lunch Note</div>
+        <div style={{ fontSize: 12, color: "#9A3412", lineHeight: 1.8 }}>
+          <strong>Thursday</strong> is your only full lunch break (11:25–12:25, 60 min).
+          Mon, Tue, Wed, and Fri show "Lunch" at 10:40–11:20 — that's your eating window but it's at your desk between classes, not a real break. Worth flagging with admin.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+// ─── CURRICULUM MAP ──────────────────────────────────────────────────────────
+// Unit, skills, and Royal Way devotion hook by grade and month
+const CURRICULUM = {
+  K5: {
+    August:    { unit: "Rules & Safety",        skills: "Personal space, listening, equipment safety",                  devotion: "God made our bodies to move safely — we honor Him by respecting our space and each other." },
+    September: { unit: "Locomotor Skills",       skills: "Walk, run, hop, jump, skip, gallop, slide",                   devotion: "Acceptance: just like God accepts us all, we welcome every mover — fast, slow, and everything between." },
+    October:   { unit: "Ball Skills",            skills: "Roll, underhand throw, catch, kick stationary ball",           devotion: "Integrity: give an honest effort even when no one's watching your throw." },
+    November:  { unit: "Balance & Coordination", skills: "Balance, bean bag activities, obstacle courses",               devotion: "Courage: try the hard balance even when it feels wobbly — God steadies us when we trust Him." },
+    December:  { unit: "Gymnastics",             skills: "Animal walks, log rolls, forward rolls, body shapes",          devotion: "Hope: Christmas reminds us Jesus came for all of us. Every body roll is a gift of a body God made." },
+    January:   { unit: "Recreational Games",     skills: "Parachute, scooter boards, bean bag games, cooperative",       devotion: "Wisdom: choosing to take turns and share is a Godly choice — Proverbs 3." },
+    February:  { unit: "Cooperative Games",      skills: "Sharing, teamwork, parachute activities",                      devotion: "Compassion: caring about your teammate enough to help them win too." },
+    March:     { unit: "Fitness Fun",            skills: "Exercise stations, stretching, running games",                 devotion: "Encouragement: use your words to cheer someone on today — 1 Thessalonians 5:11." },
+    April:     { unit: "Outdoor Games",          skills: "Relays, tag games, obstacle courses",                          devotion: "Gratitude: thank God for legs that run, arms that throw, and friends to play with." },
+    May:       { unit: "Field Day Review",       skills: "Review all skills",                                            devotion: "Finish strong — run the race marked out for you. Hebrews 12:1." },
+  },
+  "1st": {
+    August:    { unit: "Rules & Cooperative Games", skills: "Teamwork, safety",                                          devotion: "God made us for community — we play better together than alone." },
+    September: { unit: "Locomotor Skills",           skills: "Combination movements, direction changes",                 devotion: "Acceptance: every direction change is a chance to include someone new." },
+    October:   { unit: "Throwing & Catching",        skills: "Overhand throw, catching, rolling",                       devotion: "Integrity: call your own outs honestly. That's doing right when no one's watching." },
+    November:  { unit: "Fitness",                    skills: "Endurance, flexibility, muscular strength",                devotion: "Courage: push through when it gets hard — 'I can do all things through Christ.' Phil 4:13." },
+    December:  { unit: "Gymnastics",                 skills: "Balancing, rolls, sequencing",                             devotion: "Hope: Jesus' birth is the greatest gift. Our bodies are gifts too — 1 Cor 6:19." },
+    January:   { unit: "Lifetime Activities",        skills: "Jump rope, hula hoops, scooters, cooperative",             devotion: "Wisdom: choosing activities that build our bodies and friendships honors God." },
+    February:  { unit: "Basketball Basics",          skills: "Dribbling, passing, shooting",                             devotion: "Compassion: pass to the open player even when you want the shot." },
+    March:     { unit: "Soccer Basics",              skills: "Dribbling, kicking, trapping",                             devotion: "Encouragement: one word of praise after a missed kick — that's Kingdom Mission." },
+    April:     { unit: "Track & Field",              skills: "Running, jumping, relays",                                 devotion: "Gratitude: run with thankfulness — every stride is a gift." },
+    May:       { unit: "Field Day",                  skills: "Team challenges",                                          devotion: "Finish the year celebrating what God built in you — body, character, and courage." },
+  },
+  "2nd": {
+    August:    { unit: "Team Building",          skills: "Cooperation, communication",                                   devotion: "We were adopted into God's family — that means every player on this court belongs." },
+    September: { unit: "Movement Skills",        skills: "Agility, balance, coordination",                              devotion: "Acceptance: move at your pace — God made you exactly right." },
+    October:   { unit: "Manipulative Skills",    skills: "Throwing, catching, striking, dribbling",                     devotion: "Integrity: the strongest thrower isn't the one who throws hardest — it's the one who throws honestly." },
+    November:  { unit: "Fitness",                skills: "Heart health, flexibility, strength",                          devotion: "Courage: fitness is hard. Standing firm in hard things is what Kingdom character looks like." },
+    December:  { unit: "Gymnastics",             skills: "Balance sequences, rolling",                                   devotion: "Hope: Advent — waiting, preparing, practicing. Gymnastics takes the same patient hope." },
+    January:   { unit: "Lifetime Activities",    skills: "Jump rope, fitness stations, scooter hockey, parachute",       devotion: "Wisdom: choosing fun that also builds your body is a responsible, Godly choice." },
+    February:  { unit: "Basketball",             skills: "Passing, dribbling, layup introduction",                      devotion: "Compassion: celebrate your teammate's first made layup like it was yours." },
+    March:     { unit: "Soccer",                 skills: "Passing, dribbling, small-sided games",                       devotion: "Encouragement: two kind words per game. Go." },
+    April:     { unit: "Track & Field",          skills: "Sprints, relays, long jump",                                  devotion: "Gratitude: clap for the last finisher as loud as the first." },
+    May:       { unit: "Field Day",              skills: "Review and games",                                             devotion: "End well. Leave the gym better than you found it — people and floor both." },
+  },
+  "5th": {
+    August:    { unit: "Leadership & Sportsmanship", skills: "Team leadership, class expectations",                      devotion: "You're the oldest. That's not a rank — it's a responsibility. Serve the younger grades." },
+    September: { unit: "Fitness Assessment",         skills: "Goal setting, fitness components",                         devotion: "Wisdom: set a goal you'll actually work for. Responsibility starts with honest self-assessment." },
+    October:   { unit: "Football",                   skills: "Passing, receiving, strategy",                             devotion: "Courage: call a play that might not work. Leadership requires risk." },
+    November:  { unit: "Basketball",                 skills: "Team offense, defense, game play",                         devotion: "Kingdom Courage: defend what's right on and off the court." },
+    December:  { unit: "Volleyball",                 skills: "Serving, rotations, game strategy",                        devotion: "Hope: every serve is a new beginning — Christmas is God's greatest serve to us." },
+    January:   { unit: "Lifetime Activities",        skills: "Pickleball, badminton, Frisbee golf, fitness circuits",    devotion: "Wisdom & Responsibility: these are games you'll play your whole life. Learn them well." },
+    February:  { unit: "Soccer",                     skills: "Team strategy, positions",                                 devotion: "Compassion: the best teams make their weakest player look strong." },
+    March:     { unit: "Softball",                   skills: "Batting, fielding, game rules",                            devotion: "Encouragement: cheer every at-bat — including the strikeouts." },
+    April:     { unit: "Track & Field",              skills: "Timed races, relays, field events",                        devotion: "Gratitude: run your lane. Thank God for the body, the track, and the team." },
+    May:       { unit: "Field Day & Royal Olympics", skills: "Leadership, teamwork, fitness review, Presidential standards", devotion: "Honor God with your body — 1 Cor 6:19. Leave BCA stronger than you came in." },
+  },
+};
+
+// ─── PLANNER CONSTANTS ────────────────────────────────────────────────────────
+// Which grades appear on each day (in order they teach them)
+const DAY_GRADES = {
+  Monday:    ["2nd","1st","K5","5th","K5"],
+  Tuesday:   ["2nd","1st","5th","K5","K5","1st"],
+  Wednesday: ["2nd","2nd","1st","K5","1st","1st"],
+  Thursday:  ["5th","5th","2nd","2nd","K5","K5","K5","1st"],
+  Friday:    ["2nd","2nd","1st","K5","K5","1st","1st"],
+};
+
+const SCHOOL_MONTHS = [
+  { label: "August",    weeks: 2, start: "Aug 11" },
+  { label: "September", weeks: 4, start: "Sep 1"  },
+  { label: "October",   weeks: 4, start: "Oct 6"  },
+  { label: "November",  weeks: 4, start: "Nov 3"  },
+  { label: "December",  weeks: 2, start: "Dec 1"  },
+  { label: "January",   weeks: 4, start: "Jan 5"  },
+  { label: "February",  weeks: 4, start: "Feb 2"  },
+  { label: "March",     weeks: 4, start: "Mar 2"  },
+  { label: "April",     weeks: 4, start: "Apr 6"  },
+  { label: "May",       weeks: 4, start: "May 4"  },
+];
+
+// ─── PLANNER TAB ─────────────────────────────────────────────────────────────
+function PlannerTab({ games, plan, setPlan }) {
+  const [monthIdx, setMonthIdx]   = useState(0);
+  const [picking, setPicking]     = useState(null);     // { month, week, day, grade }
+  const [gameFilter, setGameFilter] = useState("All");
+  const [expandedWeek, setExpandedWeek] = useState(0);
+
+  const month = SCHOOL_MONTHS[monthIdx];
+  const royalRow = ROYAL_WAY.find(r => r.month === month.label);
+  const days = ["Monday","Tuesday","Wednesday","Thursday","Friday"];
+
+  // Get or init plan for a slot
+  const getSlot = (w, day, grade) => {
+    return plan?.[month.label]?.[w]?.[day]?.[grade] || null;
+  };
+
+  // Copy one grade's plan to all other classes of same grade across the whole week
+  const copyGradeAcrossDay = (w, sourceDay, grade) => {
+    const sourceSlot = getSlot(w, sourceDay, grade);
+    if (!sourceSlot) return;
+    const days = ["Monday","Tuesday","Wednesday","Thursday","Friday"];
+    setPlan(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      if (!next[month.label]) next[month.label] = {};
+      if (!next[month.label][w]) next[month.label][w] = {};
+      days.forEach(day => {
+        if ((DAY_GRADES[day]||[]).includes(grade)) {
+          if (!next[month.label][w][day]) next[month.label][w][day] = {};
+          next[month.label][w][day][grade] = { ...sourceSlot };
+        }
+      });
+      return next;
+    });
+  };
+
+  // Get/set warmup for a grade+week
+  const getWarmup = (w, grade) => plan?.[month.label]?.[w]?.["_warmup"]?.[grade] || null;
+  const setWarmup = (w, grade, value) => {
+    setPlan(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      if (!next[month.label]) next[month.label] = {};
+      if (!next[month.label][w]) next[month.label][w] = {};
+      if (!next[month.label][w]["_warmup"]) next[month.label][w]["_warmup"] = {};
+      next[month.label][w]["_warmup"][grade] = value;
+      return next;
+    });
+  };
+
+  // Save a slot
+  const setSlot = (w, day, grade, value) => {
+    setPlan(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      if (!next[month.label]) next[month.label] = {};
+      if (!next[month.label][w]) next[month.label][w] = {};
+      if (!next[month.label][w][day]) next[month.label][w][day] = {};
+      next[month.label][w][day][grade] = value;
+      return next;
+    });
+  };
+
+  // Clear a slot
+  const clearSlot = (w, day, grade) => {
+    setPlan(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      if (next?.[month.label]?.[w]?.[day]?.[grade]) {
+        delete next[month.label][w][day][grade];
+      }
+      return next;
+    });
+  };
+
+  // Copy entire week to next week
+  const copyWeekDown = (w) => {
+    if (w >= month.weeks - 1) return;
+    setPlan(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      if (!next[month.label]) next[month.label] = {};
+      const src = next?.[month.label]?.[w] || {};
+      next[month.label][w + 1] = JSON.parse(JSON.stringify(src));
+      return next;
+    });
+  };
+
+  // Collect all equip needed for a week
+  const weekEquip = (w) => {
+    const equip = new Set();
+    days.forEach(day => {
+      (DAY_GRADES[day] || []).forEach(grade => {
+        const slot = getSlot(w, day, grade);
+        if (slot?.gameId) {
+          const g = games.find(g => g.id === slot.gameId);
+          if (g) g.equip.forEach(e => equip.add(e));
+        }
+      });
+    });
+    return [...equip];
+  };
+
+  // Filtered games for picker
+  const pickerGames = picking
+    ? games.filter(g => gameFilter === "All" || g.grades.includes(gameFilter) || g.category === gameFilter)
+         .filter(g => !picking.grade || g.grades.includes(picking.grade))
+    : [];
+
+  const gradeColor = (grade) => GC[grade] || { bg: "#F3F4F6", text: "#374151", border: "#D1D5DB" };
+
+  return (
+    <div>
+      {/* Month navigator */}
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+        <button onClick={() => { setMonthIdx(i => Math.max(0, i-1)); setExpandedWeek(0); }}
+          style={{ background: monthIdx === 0 ? "#F3F4F6" : ROYAL_BLUE, color: monthIdx === 0 ? GRAY : WHITE,
+            border: "none", borderRadius: 8, padding: "7px 14px", fontWeight: 700, fontSize: 14, cursor: monthIdx === 0 ? "default" : "pointer" }}>‹</button>
+        <div style={{ flex: 1, textAlign: "center" }}>
+          <div style={{ fontWeight: 900, fontSize: 18, color: ROYAL_BLUE }}>{month.label}</div>
+          <div style={{ fontSize: 11, color: GRAY }}>{month.weeks} school weeks · starts {month.start}</div>
+        </div>
+        <button onClick={() => { setMonthIdx(i => Math.min(SCHOOL_MONTHS.length-1, i+1)); setExpandedWeek(0); }}
+          style={{ background: monthIdx === SCHOOL_MONTHS.length-1 ? "#F3F4F6" : ROYAL_BLUE, color: monthIdx === SCHOOL_MONTHS.length-1 ? GRAY : WHITE,
+            border: "none", borderRadius: 8, padding: "7px 14px", fontWeight: 700, fontSize: 14, cursor: monthIdx === SCHOOL_MONTHS.length-1 ? "default" : "pointer" }}>›</button>
+      </div>
+
+      {/* Royal Way banner for month */}
+      {royalRow && royalRow.chapelTheme !== "—" && (
+        <div style={{ background: `linear-gradient(135deg, ${ROYAL_BLUE}, #2A5298)`, borderRadius: 10, padding: "10px 14px", marginBottom: 14, display: "flex", gap: 12, alignItems: "center" }}>
+          <div style={{ flex: 1 }}>
+            <div style={{ color: GOLD, fontWeight: 800, fontSize: 12 }}>👑 {royalRow.chapelTheme} — {royalRow.virtue}</div>
+            <div style={{ color: WHITE, fontSize: 11, marginTop: 2, opacity: 0.85 }}>{royalRow.virtueNote}</div>
+          </div>
+          <div style={{ background: "rgba(201,168,76,0.2)", borderRadius: 8, padding: "6px 10px", textAlign: "center", flexShrink: 0 }}>
+            <div style={{ color: GOLD, fontSize: 10, fontWeight: 700 }}>📖 {royalRow.verseRef}</div>
+          </div>
+        </div>
+      )}
+
+      {/* Weeks */}
+      {Array.from({ length: month.weeks }, (_, w) => {
+        const isOpen = expandedWeek === w;
+        const allEquip = weekEquip(w);
+        const filledSlots = days.reduce((acc, day) =>
+          acc + (DAY_GRADES[day]||[]).filter(g => getSlot(w, day, g)).length, 0);
+        const totalSlots = days.reduce((acc, day) => acc + (DAY_GRADES[day]||[]).length, 0);
+
+        return (
+          <div key={w} style={{ border: `1px solid ${isOpen ? ROYAL_BLUE : "#E5E7EB"}`, borderRadius: 12, marginBottom: 10, overflow: "hidden" }}>
+
+            {/* Week header */}
+            <button onClick={() => setExpandedWeek(isOpen ? -1 : w)}
+              style={{ width: "100%", textAlign: "left", border: "none", cursor: "pointer",
+                background: isOpen ? LIGHT_BLUE : WHITE, padding: "12px 14px",
+                display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div>
+                <div style={{ fontWeight: 800, color: ROYAL_BLUE, fontSize: 14 }}>Week {w + 1}</div>
+                <div style={{ fontSize: 11, color: GRAY, marginTop: 2 }}>
+                  {filledSlots}/{totalSlots} slots planned
+                  {allEquip.length > 0 && <span style={{ marginLeft: 8 }}>· Equip: {allEquip.map(e => EQUIP_ICONS[e] || "•").join(" ")}</span>}
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                {w < month.weeks - 1 && (
+                  <button onClick={(e) => { e.stopPropagation(); copyWeekDown(w); }}
+                    title={`Copy this week's plan to Week ${w+2}`}
+                    style={{ background: LIGHT_GOLD, color: "#92400E", border: "none", borderRadius: 6,
+                      padding: "4px 10px", fontSize: 11, fontWeight: 700, cursor: "pointer" }}>
+                    Copy → Wk {w+2}
+                  </button>
+                )}
+                <span style={{ color: GOLD, fontSize: 18, fontWeight: 700 }}>{isOpen ? "▲" : "▼"}</span>
+              </div>
+            </button>
+
+            {/* Week grid */}
+            {isOpen && (
+              <div style={{ padding: "12px 14px", background: WHITE }}>
+                {/* Warmup / Devotion per Grade */}
+                <div style={{ marginBottom:12 }}>
+                  <div style={{ fontSize:11, fontWeight:700, color:ROYAL_BLUE, textTransform:"uppercase", letterSpacing:0.5, marginBottom:8 }}>🙏 Warmup / Devotion (60–90 sec) — per grade this week</div>
+                  {["K5","1st","2nd","5th"].map(grade => {
+                    const warmup = getWarmup(w, grade);
+                    const gc = GC[grade];
+                    const cur = CURRICULUM[grade]?.[month.label];
+                    const royalHook = cur?.devotion || "";
+                    return (
+                      <div key={grade} style={{ background:gc.bg, border:`1px solid ${gc.border}`, borderRadius:8, padding:"8px 10px", marginBottom:6 }}>
+                        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:8 }}>
+                          <div style={{ flex:1 }}>
+                            <div style={{ fontSize:10, fontWeight:800, color:gc.text, marginBottom:4 }}>{grade} warmup/devotion</div>
+                            <textarea
+                              value={warmup?.text || ""}
+                              onChange={e => setWarmup(w, grade, { text: e.target.value })}
+                              placeholder={royalHook || "Write a 60–90 sec opening talk connecting today's game to the Kingdom Kids theme…"}
+                              style={{ width:"100%", fontSize:11, padding:"6px 8px", borderRadius:6, border:`1px solid ${gc.border}`, fontFamily:"inherit", resize:"vertical", minHeight:52, background:"#fff", boxSizing:"border-box", outline:"none" }}
+                            />
+                          </div>
+                        </div>
+                        {royalHook && !warmup?.text && (
+                          <button onClick={() => setWarmup(w, grade, { text: royalHook })}
+                            style={{ marginTop:4, fontSize:10, background:"none", border:`1px solid ${gc.border}`, borderRadius:5, padding:"2px 8px", cursor:"pointer", color:gc.text, fontWeight:600 }}>
+                            ↓ Use suggested devotion
+                          </button>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Curriculum + Devotion strip */}
+                {(["K5","1st","2nd","5th"]).map(grade => {
+                  const cur = CURRICULUM[grade]?.[month.label];
+                  if (!cur) return null;
+                  const gc = GC[grade];
+                  return (
+                    <div key={grade} style={{ background: gc.bg, border: `1px solid ${gc.border}`, borderRadius: 8, padding: "8px 12px", marginBottom: 8 }}>
+                      <div style={{ display: "flex", gap: 8, alignItems: "baseline", flexWrap: "wrap" }}>
+                        <span style={{ fontSize: 10, fontWeight: 800, color: gc.text, background: WHITE, border: `1px solid ${gc.border}`, borderRadius: 4, padding: "1px 6px" }}>{grade}</span>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: gc.text }}>{cur.unit}</span>
+                        <span style={{ fontSize: 11, color: GRAY }}>— {cur.skills}</span>
+                      </div>
+                      <div style={{ marginTop: 5, fontSize: 11, color: ROYAL_BLUE, fontStyle: "italic", display: "flex", gap: 5 }}>
+                        <span style={{ color: GOLD, fontWeight: 700, flexShrink: 0 }}>✝</span>
+                        <span>{cur.devotion}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {/* Equipment summary */}
+                {allEquip.length > 0 && (
+                  <div style={{ background: LIGHT_BLUE, borderRadius: 8, padding: "8px 12px", marginBottom: 12, display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: ROYAL_BLUE }}>📦 Week equip:</span>
+                    {allEquip.map(e => (
+                      <span key={e} style={{ background: WHITE, border: `1px solid #BFDBFE`, borderRadius: 6, padding: "2px 8px", fontSize: 11, color: ROYAL_BLUE }}>
+                        {EQUIP_ICONS[e] || "•"} {e}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Day columns */}
+                <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 4 }}>
+                  {days.map(day => (
+                    <div key={day} style={{ flex: 1, minWidth: 110 }}>
+                      {/* Day header */}
+                      <div style={{ background: ROYAL_BLUE, color: WHITE, fontWeight: 800, fontSize: 11,
+                        padding: "6px 6px", borderRadius: "8px 8px 0 0", textAlign: "center" }}>{day}</div>
+                      <div style={{ border: `1px solid #E5E7EB`, borderTop: "none", borderRadius: "0 0 8px 8px", overflow: "hidden" }}>
+                        {(DAY_GRADES[day] || []).map(grade => {
+                          const slot = getSlot(w, day, grade);
+                          const gc = gradeColor(grade);
+                          const slotGame = slot ? games.find(g => g.id === slot.gameId) : null;
+                          return (
+                            <div key={grade} style={{ borderBottom: `1px solid #F3F4F6`, padding: "6px 6px", background: slot ? gc.bg : "#FAFAFA" }}>
+                              {/* Grade label */}
+                              <div style={{ fontSize: 9, fontWeight: 800, color: gc.text, marginBottom: 3,
+                                background: gc.bg, border: `1px solid ${gc.border}`, borderRadius: 4,
+                                display: "inline-block", padding: "1px 5px" }}>{grade}</div>
+
+                              {slot && slotGame ? (
+                                <div>
+                                  <div style={{ fontSize: 11, fontWeight: 700, color: ROYAL_BLUE, lineHeight: 1.3 }}>{slotGame.name}</div>
+                                  {slot.variation && (
+                                    <div style={{ fontSize: 9, color: "#92400E", background: LIGHT_GOLD,
+                                      borderRadius: 4, padding: "1px 4px", marginTop: 2, lineHeight: 1.4 }}>
+                                      📝 {slot.variation}
+                                    </div>
+                                  )}
+                                  {slot.notes && (
+                                    <div style={{ fontSize: 9, color: GRAY, marginTop: 2, fontStyle: "italic", lineHeight: 1.3 }}>{slot.notes}</div>
+                                  )}
+                                  <div style={{ display: "flex", gap: 4, marginTop: 5, flexWrap:"wrap" }}>
+                                    <button onClick={() => setPicking({ month: month.label, week: w, day, grade, editing: slot })}
+                                      style={{ flex: 1, background: LIGHT_BLUE, color: ROYAL_BLUE, border: "none",
+                                        borderRadius: 4, fontSize: 9, fontWeight: 700, padding: "3px 0", cursor: "pointer" }}>Edit</button>
+                                    <button onClick={() => clearSlot(w, day, grade)}
+                                      style={{ background: "#FEE2E2", color: "#991B1B", border: "none",
+                                        borderRadius: 4, fontSize: 9, fontWeight: 700, padding: "3px 6px", cursor: "pointer" }}>✕</button>
+                                  </div>
+                                  <button onClick={() => { copyGradeAcrossDay(w, day, grade); }}
+                                    title={`Copy this ${grade} plan to all ${grade} classes this week`}
+                                    style={{ width:"100%", marginTop:4, background:GC[grade]?.border||GOLD, color:"#fff", border:"none",
+                                      borderRadius:4, fontSize:9, fontWeight:700, padding:"3px 4px", cursor:"pointer", lineHeight:1.3 }}>
+                                    Copy to all {grade} ↔
+                                  </button>
+                                </div>
+                              ) : (
+                                <button onClick={() => setPicking({ month: month.label, week: w, day, grade, editing: null })}
+                                  style={{ width: "100%", background: "none", border: `1.5px dashed ${gc.border}`,
+                                    borderRadius: 6, padding: "8px 4px", cursor: "pointer", color: gc.text,
+                                    fontSize: 10, fontWeight: 600, marginTop: 2 }}>+ Add game</button>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {/* ── GAME PICKER MODAL ── */}
+      {picking && (
+        <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)",
+          zIndex: 1000, display: "flex", alignItems: "flex-end", justifyContent: "center" }}
+          onClick={() => setPicking(null)}>
+          <div onClick={e => e.stopPropagation()}
+            style={{ background: WHITE, borderRadius: "16px 16px 0 0", padding: "16px", width: "100%",
+              maxWidth: 600, maxHeight: "85vh", display: "flex", flexDirection: "column" }}>
+
+            {/* Picker header */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+              <div>
+                <div style={{ fontWeight: 800, color: ROYAL_BLUE, fontSize: 15 }}>
+                  {picking.day} · {picking.grade}
+                </div>
+                <div style={{ fontSize: 11, color: GRAY }}>Week {picking.week + 1} · {picking.month}</div>
+              </div>
+              <button onClick={() => setPicking(null)}
+                style={{ background: "#F3F4F6", border: "none", borderRadius: 8, padding: "6px 12px",
+                  fontWeight: 700, fontSize: 13, cursor: "pointer", color: GRAY }}>✕</button>
+            </div>
+
+            {/* Game picker body — if game already chosen show detail form, else show list */}
+            {picking.editing?.gameId ? (
+              <SlotEditForm
+                slot={picking.editing}
+                game={games.find(g => g.id === picking.editing.gameId)}
+                onSave={(updated) => { setSlot(picking.week, picking.day, picking.grade, updated); setPicking(null); }}
+                onBack={() => setPicking({ ...picking, editing: null })}
+              />
+            ) : (
+              <>
+                {/* Filter bar */}
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
+                  {["All","Tag","Dodgeball","Fitness Station","Cooperative"].map(f => (
+                    <button key={f} onClick={() => setGameFilter(f)}
+                      style={{ padding: "4px 10px", borderRadius: 999, fontSize: 11, fontWeight: 600,
+                        border: `1.5px solid ${gameFilter === f ? ROYAL_BLUE : "#E5E7EB"}`,
+                        background: gameFilter === f ? ROYAL_BLUE : WHITE,
+                        color: gameFilter === f ? WHITE : GRAY, cursor: "pointer" }}>{f}</button>
+                  ))}
+                </div>
+
+                {/* Royal Way suggestion strip */}
+                {royalRow?.games?.length > 0 && (
+                  <div style={{ background: LIGHT_GOLD, borderRadius: 8, padding: "7px 10px", marginBottom: 10 }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: "#92400E", marginBottom: 5 }}>
+                      👑 This month's Royal Way games — {royalRow.virtue}
+                    </div>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                      {royalRow.games.map(gName => {
+                        const found = games.find(g => g.name === gName);
+                        if (!found || (picking.grade && !found.grades.includes(picking.grade))) return null;
+                        return (
+                          <button key={gName} onClick={() => setPicking({ ...picking, editing: { gameId: found.id, variation: "", notes: "" } })}
+                            style={{ background: GOLD, color: ROYAL_BLUE, border: "none", borderRadius: 6,
+                              padding: "4px 10px", fontSize: 11, fontWeight: 700, cursor: "pointer" }}>{gName}</button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Game list */}
+                <div style={{ overflowY: "auto", flex: 1 }}>
+                  {pickerGames.map(g => (
+                    <button key={g.id} onClick={() => setPicking({ ...picking, editing: { gameId: g.id, variation: "", notes: "" } })}
+                      style={{ width: "100%", textAlign: "left", background: WHITE, border: `1px solid #E5E7EB`,
+                        borderRadius: 10, padding: "10px 12px", marginBottom: 7, cursor: "pointer",
+                        display: "block" }}>
+                      <div style={{ fontWeight: 700, color: ROYAL_BLUE, fontSize: 13 }}>{g.name}</div>
+                      <div style={{ display: "flex", gap: 6, marginTop: 4, flexWrap: "wrap" }}>
+                        {g.grades.map(gr => <GradePill key={gr} grade={gr} />)}
+                        <span style={{ fontSize: 10, color: GRAY }}>⏱ {g.time}</span>
+                        <span style={{ fontSize: 10, color: GRAY }}>· {g.category}</span>
+                      </div>
+                      <div style={{ fontSize: 11, color: GRAY, marginTop: 4 }}>✝ {g.biblical.theme}</div>
+                    </button>
+                  ))}
+                  {pickerGames.length === 0 && (
+                    <div style={{ textAlign: "center", color: GRAY, fontSize: 13, marginTop: 20 }}>
+                      No games match — try changing the filter
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── SLOT EDIT FORM ───────────────────────────────────────────────────────────
+function SlotEditForm({ slot, game, onSave, onBack }) {
+  const [variation, setVariation] = useState(slot.variation || "");
+  const [notes, setNotes]         = useState(slot.notes || "");
+  const [devotion, setDevotion]   = useState(slot.devotion || "");
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12, flex: 1, overflowY: "auto" }}>
+      {/* Game summary */}
+      <div style={{ background: LIGHT_BLUE, borderRadius: 10, padding: "10px 14px" }}>
+        <div style={{ fontWeight: 800, color: ROYAL_BLUE, fontSize: 15 }}>✓ {game.name}</div>
+        <div style={{ display: "flex", gap: 6, marginTop: 5, flexWrap: "wrap" }}>
+          {game.grades.map(g => <GradePill key={g} grade={g} />)}
+          <span style={{ fontSize: 10, color: GRAY }}>⏱ {game.time} · {game.space}</span>
+        </div>
+        <div style={{ marginTop: 6, fontSize: 11, color: ROYAL_BLUE, fontWeight: 600 }}>✝ {game.biblical.theme}</div>
+        <div style={{ marginTop: 2, fontSize: 11, color: GRAY }}>📦 {game.equip.join(", ") || "No equipment"}</div>
+      </div>
+
+      {/* Variation picker */}
+      {game.variations?.length > 0 && (
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: GRAY, textTransform: "uppercase",
+            letterSpacing: 0.5, marginBottom: 6 }}>Variation (optional)</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+            <button onClick={() => setVariation("")}
+              style={{ textAlign: "left", padding: "7px 10px", borderRadius: 8, border: `1.5px solid ${variation === "" ? ROYAL_BLUE : "#E5E7EB"}`,
+                background: variation === "" ? LIGHT_BLUE : WHITE, fontSize: 12, cursor: "pointer",
+                color: variation === "" ? ROYAL_BLUE : GRAY, fontWeight: variation === "" ? 700 : 400 }}>
+              Standard (no variation)
+            </button>
+            {game.variations.map((v, i) => {
+              const label = v.length > 60 ? v.slice(0, 60) + "…" : v;
+              return (
+                <button key={i} onClick={() => setVariation(v)}
+                  style={{ textAlign: "left", padding: "7px 10px", borderRadius: 8,
+                    border: `1.5px solid ${variation === v ? ROYAL_BLUE : "#E5E7EB"}`,
+                    background: variation === v ? LIGHT_BLUE : WHITE, fontSize: 12, cursor: "pointer",
+                    color: variation === v ? ROYAL_BLUE : "#374151", fontWeight: variation === v ? 700 : 400,
+                    lineHeight: 1.4 }}>{label}</button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Devotion */}
+      <div>
+        <div style={{ fontSize: 11, fontWeight: 700, color: ROYAL_BLUE, textTransform: "uppercase",
+          letterSpacing: 0.5, marginBottom: 4 }}>✝ Devotion / Kingdom Connection (60–90 sec)</div>
+        <div style={{ fontSize: 10, color: GRAY, marginBottom: 6, fontStyle: "italic" }}>
+          How does today's game connect to this month's Royal Way theme? Write your opening talk here.
+        </div>
+        <textarea
+          value={devotion}
+          onChange={e => setDevotion(e.target.value)}
+          placeholder={game.biblical?.connection ? `Suggested: "${game.biblical.connection.slice(0,80)}…"` : "e.g. Today in Armor Up, the spinning hoop is your Shield of Faith — Ephesians 6:16…"}
+          style={{ width: "100%", minHeight: 70, padding: "8px 10px", borderRadius: 8,
+            border: `1.5px solid #BFDBFE`, fontSize: 12, fontFamily: "inherit",
+            resize: "vertical", boxSizing: "border-box", outline: "none",
+            background: LIGHT_BLUE }}
+        />
+        {game.biblical?.verse && (
+          <div style={{ marginTop: 4, fontSize: 10, color: ROYAL_BLUE, fontStyle: "italic" }}>
+            📖 {game.biblical.verse}
+          </div>
+        )}
+      </div>
+
+      {/* Notes */}
+      <div>
+        <div style={{ fontSize: 11, fontWeight: 700, color: GRAY, textTransform: "uppercase",
+          letterSpacing: 0.5, marginBottom: 6 }}>Notes / How it went</div>
+        <textarea
+          value={notes}
+          onChange={e => setNotes(e.target.value)}
+          placeholder="e.g. Tried the silent variation — K5 loved it. Shorten time next week."
+          style={{ width: "100%", minHeight: 70, padding: "8px 10px", borderRadius: 8,
+            border: `1.5px solid #E5E7EB`, fontSize: 12, fontFamily: "inherit",
+            resize: "vertical", boxSizing: "border-box", outline: "none" }}
+        />
+      </div>
+
+      {/* Actions */}
+      <div style={{ display: "flex", gap: 8 }}>
+        <button onClick={onBack}
+          style={{ flex: 1, background: "#F3F4F6", color: GRAY, border: "none",
+            borderRadius: 8, padding: "10px", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
+          ← Change game
+        </button>
+        <button onClick={() => onSave({ gameId: game.id, variation, notes, devotion })}
+          style={{ flex: 2, background: ROYAL_BLUE, color: WHITE, border: "none",
+            borderRadius: 8, padding: "10px", fontSize: 13, fontWeight: 800, cursor: "pointer" }}>
+          ✓ Save to plan
+        </button>
+      </div>
+    </div>
+  );
+}
+
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+function App({ persistentPlan, setPersistentPlan, customGames, setCustomGames }) {
+  const [tab, setTab]               = useState("schedule");
+  const [activeGrade, setActiveGrade] = useState(null);
+  const [gradeFilter, setGradeFilter] = useState("All");
+  const [catFilter, setCatFilter]   = useState("All");
+  const [showAddGame, setShowAddGame] = useState(false);
+
+  const games    = [...GAMES_DEFAULT, ...(customGames || [])];
+  const days     = ["Monday","Tuesday","Wednesday","Thursday","Friday"];
+  const grades   = ["All","K5","1st","2nd","5th"];
+  const cats     = ["All","Tag","Dodgeball","Fitness Station","Cooperative","Sport Skill"];
+
+  const filtered = games.filter(g =>
+    (gradeFilter === "All" || g.grades.includes(gradeFilter)) &&
+    (catFilter   === "All" || g.category === catFilter)
+  );
+
+  return (
+    <div style={{ fontFamily:"'Segoe UI',system-ui,sans-serif", maxWidth:900, margin:"0 auto", background:"#F0F4FA", minHeight:"100vh" }}>
+
+      {/* Add Game Modal */}
+      {showAddGame && (
+        <AddGameModal
+          onSave={g => { setCustomGames(prev => [...prev, g]); setShowAddGame(false); }}
+          onClose={() => setShowAddGame(false)}
+        />
+      )}
+
+      {/* Header */}
+      <div style={{ background:`linear-gradient(135deg,${ROYAL_BLUE},#0F2347)`, padding:"20px 16px 16px", textAlign:"center", borderBottom:`4px solid ${GOLD}` }}>
+        <div style={{ fontSize:26 }}>👑🦁</div>
+        <div style={{ color:GOLD, fontWeight:900, fontSize:20, letterSpacing:1 }}>BCA ROYALS — PE PLANNER</div>
+        <div style={{ color:WHITE, fontSize:12, marginTop:2 }}>Taylor · 2026–2027 · K5 · 1st · 2nd · 5th</div>
+        <div style={{ display:"flex", gap:6, justifyContent:"center", marginTop:8, flexWrap:"wrap" }}>
+          {["32 classes/wk","Thompson Gym","Thurs lunch only","Biblical integration"].map(l=>(
+            <span key={l} style={{ background:"rgba(201,168,76,0.2)", color:GOLD, borderRadius:999, fontSize:10, fontWeight:600, padding:"2px 10px" }}>{l}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div style={{ display:"flex", background:WHITE, borderBottom:"1px solid #E5E7EB", overflowX:"auto" }}>
+        {[
+          { id:"schedule",  label:"📅 Schedule"  },
+          { id:"games",     label:"🎮 Games"     },
+          { id:"equipment", label:"📦 Equipment" },
+          { id:"planner",   label:"📋 Planner"   },
+          { id:"ckh",       label:"👑 Royal Way" },
+        ].map(t=>(
+          <button key={t.id} onClick={()=>setTab(t.id)} style={{ flex:1, padding:"11px 8px", border:"none", cursor:"pointer", fontSize:12, fontWeight:600, whiteSpace:"nowrap", background:tab===t.id?LIGHT_BLUE:WHITE, color:tab===t.id?ROYAL_BLUE:GRAY, borderBottom:tab===t.id?`3px solid ${ROYAL_BLUE}`:"3px solid transparent" }}>{t.label}</button>
+        ))}
+      </div>
+
+      <div style={{ padding:"16px 12px" }}>
+
+        {/* ── SCHEDULE ── */}
+        {tab==="schedule" && <ScheduleTab activeGrade={activeGrade} setActiveGrade={setActiveGrade} />}
+
+        {/* ── GAMES ── */}
+        {tab==="games" && (
+          <div>
+            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:14 }}>
+              <div style={{ fontWeight:800, color:ROYAL_BLUE, fontSize:14 }}>🎮 Game Library <span style={{ fontSize:11, color:GRAY, fontWeight:400 }}>({games.length} games)</span></div>
+              <button onClick={()=>setShowAddGame(true)} style={{ background:GOLD, color:ROYAL_BLUE, border:"none", borderRadius:8, padding:"7px 16px", fontWeight:800, fontSize:12, cursor:"pointer" }}>+ Add Game</button>
+            </div>
+            <div style={{ marginBottom:14 }}>
+              <div style={{ fontSize:11, fontWeight:700, color:GRAY, textTransform:"uppercase", letterSpacing:0.5, marginBottom:6 }}>Filter by Grade</div>
+              <div style={{ display:"flex", gap:6, flexWrap:"wrap", marginBottom:10 }}>
+                {grades.map(g=>{ const active=gradeFilter===g;
+                  return <button key={g} onClick={()=>setGradeFilter(g)} style={{ padding:"5px 14px", borderRadius:999, fontSize:12, fontWeight:700, border:`2px solid ${active?ROYAL_BLUE:"#E5E7EB"}`, background:active?ROYAL_BLUE:WHITE, color:active?WHITE:GRAY, cursor:"pointer" }}>{g}</button>;
+                })}
+              </div>
+              <div style={{ fontSize:11, fontWeight:700, color:GRAY, textTransform:"uppercase", letterSpacing:0.5, marginBottom:6 }}>Filter by Category</div>
+              <div style={{ display:"flex", gap:6, flexWrap:"wrap" }}>
+                {cats.map(c=>{ const active=catFilter===c;
+                  return <button key={c} onClick={()=>setCatFilter(c)} style={{ padding:"5px 14px", borderRadius:999, fontSize:12, fontWeight:600, border:`2px solid ${active?GOLD:"#E5E7EB"}`, background:active?LIGHT_GOLD:WHITE, color:active?"#92400E":GRAY, cursor:"pointer" }}>{c}</button>;
+                })}
+              </div>
+            </div>
+            <div style={{ fontSize:12, color:GRAY, marginBottom:12 }}>{filtered.length} game{filtered.length!==1?"s":""} shown</div>
+            {filtered.map(g=><GameCard key={g.id} game={g}/>)}
+          </div>
+        )}
+
+        {/* ── EQUIPMENT ── */}
+        {tab==="equipment" && (
+          <div>
+            <div style={{ background:LIGHT_GOLD, borderRadius:10, padding:"12px 14px", marginBottom:14, borderLeft:`4px solid ${GOLD}` }}>
+              <div style={{ fontWeight:700, color:"#92400E", fontSize:13, marginBottom:4 }}>Universal Rule</div>
+              <div style={{ fontSize:12, color:"#374151", lineHeight:1.6 }}>
+                🔶 <strong>Cones</strong> and 🟦 <strong>Noodles</strong> stay out all day.<br/>
+                🔵 <strong>Pit balls</strong> → K5 &nbsp;·&nbsp; 🟠 <strong>Foam balls</strong> → 1st &amp; 2nd &nbsp;·&nbsp; 🏀 <strong>Basketballs</strong> → 5th
+              </div>
+            </div>
+            {days.map(day=><DayEquipCard key={day} day={day} data={dailyEquip[day]}/>)}
+          </div>
+        )}
+
+        {/* ── PLANNER ── */}
+        {tab==="planner" && (
+          <PlannerTab
+            games={games}
+            plan={persistentPlan}
+            setPlan={setPersistentPlan}
+          />
+        )}
+
+        {/* ── ROYAL WAY ── */}
+        {tab==="ckh" && <CKHTab />}
+
+      </div>
+
+      <div style={{ padding:"14px 20px", textAlign:"center", borderTop:`1px solid ${LIGHT_BLUE}` }}>
+        <div style={{ color:GRAY, fontSize:11 }}>BCA Royals PE · Taylor · 2026–2027 · The Royal Way — Kingdom Kids Integration</div>
+      </div>
+    </div>
+  );
+}
+
+function usePersistentState(key, defaultValue) {
+  const [state, setState] = useState(() => {
+    try {
+      const stored = localStorage.getItem(key);
+      return stored ? JSON.parse(stored) : defaultValue;
+    } catch(e) { return defaultValue; }
+  });
+  const setPersistent = useCallback((value) => {
+    setState(prev => {
+      const next = typeof value === "function" ? value(prev) : value;
+      try { localStorage.setItem(key, JSON.stringify(next)); } catch(e) {}
+      return next;
+    });
+  }, [key]);
+  return [state, setPersistent];
+}
+function PersistentApp() {
+  const [plan, setPlan]               = usePersistentState("bca-pe-plan-v2", {});
+  const [customGames, setCustomGames] = usePersistentState("bca-pe-games-v1", []);
+  const [lastSaved, setLastSaved]     = useState(null);
+  useEffect(() => { setLastSaved(new Date().toLocaleTimeString()); }, [plan, customGames]);
+  return (
+    <div>
+      <App persistentPlan={plan} setPersistentPlan={setPlan} customGames={customGames} setCustomGames={setCustomGames} />
+      {lastSaved && (
+        <div style={{ position:"fixed", bottom:12, right:12, background:"#1B3A6B", color:"#C9A84C", borderRadius:8, padding:"5px 12px", fontSize:11, fontWeight:700, boxShadow:"0 2px 8px rgba(0,0,0,0.2)", zIndex:9999, opacity:0.9 }}>
+          Saved {lastSaved}
+        </div>
+      )}
+    </div>
+  );
+}
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<PersistentApp />);
+</script>
+</body>
+</html>
